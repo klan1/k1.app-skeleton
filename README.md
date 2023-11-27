@@ -1,10 +1,10 @@
-# k1.app - SIE Demo
-App for elections using k1.lib library.
+# k1.app - skeleton
+This is a way to create fast and usable web apps.
 ## Installation
 
 ```sh
-git clone https://github.com/j0hnd03/sie-app.git
-cd sie-app
+git clone https://github.com/klan1/k1.app-skeleton.git
+cd k1.app-skeleton
 bower install --allow-root
 composer install
 ```
