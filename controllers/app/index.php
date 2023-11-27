@@ -18,8 +18,6 @@ $app_session = new session_db($db);
 $app_session->start_session();
 $app_session->load_logged_session_db();
 
-//\k1lib\session\session_db::is_logged(TRUE, APP_URL . 'roy-2019/log/form/');
-
 // Template init
 template::load_template('scripts/init');
 
@@ -36,7 +34,7 @@ if ($controller_to_include) {
             } elseif (session_db::check_user_level(['user'])) {
                 $go_url = url::do_url("dashboard/");
             } else {
-                trigger_error("No idea how you do it!", E_USER_ERROR);
+//                trigger_error("No idea how you do it!", E_USER_ERROR);
             }
             \k1lib\html\html_header_go($go_url);
         } else {
@@ -44,15 +42,10 @@ if ($controller_to_include) {
         }
     } else {
         /**
-         * REMOVE THIS !! when the login system is setup
-         */
-        $go_url = url::do_url("log/form/");
-        \k1lib\html\html_header_go($go_url);
-        /**
          * UNCOMMENT THIS !! when the login system is setup
          */
-//    $get_params = ["back-url" => $_SERVER['REQUEST_URI']];
-//    \k1lib\html\html_header_go(url::do_url(APP_URL . "log/form/", $get_params));
+        $get_params = ["back-url" => $_SERVER['REQUEST_URI']];
+        \k1lib\html\html_header_go(url::do_url(APP_URL . "log/form/", $get_params));
     }
 }
 // APP Debug output
