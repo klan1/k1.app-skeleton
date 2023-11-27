@@ -26,6 +26,7 @@ $head->link_css(BOWER_PACKAGES_URL . "foundation-datepicker/css/foundation-datep
 $head->link_css(APP_TEMPLATE_URL . "css/k1-app.css?time=" . time());
 $head->link_css(APP_TEMPLATE_URL . "css/custom-styles.css?time=" . time());
 
+$head->append_child_tail(new script('https://www.googletagmanager.com/gtag/js?id=G-7M331CF1ZM'));
 $head->append_child_tail(new script(BOWER_PACKAGES_URL . "jquery/dist/jquery.min.js"));
 $head->append_child_tail(new script(BOWER_PACKAGES_URL . "tinymce/tinymce.min.js"));
 $head->append_child_tail(new script(BOWER_PACKAGES_URL . "foundation-datepicker/js/foundation-datepicker.min.js"));
@@ -41,3 +42,14 @@ $body->append_child_tail(new script(COMPOSER_FOUNDATION_JS_URL));
 $body->append_child_tail(new script(APP_TEMPLATE_URL . "js/k1app.js?time=" . time()));
 $body->append_child_tail(new script(APP_TEMPLATE_URL . "js/custom-scripts.js?time=" . time()));
 
+/**
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7M331CF1ZM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7M331CF1ZM');
+</script>
+ */

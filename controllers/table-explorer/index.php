@@ -14,7 +14,7 @@ include 'controllers-config.php';
 /*
  * APP START
  */
-session_db::set_session_name(SESSION_APP_NAME);
+session_db::set_session_name(K1APP_SESSION_NAME);
 $app_session = new session_db($db);
 $app_session->start_session();
 $app_session->load_logged_session_db();

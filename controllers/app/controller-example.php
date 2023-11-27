@@ -21,15 +21,15 @@ template::load_template('app-footer');
 
 DOM::menu_left()->set_active('nav-section-name');
 
-$db_table_to_use = "table_to_use";
-$controller_name = "Controller name to show";
+$db_table_to_use = "table_example";
+$controller_name = "Table controller example";
 
 /**
  * ONE LINE config: less codign, more party time!
  * $co = controller_object
  */
 $co = new \k1lib\crudlexs\controller_base(APP_BASE_URL, $db, $db_table_to_use, $controller_name, 'k1lib-title-3');
-$co->set_config_from_class('\k1app\table_config_class');
+$co->set_config_from_class('\k1app\table_config_admin_default_class');
 
 $co->db_table->set_field_constants(['user_login' => session_db::get_user_login()]);
 
