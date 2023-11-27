@@ -2,15 +2,15 @@
 
 namespace k1app;
 
-use \k1lib\session\session_db as k1lib_session;
+use k1lib\session\session_plain;
 use \k1lib\urlrewrite\url as url;
 use k1app\k1app_template as DOM;
 
 $body = DOM::html()->body();
 
 if (DOM::off_canvas()) {
-//    DOM::off_canvas()->left()->set_class('reveal-for-large', TRUE);
-//    DOM::off_ca/nvas()->left()->set_attrib('data-options', 'inCanvasFor:large;');
+    DOM::off_canvas()->left()->set_class('reveal-for-large', TRUE);
+    DOM::off_ca/nvas()->left()->set_attrib('data-options', 'inCanvasFor:large;');
 }
 
 if (!isset($_GET['just-controller'])) {
@@ -26,16 +26,14 @@ if (!isset($_GET['just-controller'])) {
         /**
          * MENU ITEMS
          */
-        if (k1lib_session::check_user_level(['god', 'admin'])) {
-            $menu_left->add_menu_item(APP_URL . 'app/dashboard/', 'Dashboard', 'nav-dashboard');
-        } elseif (k1lib_session::check_user_level(['user'])) {
-            $menu_left->add_menu_item(APP_URL . 'app/dashboard/', 'Dashboard', 'nav-dashboard');
-        } elseif (k1lib_session::check_user_level(['guest'])) {
-            $menu_left->add_menu_item(APP_URL . 'app/dashboard/', 'Dashboard', 'nav-dashboard');
-        } else {
-            trigger_error("No idea how you do it!", E_USER_ERROR);
+        if (session_plain::check_user_level(['god', 'admin'])) {
+            $menu_left->add_menu_item(APP_URL . 'app/dashboard/', 'Private Dashboard', 'nav-dashboard');
+        } elseif (session_plain::check_user_level(['user'])) {
+            $menu_left->add_menu_item(APP_URL . 'app/dashboard/', 'Private Dashboard', 'nav-dashboard');
+        } elseif (session_plain::check_user_level(['guest'])) {
+            $menu_left->add_menu_item(APP_URL . 'public/dashboard/', 'Public Dashboard', 'nav-dashboard');
         }
-        if (k1lib_session::is_logged()) {
+        if (session_plain::is_logged()) {
             /**
              * APP Preferences
              */
