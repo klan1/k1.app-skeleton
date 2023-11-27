@@ -1,0 +1,24 @@
+{
+  "name": "k1.app-skeleton",
+  "main": [],
+  "ignore": [
+    "composer.json",
+    "CONTRIBUTING.md",
+    "package.js",
+    "package.json",
+    "sache.json",
+    ".editorconfig",
+    ".npm",
+    ".gitignore",
+    ".npmignore",
+    ".versions"
+  ],
+  "dependencies": {
+    "jquery": "~3",
+    "what-input": "~4",
+    "foundation-sites": "~6",
+    "foundation-datepicker": "*",
+    "foundation-icon-fonts": "*",
+    "tinymce": "~4"
+  }
+}
