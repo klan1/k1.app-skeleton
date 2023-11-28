@@ -9,8 +9,8 @@ use k1app\k1app_template as DOM;
 $body = DOM::html()->body();
 
 if (DOM::off_canvas()) {
-    DOM::off_canvas()->left()->set_class('reveal-for-large', TRUE);
-    DOM::off_canvas()->left()->set_attrib('data-options', 'inCanvasFor:large;');
+//    DOM::off_canvas()->left()->set_class('reveal-for-large', TRUE);
+//    DOM::off_canvas()->left()->set_attrib('data-options', 'inCanvasFor:large;');
 }
 
 if (!isset($_GET['just-controller'])) {
@@ -28,6 +28,9 @@ if (!isset($_GET['just-controller'])) {
          */
         if (session_plain::check_user_level(['god', 'admin'])) {
             $menu_left->add_menu_item(APP_URL . 'app/dashboard/', 'Private Dashboard', 'nav-dashboard');
+            $menu_left->add_menu_item(APP_URL . 'app/table-simple-example/', 'Simple Table', 'nav-table-simple-example');
+            $menu_left->add_menu_item(APP_URL . 'app/table-related-example/', 'Related Table', 'nav-table-realted-example');
+            $menu_left->add_menu_item(APP_URL . 'app/table-fk-example/', 'FK Table', 'nav-table-fk-example');
         } elseif (session_plain::check_user_level(['user'])) {
             $menu_left->add_menu_item(APP_URL . 'app/dashboard/', 'Private Dashboard', 'nav-dashboard');
         } elseif (session_plain::check_user_level(['guest'])) {

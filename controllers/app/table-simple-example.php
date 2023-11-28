@@ -19,10 +19,10 @@ template::load_template('header');
 template::load_template('app-header');
 template::load_template('app-footer');
 
-DOM::menu_left()->set_active('nav-section-name');
+DOM::menu_left()->set_active('nav-table-simple-example');
 
-$db_table_to_use = "table_example";
-$controller_name = "Table controller example";
+$db_table_to_use = "table_uploads";
+$controller_name = "Simple Table controller example";
 
 /**
  * ONE LINE config: less codign, more party time!
@@ -42,7 +42,7 @@ $div = $co->init_board();
 //$co->read_url_keys_text_for_create('referrer_table_caller');
 
 if ($co->on_board_list()) {
-    $co->board_list_object->set_create_enable(FALSE);
+    $co->board_list_object->set_create_enable(TRUE);
 }
 
 $co->start_board();
@@ -50,22 +50,19 @@ $co->start_board();
 // LIST
 if ($co->on_object_list()) {
     $read_url = url::do_url($co->get_controller_root_dir() . "{$co->get_board_read_url_name()}/--rowkeys--/", ["auth-code" => "--authcode--"]);
-    $co->board_list_object->list_object->apply_link_on_field_filter($read_url, \k1lib\crudlexs\crudlexs_base::USE_LABEL_FIELDS);
+    $co->board_list()->list_object->apply_link_on_field_filter($read_url, \k1lib\crudlexs\crudlexs_base::USE_ALL_FIELDS);
 }
-//if ($co->on_object_read()) {
-//    /**
-//     * Custom Links
-//     */
-//    $get_params = [
-//        'auth-code' => '--fieldauthcode--',
-//        'back-url' => $_SERVER['REQUEST_URI']
-//    ];
-//    // Layout Horizontal LINK
-//    $horizontal_layout_url = url::do_url(APP_BASE_URL . table_config_class::ROOT_URL . '/' . table_config_class::BOARD_UPDATE_URL . '/--customfieldvalue--/', $get_params);
-//    $co->object_read()->apply_link_on_field_filter($horizontal_layout_url, ['ecard_layout_h_id'], ['ecard_layout_h_id']);
-//}
+// READ
+if ($co->on_object_read()) {
+    $read_url = url::do_url($co->get_controller_root_dir() . "{$co->get_board_read_url_name()}/--rowkeys--/", ["auth-code" => "--authcode--"]);
+    $co->board_read()->read_object->apply_link_on_field_filter($read_url, \k1lib\crudlexs\crudlexs_base::USE_ALL_FIELDS);
+}
 
 $co->exec_board();
+
+if ($co->on_object_list()) {
+//    $co->board_list()->list_object->html_table->set_max_text_length_on_cell(100);
+}
 
 $co->finish_board();
 

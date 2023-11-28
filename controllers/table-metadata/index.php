@@ -8,6 +8,8 @@ use k1lib\session\session_db as session_db;
 
 //include 'db.php';
 include 'db.php';
+include 'db-tables-aliases.php';
+include 'controllers-config.php';
 
 /*
  * APP START

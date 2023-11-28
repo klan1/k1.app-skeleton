@@ -29,7 +29,7 @@ if (!isset($_GET['just-controller'])) {
         $table_alias = \k1lib\db\security\db_table_aliases::encode($table_to_link);
 
         if (strstr($table_to_link, "view_")) {
-            continue;
+//            continue;
         }
         $table_explorer_menu->add_menu_item(url::do_url("../../{$table_alias}/", [], FALSE), $table_to_link, 'nav-' . $table_alias);
     }
