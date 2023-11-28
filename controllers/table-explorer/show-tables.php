@@ -20,7 +20,7 @@ $span = (new \k1lib\html\span("subheader"))->set_value("Tables of DB ");
 DOM::set_title(3, $span . \k1lib\sql\get_db_database_name($db));
 
 
-$db_tables = \k1lib\sql\sql_query($db, "show tables", TRUE);
+$db_tables = \k1lib\sql\sql_query($db, "show full tables", TRUE);
 
 $ul = new \k1lib\html\ul();
 
@@ -29,7 +29,7 @@ foreach ($db_tables as $row_field => $row_value) {
     $table_alias = \k1lib\db\security\db_table_aliases::encode($table_to_link);
 
     if (strstr($table_to_link, "view_")) {
-        continue;
+//        continue;
     }
 
     $a_crudlexs = new \k1lib\html\a(url::do_url("../crudlexs/{$table_alias}/", [], FALSE), $table_to_link);

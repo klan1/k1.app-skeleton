@@ -49,7 +49,6 @@ class table_config_default_class {
     const BOARD_DELETE_ALLOWED_LEVELS = ['god', 'admin', 'user'];
     const BOARD_EXPORT_ALLOWED_LEVELS = ['god', 'admin'];
     const BOARD_LIST_ALLOWED_LEVELS = ['god', 'admin', 'user'];
-
 }
 
 class table_config_user_read_default_class extends table_config_default_class {
@@ -65,7 +64,6 @@ class table_config_user_read_default_class extends table_config_default_class {
     const BOARD_DELETE_ALLOWED_LEVELS = ['god', 'admin'];
     const BOARD_EXPORT_ALLOWED_LEVELS = ['god', 'admin'];
     const BOARD_LIST_ALLOWED_LEVELS = ['god', 'admin', 'user'];
-
 }
 
 class table_config_user_write_default_class extends table_config_default_class {
@@ -85,7 +83,6 @@ class table_config_guest_read_default_class extends table_config_default_class {
     const BOARD_DELETE_ALLOWED_LEVELS = ['god', 'admin'];
     const BOARD_EXPORT_ALLOWED_LEVELS = ['god', 'admin'];
     const BOARD_LIST_ALLOWED_LEVELS = ['god', 'admin', 'user', 'guest'];
-
 }
 
 class table_config_guest_write_default_class extends table_config_default_class {
@@ -101,7 +98,6 @@ class table_config_guest_write_default_class extends table_config_default_class 
     const BOARD_DELETE_ALLOWED_LEVELS = ['god', 'admin', 'user', 'guest'];
     const BOARD_EXPORT_ALLOWED_LEVELS = ['god', 'admin'];
     const BOARD_LIST_ALLOWED_LEVELS = ['god', 'admin', 'user', 'guest'];
-
 }
 
 class table_config_admin_default_class extends table_config_default_class {
@@ -117,7 +113,6 @@ class table_config_admin_default_class extends table_config_default_class {
     const BOARD_DELETE_ALLOWED_LEVELS = ['god', 'admin'];
     const BOARD_EXPORT_ALLOWED_LEVELS = ['god', 'admin'];
     const BOARD_LIST_ALLOWED_LEVELS = ['god', 'admin'];
-
 }
 
 class table_config_god_default_class extends table_config_default_class {
@@ -133,13 +128,12 @@ class table_config_god_default_class extends table_config_default_class {
     const BOARD_DELETE_ALLOWED_LEVELS = ['god'];
     const BOARD_EXPORT_ALLOWED_LEVELS = ['god'];
     const BOARD_LIST_ALLOWED_LEVELS = ['god'];
-
 }
 
 /**
  * TABLE EXPLORER
  */
-class crudlexs_config extends table_config_god_default_class{
+class crudlexs_config extends table_config_god_default_class {
 
     /**
      * URLS
@@ -148,6 +142,14 @@ class crudlexs_config extends table_config_god_default_class{
 }
 
 /**
- * APP USER CONFIG CLASESS FROM HERE, UPCODE PLEASE LET IT BE.
+ * APP USER CONFIG CLASESS FROM HERE, UP CODE PLEASE LET IT BE.
  */
+class table_example_class extends table_config_admin_default_class {
 
+    const ROOT_URL = "app/table-related-example";
+}
+
+class file_uploads_class extends table_config_admin_default_class {
+
+    const ROOT_URL = "app/table-fk-example";
+}

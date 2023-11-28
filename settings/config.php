@@ -1,9 +1,5 @@
 <?php
 
-namespace k1lib;
-
-const K1LIB_INC_MODE = 0;
-
 namespace k1app;
 
 if (!defined("\k1app\IN_K1APP")) {
@@ -22,6 +18,8 @@ const K1APP_KEYWORKS = "";
 const K1APP_VERBOSE = 1;
 
 const K1APP_SESSION_NAME = 'K1APP-DEMO-SESSION';
+
+const GOOGLE_TAG = NULL;
 
 
 /**
@@ -50,11 +48,7 @@ const K1APP_SESSION_NAME = 'K1APP-DEMO-SESSION';
 \k1lib\session\session_plain::set_app_user_levels([
     'god',
     'admin',
-    'admin-coordinador',
-    'lider',
-    'digitador',
-    'estadisticas',
-    'consulta',
+    'user',
     'guest'
 ]);
 
