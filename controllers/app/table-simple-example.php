@@ -40,7 +40,7 @@ $co->db_table->set_field_constants(['user_login' => session_db::get_user_login()
 /**
  * ALL READY, let's do it :)
  */
-$div = $co->init_board();
+$board_div = $co->init_board();
 
 if ($co->on_board_list()) {
     $co->board_list_object->set_create_enable(TRUE);
@@ -62,4 +62,4 @@ if ($co->on_object_list()) {
 
 $co->finish_board();
 
-$body->content()->append_child($div);
+$body->content()->append_child($board_div);
