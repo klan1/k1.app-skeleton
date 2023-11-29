@@ -45,7 +45,7 @@ if ($controller_to_include) {
          * UNCOMMENT THIS !! when the login system is setup
          */
         $get_params = ["back-url" => $_SERVER['REQUEST_URI']];
-        \k1lib\html\html_header_go(url::do_url(APP_URL . "log/form/", $get_params));
+        \k1lib\html\html_header_go(url::do_url(APP_LOGIN_URL, $get_params));
     }
 }
 // APP Debug output

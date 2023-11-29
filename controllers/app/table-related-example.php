@@ -8,8 +8,9 @@ use k1lib\html\template as template;
 use \k1lib\urlrewrite\url as url;
 use k1app\k1app_template as DOM;
 use k1lib\session\session_db as session_db;
+use \k1lib\crudlexs\controller_base as cb;
 
-\k1lib\session\session_db::is_logged(TRUE, APP_URL . 'app/log/form/');
+\k1lib\session\session_db::is_logged(TRUE, APP_LOGIN_URL);
 
 k1app_template::start_template();
 
@@ -28,7 +29,7 @@ $controller_name = "Table with related table controller example";
  * ONE LINE config: less codign, more party time!
  * $co = controller_object
  */
-$co = new \k1lib\crudlexs\controller_base(APP_BASE_URL, $db, $db_table_to_use, $controller_name, 'k1lib-title-3');
+$co = new cb(APP_BASE_URL, $db, $db_table_to_use, $controller_name, 'k1lib-title-3');
 $co->set_config_from_class('\k1app\table_config_admin_default_class');
 
 $co->db_table->set_field_constants(['user_login' => session_db::get_user_login()]);

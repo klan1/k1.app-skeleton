@@ -8,8 +8,9 @@ use k1lib\html\template as template;
 use \k1lib\urlrewrite\url as url;
 use k1app\k1app_template as DOM;
 use k1lib\session\session_db as session_db;
+use \k1lib\crudlexs\controller_base as cb;
 
-\k1lib\session\session_db::is_logged(TRUE, APP_URL . 'app/log/form/');
+\k1lib\session\session_db::is_logged(TRUE, APP_LOGIN_URL);
 
 k1app_template::start_template();
 
@@ -28,18 +29,18 @@ $controller_name = "Simple Table controller example";
  * ONE LINE config: less codign, more party time!
  * $co = controller_object
  */
-$co = new \k1lib\crudlexs\controller_base(APP_BASE_URL, $db, $db_table_to_use, $controller_name, 'k1lib-title-3');
+$co = new cb(APP_BASE_URL, $db, $db_table_to_use, $controller_name, 'k1lib-title-3');
 $co->set_config_from_class('\k1app\table_config_admin_default_class');
 
+/**
+ * USE THIS IF THE TABLE NEED THE LOGIN_ID ON EVERY ROW FOR TRACKING
+ */
 $co->db_table->set_field_constants(['user_login' => session_db::get_user_login()]);
 
 /**
  * ALL READY, let's do it :)
  */
 $div = $co->init_board();
-
-//$co->read_url_keys_text_for_list('referrer_table_caller');
-//$co->read_url_keys_text_for_create('referrer_table_caller');
 
 if ($co->on_board_list()) {
     $co->board_list_object->set_create_enable(TRUE);

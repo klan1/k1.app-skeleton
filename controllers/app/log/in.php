@@ -57,4 +57,4 @@ if ($post_data) {
 } elseif ($post_data === NULL) {
     DOM_notifications::queue_mesasage("No se han recibido datos", "warning");
 }
-\k1lib\html\html_header_go(url::do_url(APP_URL . "app/log/form/"));
+\k1lib\html\html_header_go(url::do_url(APP_LOGIN_URL));
