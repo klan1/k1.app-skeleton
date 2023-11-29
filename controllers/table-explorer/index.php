@@ -6,10 +6,8 @@ use \k1lib\urlrewrite\url as url;
 use k1lib\html\template as template;
 use k1lib\session\session_db as session_db;
 
-//include 'db.php';
 include 'db.php';
 include 'controllers-config.php';
-
 
 /*
  * APP START
@@ -24,7 +22,7 @@ template::load_template('scripts/init');
 
 k1app_template::start_template();
 
-//\k1lib\session\session_db::is_logged(TRUE, url::do_url(APP_URL . "log/form/", ["back-url" => $_SERVER['REQUEST_URI']]));
+session_db::is_logged(TRUE, url::do_url(APP_LOGIN_URL, ["back-url" => $_SERVER['REQUEST_URI']]));
 
 if (\k1lib\session\session_db::check_user_level(crudlexs_config::CONTROLLER_ALLOWED_LEVELS)) {
     $controller_to_load = url::set_next_url_level(APP_CONTROLLERS_PATH, FALSE);
