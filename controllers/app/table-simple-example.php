@@ -21,7 +21,7 @@ template::load_template('app-footer');
 
 DOM::menu_left()->set_active('nav-table-simple-example');
 
-$db_table_to_use = "table_uploads";
+$db_table_to_use = "table_example";
 $controller_name = "Simple Table controller example";
 
 /**
@@ -50,32 +50,15 @@ $co->start_board();
 // LIST
 if ($co->on_object_list()) {
     $read_url = url::do_url($co->get_controller_root_dir() . "{$co->get_board_read_url_name()}/--rowkeys--/", ["auth-code" => "--authcode--"]);
-    $co->board_list()->list_object->apply_link_on_field_filter($read_url, \k1lib\crudlexs\crudlexs_base::USE_ALL_FIELDS);
-}
-// READ
-if ($co->on_object_read()) {
-    $read_url = url::do_url($co->get_controller_root_dir() . "{$co->get_board_read_url_name()}/--rowkeys--/", ["auth-code" => "--authcode--"]);
-    $co->board_read()->read_object->apply_link_on_field_filter($read_url, \k1lib\crudlexs\crudlexs_base::USE_ALL_FIELDS);
+    $co->board_list()->list_object->apply_link_on_field_filter($read_url, \k1lib\crudlexs\crudlexs_base::USE_LABEL_FIELDS);
 }
 
 $co->exec_board();
 
 if ($co->on_object_list()) {
-//    $co->board_list()->list_object->html_table->set_max_text_length_on_cell(100);
+    $co->board_list()->list_object->html_table->set_max_text_length_on_cell(100);
 }
 
 $co->finish_board();
-
-//if ($co->on_board_read()) {
-//    $related_div = $div->append_div("row k1lib-crudlexs-related-data");
-//    /**
-//     * Related list
-//     */
-//    $related_db_table = new \k1lib\crudlexs\class_db_table($db, "related_table_name");
-////    $co->board_read_object->set_related_show_all_data(FALSE);
-////    $co->board_read_object->set_related_show_new(FALSE);
-//    $related_list = $co->board_read_object->create_related_list($related_db_table, NULL, "Related title to show", related_table_config_class::ROOT_URL, related_table_config_class::BOARD_CREATE_URL, related_table_config_class::BOARD_READ_URL, related_table_config_class::BOARD_LIST_URL, FALSE);
-//    $related_list->append_to($related_div);
-//}
 
 $body->content()->append_child($div);
