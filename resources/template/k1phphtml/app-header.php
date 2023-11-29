@@ -29,7 +29,7 @@ if (!isset($_GET['just-controller'])) {
         if (session_plain::check_user_level(['god', 'admin'])) {
             $menu_left->add_menu_item(APP_URL . 'app/dashboard/', 'Private Dashboard', 'nav-dashboard');
             $menu_left->add_menu_item(APP_URL . 'app/table-simple-example/', 'Simple Table', 'nav-table-simple-example');
-            $menu_left->add_menu_item(APP_URL . 'app/table-related-example/', 'Related Table', 'nav-table-realted-example');
+            $menu_left->add_menu_item(APP_URL . 'app/table-related-example/', 'Related Table', 'nav-table-related-example');
             $menu_left->add_menu_item(APP_URL . 'app/table-fk-example/', 'FK Table', 'nav-table-fk-example');
         } elseif (session_plain::check_user_level(['user'])) {
             $menu_left->add_menu_item(APP_URL . 'app/dashboard/', 'Private Dashboard', 'nav-dashboard');
@@ -52,7 +52,7 @@ if (!isset($_GET['just-controller'])) {
 
             $menu_left_tail->add_menu_item(url::do_url(APP_URL . 'app/log/out/'), 'Logout', 'nav-logout');
         } else {
-            $menu_left_tail->add_menu_item(url::do_url(APP_URL . 'app/log/form/'), 'Login', 'nav-login');
+            $menu_left_tail->add_menu_item(url::do_url(APP_LOGIN_URL), 'Login', 'nav-login');
         }
     }
 }

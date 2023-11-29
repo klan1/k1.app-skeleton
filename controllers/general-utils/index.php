@@ -18,7 +18,7 @@ $app_session = new session_db($db_sie);
 $app_session->start_session();
 $app_session->load_logged_session_db();
 
-\k1lib\session\session_db::is_logged(TRUE, APP_URL . 'app/log/form/');
+\k1lib\session\session_db::is_logged(TRUE, APP_LOGIN_URL);
 // Template init
 template::load_template('scripts/init');
 

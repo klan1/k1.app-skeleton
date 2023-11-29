@@ -72,7 +72,7 @@ if (APP_MODE != 'shell') {
         define('APP_DOMAIN_URL', 'https://' . \APP_DOMAIN);
     }
     define('APP_URL', APP_DOMAIN_URL . APP_BASE_URL);
-    define('APP_LOGIN_URL', APP_URL . 'log/form/');
+    define('APP_LOGIN_URL', APP_URL . 'app/log/form/');
     define('APP_HOME_URL', APP_URL);
     define('APP_CONTROLLERS_URL', APP_URL . 'controllers/');
     define('APP_VIEWS_URL', APP_URL . 'views/');

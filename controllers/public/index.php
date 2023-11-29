@@ -8,7 +8,6 @@ use k1lib\html\template as template;
 /*
  * APP START
  */
-//\k1lib\session\session_db::is_logged(TRUE, APP_URL . 'roy-2019/log/form/');
 // Template init
 template::load_template('scripts/init');
 

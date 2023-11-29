@@ -63,7 +63,7 @@ if ($co->on_object_list()) {
 $co->finish_board();
 
 if ($co->on_board_read()) {
-    $related_div = $div->append_div("row k1lib-crudlexs-related-data");
+    $related_div = $board_div->append_div("row k1lib-crudlexs-related-data");
     /**
      * Related list
      */
