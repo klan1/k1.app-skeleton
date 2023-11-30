@@ -5,7 +5,6 @@ namespace k1app;
 // Composer lines
 const K1LIB_LANG = "en";
 const APP_MODE = "shell";
-const IN_K1APP = TRUE;
 
 require_once '../../vendor/autoload.php';
 require_once '../../settings/path-settings.php';

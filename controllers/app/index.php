@@ -19,6 +19,8 @@ $app_session->start_session();
 $app_session->load_logged_session_db();
 
 // Template init
+//require_once APP_TEMPLATE_PATH . '/definition.php';
+template::load_template('definition');
 template::load_template('scripts/init');
 
 //k1app_template::start_template();
