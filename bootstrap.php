@@ -17,8 +17,6 @@ PROFILER::start();
 
 header('Content-Type: text/html; charset=utf-8');
 
-const IN_K1APP = TRUE;
-
 /*
  * INCLUDING ALL THE NECESSARY FILES
  */
@@ -38,9 +36,6 @@ spl_autoload_register(function($className) {
         trigger_error($className . ' do not fount to autoload', E_USER_NOTICE);
     }
 });
-
-
-require_once APP_TEMPLATE_PATH . '/definition.php';
 
 /*
  * MANAGE THE URL REWRITING 1st (0 index) level

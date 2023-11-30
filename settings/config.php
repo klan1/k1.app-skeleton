@@ -2,10 +2,6 @@
 
 namespace k1app;
 
-if (!defined("\k1app\IN_K1APP")) {
-    die("hacking attemp '^_^ " . __FILE__);
-}
-
 date_default_timezone_set("America/Bogota");
 
 /*
@@ -15,12 +11,13 @@ date_default_timezone_set("America/Bogota");
 const K1APP_TITLE = "K1 APP SKELETON";
 const K1APP_DESCRIPTION = "Demo app to start new projects";
 const K1APP_KEYWORKS = "";
+const K1APP_COPYRIGHT = '© 2013-2023 DEV BY <a href="https://github.com/j0hnd03" class="klan1-site-link" target="_blank">J0hnD03</a>';
 const K1APP_VERBOSE = 1;
-
 const K1APP_SESSION_NAME = 'K1APP-DEMO-SESSION';
-
 const GOOGLE_TAG = NULL;
 
+const K1APP_TEMPLATE_PATH = APP_TEMPLATES_PATH . '/k1phphtml/';
+const K1APP_TEMPLATE_URL = APP_TEMPLATES_URL . '/k1phphtml/';
 
 /**
  * SET a CUSTOM K1MAGIC for K1.lib
@@ -69,7 +66,7 @@ const GOOGLE_TAG = NULL;
 /**
  * TEMPLATE CONFIG
  */
-\k1lib\html\template::enable(APP_TEMPLATE_PATH);
+\k1lib\html\template::enable(K1APP_TEMPLATE_PATH);
 
 /*
  * OTHERS
