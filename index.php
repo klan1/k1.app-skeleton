@@ -13,6 +13,9 @@ namespace k1app;
 // Composer lines
 require __DIR__ . '/vendor/autoload.php';
 
-// k1.app start
-const APP_MODE = "web";
+/**
+ *  k1.app start
+ */
+// MODES: web, api, shell
+const K1APP_MODE = "web";
 include_once "./bootstrap.php";

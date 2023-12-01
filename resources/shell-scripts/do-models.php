@@ -4,7 +4,7 @@ namespace k1app;
 
 // Composer lines
 const K1LIB_LANG = "en";
-const APP_MODE = "shell";
+const K1APP_MODE = "shell";
 
 require_once '../../vendor/autoload.php';
 require_once '../../settings/path-settings.php';
@@ -12,7 +12,7 @@ require_once '../../settings/config.php';
 /*
  * USE HERE THE DB CONFIG SCRIPT FILE
  */
-require_once 'db.php';
+require_once 'db-connection-1.php';
 
 /**
  * AUTOLOAD FOR APP CLASES

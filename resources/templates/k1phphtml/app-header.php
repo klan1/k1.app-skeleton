@@ -44,10 +44,10 @@ if (!isset($_GET['just-controller'])) {
 
                 $admin_menu = $menu_left_tail->add_sub_menu('#', 'App preferences', 'nav-app-preferences');
 
-                $admin_menu->add_menu_item(APP_URL . 'table-explorer/show-tables/', 'Table Explorer', 'nav-table-explorer');
-                $admin_menu->add_menu_item(APP_URL . 'table-metadata/show-tables/', 'Manage tables', 'nav-manage-tables');
-                $admin_menu->add_menu_item(APP_URL . 'table-metadata/load-field-comments/', 'Load fields metadata', 'nav-fields-metadata');
-                $admin_menu->add_menu_item(APP_URL . 'table-metadata/export-field-comments/', 'Export field metadata', 'nav-export-fields-meta')->set_attrib('target', '_blank');
+                $admin_menu->add_menu_item(APP_URL . 'general-utils/table-explorer/show-tables/', 'Table Explorer', 'nav-general-utils/table-explorer');
+                $admin_menu->add_menu_item(APP_URL . 'general-utils/table-metadata/show-tables/', 'Manage tables', 'nav-manage-tables');
+                $admin_menu->add_menu_item(APP_URL . 'general-utils/table-metadata/load-field-comments/', 'Load fields metadata', 'nav-fields-metadata');
+                $admin_menu->add_menu_item(APP_URL . 'general-utils/table-metadata/export-field-comments/', 'Export field metadata', 'nav-export-fields-meta')->set_attrib('target', '_blank');
             }
 
             $menu_left_tail->add_menu_item(url::do_url(APP_URL . 'app/log/out/'), 'Logout', 'nav-logout');
