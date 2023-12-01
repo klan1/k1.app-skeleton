@@ -1,5 +1,19 @@
 <?php
 
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
+
+/**
+ * SUB INDEX CONTROLLER BOOTSTRAP
+ *
+ * PHP version 7.4
+ *
+ * @author          Alejandro Trujillo J. <alejo@klan1.com> <https://github.com/j0hnd03>
+ * @copyright       2013-2023 Alejandro Trujillo J. 
+ * @license         Apache 2.0
+ * @version         1.0
+ * @since           File available since Release 0.1
+ */
+
 namespace k1app;
 
 use \k1lib\urlrewrite\url as url;
