@@ -138,7 +138,7 @@ class crudlexs_config extends table_config_god_default_class {
     /**
      * URLS
      */
-    const ROOT_URL = "table-explorer/crudlexs";
+    const ROOT_URL = "general-utils/table-explorer/crudlexs";
 }
 
 /**

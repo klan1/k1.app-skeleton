@@ -6,8 +6,8 @@ use \k1lib\urlrewrite\url as url;
 use k1lib\html\template as template;
 use k1lib\session\session_db as session_db;
 
-include 'db.php';
-include 'controllers-config.php';
+include 'db-connection-1.php';
+include 'app-controllers-def.php';
 
 /*
  * APP START

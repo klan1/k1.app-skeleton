@@ -42,7 +42,7 @@ define('BOWER_PACKAGES_PATH', APP_ROOT . 'bower_components/');
 set_include_path(APP_SETTINGS_PATH . PATH_SEPARATOR . APP_RESOURCES_PATH . '/includes' . PATH_SEPARATOR . get_include_path());
 
 // AUTO CONFIGURATED URLS 
-if (APP_MODE != 'shell') {
+if (K1APP_MODE != 'shell') {
 
     /**
      * If this error is trigger you should set by hand the CONST: APP_BASE_URL

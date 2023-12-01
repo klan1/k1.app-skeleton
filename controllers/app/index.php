@@ -1,14 +1,31 @@
 <?php
 
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
+
+/**
+ * MAIN INDEX CONTROLLER BOOTSTRAP
+ *
+ * PHP version 7.4
+ *
+ * @author          Alejandro Trujillo J. <alejo@klan1.com> <https://github.com/j0hnd03>
+ * @copyright       2013-2023 Alejandro Trujillo J. 
+ * @license         Apache 2.0
+ * @version         1.0
+ * @since           File available since Release 0.1
+ */
+
 namespace k1app;
 
 use k1lib\urlrewrite\url as url;
 use k1lib\session\session_db as session_db;
 use k1lib\html\template as template;
 
-include 'db.php';
+/**
+ * $db @var Description \k1lib\db\PDO_k1 
+ */
+include 'db-connection-1.php';
 include 'db-tables-aliases.php';
-include 'controllers-config.php';
+include 'app-controllers-def.php';
 
 /*
  * APP START
@@ -19,8 +36,6 @@ $app_session->start_session();
 $app_session->load_logged_session_db();
 
 // Template init
-//require_once APP_TEMPLATE_PATH . '/definition.php';
-template::load_template('definition');
 template::load_template('scripts/init');
 
 //k1app_template::start_template();
@@ -33,19 +48,14 @@ if ($controller_to_include) {
         if (!$controller_to_include) {
             if (session_db::check_user_level(['god', 'admin'])) {
                 $go_url = url::do_url("dashboard/");
-            } elseif (session_db::check_user_level(['user'])) {
-                $go_url = url::do_url("dashboard/");
             } else {
-//                trigger_error("No idea how you do it!", E_USER_ERROR);
+                $go_url = url::do_url("dashboard/");
             }
             \k1lib\html\html_header_go($go_url);
         } else {
             require $controller_to_include;
         }
     } else {
-        /**
-         * UNCOMMENT THIS !! when the login system is setup
-         */
         $get_params = ["back-url" => $_SERVER['REQUEST_URI']];
         \k1lib\html\html_header_go(url::do_url(APP_LOGIN_URL, $get_params));
     }
