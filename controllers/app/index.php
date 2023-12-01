@@ -40,12 +40,12 @@ template::load_template('scripts/init');
 
 //k1app_template::start_template();
 
-$controller_to_include = url::set_next_url_level(APP_CONTROLLERS_PATH, FALSE, 'controller_to_include');
-if ($controller_to_include) {
-    require $controller_to_include;
+$controller_to_load = url::set_next_url_level(APP_CONTROLLERS_PATH, FALSE, 'controller_to_include');
+if ($controller_to_load) {
+    require $controller_to_load;
 } else {
     if (session_db::is_logged()) {
-        if (!$controller_to_include) {
+        if (!$controller_to_load) {
             if (session_db::check_user_level(['god', 'admin'])) {
                 $go_url = url::do_url("dashboard/");
             } else {
@@ -53,7 +53,7 @@ if ($controller_to_include) {
             }
             \k1lib\html\html_header_go($go_url);
         } else {
-            require $controller_to_include;
+            require $controller_to_load;
         }
     } else {
         $get_params = ["back-url" => $_SERVER['REQUEST_URI']];
