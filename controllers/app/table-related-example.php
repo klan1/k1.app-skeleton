@@ -8,7 +8,7 @@ use k1lib\html\template as template;
 use \k1lib\urlrewrite\url as url;
 use k1app\k1app_template as DOM;
 use k1lib\session\session_db as session_db;
-use \k1lib\crudlexs\controller_base as cb;
+use \k1lib\crudlexs\controller\base as cb;
 
 \k1lib\session\session_db::is_logged(TRUE, APP_LOGIN_URL);
 
@@ -51,7 +51,7 @@ $co->start_board();
 // LIST
 if ($co->on_object_list()) {
     $read_url = url::do_url($co->get_controller_root_dir() . "{$co->get_board_read_url_name()}/--rowkeys--/", ["auth-code" => "--authcode--"]);
-    $co->board_list()->list_object->apply_link_on_field_filter($read_url, \k1lib\crudlexs\crudlexs_base::USE_LABEL_FIELDS);
+    $co->board_list()->list_object->apply_link_on_field_filter($read_url, \k1lib\crudlexs\object\base::USE_LABEL_FIELDS);
 }
 
 $co->exec_board();

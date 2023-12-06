@@ -40,12 +40,6 @@ if (K1APP_MODE == K1APP_MODE_WEB || K1APP_MODE == K1APP_MODE_API) {
      */
     \k1lib\urlrewrite\url::enable();
 
-    /**
-     * TEMPLATE AND OUTPUT BUFFER SYSTEM ENABLE
-     * TODO: maybe remove this system
-     */
-    \k1lib\templates\temply::enable(\k1app\K1APP_MODE);
-
     /*
      * SESSION CONFIG
      */
