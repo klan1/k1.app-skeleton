@@ -2,9 +2,9 @@
 
 namespace k1app\models;
 
-use k1lib\api\api_model;
+use k1lib\api\model;
 
-class table_uploads_model extends api_model {
+class table_uploads_model extends model {
     /**
      * @var int
      */
