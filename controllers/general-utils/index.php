@@ -26,7 +26,7 @@ use k1lib\html\template as template;
  */
 include 'db-connection-1.php';
 include 'db-tables-aliases.php';
-include 'app-controllers-def.php';
+//include 'app-controllers-def.php';
 
 /*
  * APP START
