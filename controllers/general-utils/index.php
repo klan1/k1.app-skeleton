@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * MAIN INDEX CONTROLLER BOOTSTRAP
+ * MAIN INDEX CONTROLLER BOOTSTRAP - Style 2
  * this one with no back-url on login
  *
  * PHP version 7.4
