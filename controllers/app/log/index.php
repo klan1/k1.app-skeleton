@@ -18,10 +18,12 @@ namespace k1app;
 
 use \k1lib\urlrewrite\url as url;
 
+$default_url = APP_URL . "form/";
+
 $controller_to_load = url::set_next_url_level(APP_CONTROLLERS_PATH, FALSE);
 
 if (!$controller_to_load) {
-    \k1lib\html\html_header_go(url::do_url("./form/"));
+    \k1lib\html\html_header_go(url::do_url($default_url));
 } else {
     require $controller_to_load;
 }
