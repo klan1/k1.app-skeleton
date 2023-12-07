@@ -11,7 +11,7 @@ $head = DOM::html()->head();
 $body = DOM::html()->body();
 
 $main_css = COMPOSER_FOUNDATION_CSS_URL;
-\k1lib\crudlexs\input_helper::$main_css = $main_css;
+\k1lib\crudlexs\object\input_helper::$main_css = $main_css;
 
 /**
  * HTML HEAD

@@ -23,11 +23,11 @@ $row_keys_text = url::set_url_rewrite_var(url::get_url_level_count(), "row_key_t
 $reference_table_to_use = url::set_url_rewrite_var(url::get_url_level_count(), "reference_table_to_use", FALSE);
 $reference_table_to_use_real = \k1lib\db\security\db_table_aliases::decode($reference_table_to_use);
 
-$to_use_db_table = new \k1lib\crudlexs\class_db_table($db, $table_to_use_real);
+$to_use_db_table = new \k1lib\crudlexs\db_table($db, $table_to_use_real);
 
 $row_keys_array = \k1lib\sql\table_url_text_to_keys($row_keys_text, $to_use_db_table->get_db_table_config());
 
-$reference_db_table = new \k1lib\crudlexs\class_db_table($db, $reference_table_to_use_real);
+$reference_db_table = new \k1lib\crudlexs\db_table($db, $reference_table_to_use_real);
 $create_obj = new \k1lib\crudlexs\creating($reference_db_table, FALSE);
 $create_obj->set_do_table_field_name_encrypt();
 $to_merge_array = [];

@@ -35,7 +35,7 @@ unset($static_vars_from_get[\k1lib\URL_REWRITE_VAR_NAME]);
  */
 $table_to_use = url::set_url_rewrite_var(url::get_url_level_count(), "table_to_use", FALSE);
 $table_to_use_real = \k1lib\db\security\db_table_aliases::decode($table_to_use);
-$controller_object = new \k1lib\crudlexs\controller_base(APP_BASE_URL, $db, $table_to_use_real, "Select data helper");
+$controller_object = new \k1lib\crudlexs\controller\base(APP_BASE_URL, $db, $table_to_use_real, "Select data helper");
 
 /**
  * ALL READY, let's do it :)
@@ -67,7 +67,7 @@ if ($controller_object->get_state()) {
 
         $reference_table_to_use = url::set_url_rewrite_var(url::get_url_level_count(), "reference_table_to_use", FALSE);
         $reference_table_to_use_real = \k1lib\db\security\db_table_aliases::decode($reference_table_to_use);
-        $reference_db_table = new \k1lib\crudlexs\class_db_table($db, $reference_table_to_use_real);
+        $reference_db_table = new \k1lib\crudlexs\db_table($db, $reference_table_to_use_real);
 
         $creating_obj = new \k1lib\crudlexs\creating($reference_db_table, FALSE);
 
@@ -89,7 +89,7 @@ if ($controller_object->get_state()) {
         if ($controller_object->on_object_list()) {
             $controller_object->board_list_object->list_object->apply_link_on_field_filter(
                     APP_URL . "general-utils/send-row-keys/{$table_to_use}/--rowkeys--/{$reference_table_to_use}/"
-                    , \k1lib\crudlexs\crudlexs_base::USE_LABEL_FIELDS
+                    , \k1lib\crudlexs\object\base::USE_LABEL_FIELDS
                     , NULL
                     , '_parent'
             );

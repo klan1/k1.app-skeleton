@@ -50,7 +50,7 @@ if (isset($_POST['load-info']) && !empty($_POST['load-info'])) {
         list($db_table_to_use, $field, $comment) = explode("\t", $field_comment_line);
         $comment = str_replace("\n", "", $comment);
         $comment = str_replace("\r", "", $comment);
-        $db_table = new \k1lib\crudlexs\class_db_table($db, $db_table_to_use);
+        $db_table = new \k1lib\crudlexs\db_table($db, $db_table_to_use);
         $table_definitions = \k1lib\sql\get_table_definition_as_array($db, $db_table_to_use);
 
 //        foreach ($db_table->get_db_table_config() as $field => $config) {
