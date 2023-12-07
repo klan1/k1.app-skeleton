@@ -2,7 +2,7 @@
 
 namespace k1app;
 
-use k1lib\notifications\on_DOM as DOM_notifications;
+use k1lib\html\notifications\on_DOM as DOM_notifications;
 
 $app_session->unset_coockie(APP_BASE_URL);
 \k1lib\session\session_db::end_session();

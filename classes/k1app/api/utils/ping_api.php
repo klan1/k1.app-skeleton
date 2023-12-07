@@ -2,7 +2,7 @@
 
 namespace k1app\api\utils;
 
-use k1lib\api\api;
+use k1lib\api\base;
 
 class ping_api extends api {
 

@@ -5,7 +5,6 @@
  */
 namespace k1lib;
 
-const K1LIB_INC_MODE = 0;
 const K1LIB_LANG = 'en';
 
 namespace k1app;

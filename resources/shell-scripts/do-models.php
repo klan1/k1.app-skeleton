@@ -77,9 +77,9 @@ $php_file_template = <<<tpl
 
 namespace k1app\models;
 
-use k1lib\api\api_model;
+use k1lib\api\model;
 
-class @TABLE_NAME@_model extends api_model {
+class @TABLE_NAME@_model extends model {
 @VARS@
 }       
 tpl;

@@ -14,7 +14,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.4",
-        "klan1/k1.lib": "master",
+        "klan1/k1.lib": "dev-dev-psr4",
         "klan1/k1.lib-dom": "master",
         "phpmailer/phpmailer": "v5.x"
     },

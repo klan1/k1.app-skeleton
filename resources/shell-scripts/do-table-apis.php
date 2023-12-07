@@ -41,11 +41,11 @@ namespace k1app;
 
 require '{$db_script}';
 
-\$crud_api_obj = new api\\auth\\api_crud(TRUE,TRUE);
-\$crud_api_obj->set_db(\$db);
-\$crud_api_obj->set_db_table_name('@TABLE_NAME@');
-\$crud_api_obj->set_db_table_keys_fields([@KEY_FIELDS@]);
-\$crud_api_obj->exec();
+\$crud_obj = new k1lib\\api\\crud(TRUE,TRUE);
+\$crud_obj->set_db(\$db);
+\$crud_obj->set_db_table_name('@TABLE_NAME@');
+\$crud_obj->set_db_table_keys_fields([@KEY_FIELDS@]);
+\$crud_obj->exec();
 
 tpl;
 

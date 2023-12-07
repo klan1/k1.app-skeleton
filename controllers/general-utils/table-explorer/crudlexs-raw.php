@@ -53,7 +53,7 @@ DOM::menu_left_tail()->set_active('nav-' . $table_alias);
 /**
  * ONE LINE config: less codign, more party time!
  */
-$controller_object = new \k1lib\crudlexs\controller_base(APP_BASE_URL, $db, $db_table_to_use, "DB Table explorer ($db_table_to_use)", 'k1lib-title-3');
+$controller_object = new \k1lib\crudlexs\controller\base(APP_BASE_URL, $db, $db_table_to_use, "DB Table explorer ($db_table_to_use)", 'k1lib-title-3');
 $controller_object->set_config_from_class("\k1app\crudlexs_config");
 $controller_object->set_security_no_rules_enable(TRUE);
 
@@ -111,7 +111,7 @@ if ($controller_object->on_board_list()) {
     if ($controller_object->on_object_list()) {
         $controller_object->board_list_object->list_object->apply_link_on_field_filter(
                 url::do_url($controller_object->get_controller_root_dir() . "{$controller_object->get_board_read_url_name()}/--rowkeys--/", ["auth-code" => "--authcode--"])
-                , (isset($_GET['no-rules']) ? \k1lib\crudlexs\crudlexs_base::USE_KEY_FIELDS : \k1lib\crudlexs\crudlexs_base::USE_LABEL_FIELDS)
+                , (isset($_GET['no-rules']) ? \k1lib\crudlexs\object\base::USE_KEY_FIELDS : \k1lib\crudlexs\object\base::USE_LABEL_FIELDS)
         );
     }
 }
