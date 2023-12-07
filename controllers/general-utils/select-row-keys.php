@@ -67,7 +67,7 @@ if ($controller_object->get_state()) {
 
         $reference_table_to_use = url::set_url_rewrite_var(url::get_url_level_count(), "reference_table_to_use", FALSE);
         $reference_table_to_use_real = \k1lib\db\security\db_table_aliases::decode($reference_table_to_use);
-        $reference_db_table = new \k1lib\crudlexs\class_db_table($db, $reference_table_to_use_real);
+        $reference_db_table = new \k1lib\crudlexs\db_table($db, $reference_table_to_use_real);
 
         $creating_obj = new \k1lib\crudlexs\creating($reference_db_table, FALSE);
 

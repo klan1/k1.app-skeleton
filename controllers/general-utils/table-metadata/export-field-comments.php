@@ -15,7 +15,7 @@ foreach ($db_tables as $row_field => $row_value) {
         continue;
     }
 
-    $db_table = new \k1lib\crudlexs\class_db_table($db, $db_table_to_use);
+    $db_table = new \k1lib\crudlexs\db_table($db, $db_table_to_use);
 
     if ($db_table->get_state()) {
 

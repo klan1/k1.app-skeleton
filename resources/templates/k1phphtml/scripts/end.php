@@ -14,7 +14,7 @@ if (DOM::is_started()) {
         $run_info->set_value("Runtime: {$run_time}s - $k1lib_a V" . \k1lib\VERSION);
     }
 
-    \k1lib\notifications\on_DOM::insert_messases_on_DOM();
+    \k1lib\html\notifications\on_DOM::insert_messases_on_DOM();
 
     echo DOM::generate();
 }

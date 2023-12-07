@@ -67,7 +67,7 @@ if ($co->on_board_read()) {
     /**
      * Related list
      */
-    $related_db_table = new \k1lib\crudlexs\class_db_table($db, "table_uploads");
+    $related_db_table = new \k1lib\crudlexs\db_table($db, "table_uploads");
     $co->board_read_object->set_related_show_all_data(TRUE);
     $co->board_read_object->set_related_show_new(TRUE);
     $related_list = $co->board_read_object->create_related_list($related_db_table, NULL, "Related title to show",
