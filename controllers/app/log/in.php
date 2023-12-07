@@ -2,7 +2,7 @@
 
 namespace k1app;
 
-use k1lib\notifications\on_DOM as DOM_notifications;
+use k1lib\html\notifications\on_DOM as DOM_notifications;
 use k1lib\urlrewrite\url as url;
 
 $login_user_input = "login";

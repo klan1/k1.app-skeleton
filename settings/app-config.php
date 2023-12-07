@@ -68,7 +68,7 @@ if (K1APP_MODE == K1APP_MODE_WEB || K1APP_MODE == K1APP_MODE_API) {
     /*
      * OTHERS
      */
-    \k1lib\html\html::set_use_log(FALSE);
+    \k1lib\html\html_document::set_use_log(FALSE);
 
 //ini_set('memory_limit', '100M');
 //ROUND numbers on all html foundation tables

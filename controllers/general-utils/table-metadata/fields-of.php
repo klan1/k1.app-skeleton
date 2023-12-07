@@ -23,7 +23,7 @@ DOM::set_title(3, $span . $db_table_to_use . ' [' . \k1lib\sql\get_db_database_n
 DOM::html()->head()->set_title(K1APP_TITLE . " | {$span->get_value()} {$db_table_to_use}");
 
 
-$db_table = new \k1lib\crudlexs\class_db_table($db, $db_table_to_use);
+$db_table = new \k1lib\crudlexs\db_table($db, $db_table_to_use);
 
 /**
  * TOP BAR - Tables added to menu
