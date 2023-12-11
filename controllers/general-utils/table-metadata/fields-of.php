@@ -3,8 +3,10 @@
 namespace k1app;
 
 use k1lib\html\template as template;
-use k1app\k1app_template as DOM;
 use \k1lib\urlrewrite\url as url;
+use \k1app\k1app_template as DOM;
+
+DOM::start_template();
 
 $body = DOM::html()->body();
 
@@ -21,9 +23,6 @@ $span = (new \k1lib\html\span("subheader"))->set_value("Field of: ");
 DOM::set_title(3, $span . $db_table_to_use . ' [' . \k1lib\sql\get_db_database_name($db) . ']');
 
 DOM::html()->head()->set_title(K1APP_TITLE . " | {$span->get_value()} {$db_table_to_use}");
-
-
-$db_table = new \k1lib\crudlexs\db_table($db, $db_table_to_use);
 
 /**
  * TOP BAR - Tables added to menu
@@ -50,11 +49,15 @@ $div_ok = $div_result->append_div();
 $p_fail = $div_result->append_p();
 $p_unchanged = $div_result->append_p();
 
+$db_table = new \k1lib\crudlexs\db_table($db, $db_table_to_use);
 if ($db_table->get_state()) {
 
     if (isset($_POST["submit-it"])) {
         unset($_POST["submit-it"]);
         $table_config = $db_table->get_db_table_config();
+        
+        d('$table_config-1');
+        d($table_config);
         $table_config_to_use = [];
         foreach ($_POST as $field => $config) {
             $options_values = [];
@@ -110,7 +113,10 @@ if ($db_table->get_state()) {
 
     $table_config_to_use = [];
     $post_data_to_change = [];
-    foreach ($db_table->get_db_table_config(TRUE) as $field => $config) {
+    $table_config_for_fields = $db_table->get_db_table_config(TRUE);
+    d('$table_config_for_fields');
+    d($table_config_for_fields);
+    foreach ($table_config_for_fields as $field => $config) {
 
 
         $table_config_to_use[$field] = \k1lib\common\clean_array_with_guide($config, $k1lib_field_config_options_defaults);

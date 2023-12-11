@@ -2,9 +2,12 @@
 
 namespace k1app;
 
-use k1lib\html\template as template;
+use \k1lib\html\template as template;
 use \k1lib\urlrewrite\url as url;
-use k1app\k1app_template as DOM;
+
+use \k1app\k1app_template as DOM;
+
+DOM::start_template();
 
 $body = DOM::html()->body();
 
@@ -17,7 +20,7 @@ DOM::set_title(3, $span . \k1lib\sql\get_db_database_name($db));
 
 DOM::html()->head()->set_title(K1APP_TITLE . " | {$span->get_value()} " . \k1lib\sql\get_db_database_name($db));
 
-//DOM::menu_left_tail()->set_active('nav-manage-tables');
+DOM::menu_left_tail()->set_active('nav-manage-tables');
 
 $db_tables = \k1lib\sql\sql_query($db, "show tables", TRUE);
 

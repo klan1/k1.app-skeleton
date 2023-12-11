@@ -4,15 +4,14 @@ namespace k1app;
 
 // This might be different on your proyect
 
-use k1lib\html\template as template;
+use \k1lib\html\template as template;
 use \k1lib\urlrewrite\url as url;
-use k1app\k1app_template as DOM;
-use k1lib\session\session_db as session_db;
+use \k1lib\session\session_db as session_db;
 use \k1lib\crudlexs\controller\base as cb;
 
-\k1lib\session\session_db::is_logged(TRUE, APP_LOGIN_URL);
+use \k1app\k1app_template as DOM;
 
-k1app_template::start_template();
+DOM::start_template();
 
 $body = DOM::html()->body();
 
