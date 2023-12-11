@@ -12,7 +12,7 @@ const K1APP_TITLE = "K1 APP SKELETON";
 const K1APP_DESCRIPTION = "Demo app to start new projects";
 const K1APP_KEYWORKS = "";
 const K1APP_COPYRIGHT = '© 2013-2023 DEV BY <a href="https://github.com/j0hnd03" class="klan1-site-link" target="_blank">J0hnD03</a>';
-const K1APP_VERBOSE = 1;
+const K1APP_VERBOSE = 4;
 const K1APP_SESSION_NAME = 'K1APP-DEMO-SESSION';
 const GOOGLE_TAG = NULL;
 const K1APP_TEMPLATE_PATH = APP_TEMPLATES_PATH . '/k1phphtml/';
