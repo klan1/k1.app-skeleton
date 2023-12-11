@@ -26,24 +26,6 @@ if (!$controller_to_load) {
     \k1lib\html\html_header_go(url::do_url($default_url));
 } else {
 
-    $mysql_default_validation = array(
-        'char' => 'mixed-symbols',
-        'varchar' => 'mixed-symbols',
-        'text' => 'mixed-symbols',
-        'date' => 'date',
-        'time' => 'time',
-        'datetime' => 'datetime',
-        'timestamp' => 'numbers',
-        'tinyint' => 'numbers',
-        'smallint' => 'numbers',
-        'mediumint' => 'numbers',
-        'int' => 'numbers',
-        'bigint' => 'numbers',
-        'float' => 'decimals',
-        'double' => 'numbers',
-        'enum' => 'options',
-        'set' => 'options',
-    );
     $k1lib_field_config_options_defaults = [
         'label' => null,
         'alias' => null,

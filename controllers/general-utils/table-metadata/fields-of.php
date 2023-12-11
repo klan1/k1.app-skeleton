@@ -54,10 +54,7 @@ if ($db_table->get_state()) {
 
     if (isset($_POST["submit-it"])) {
         unset($_POST["submit-it"]);
-        $table_config = $db_table->get_db_table_config();
-        
-        d('$table_config-1');
-        d($table_config);
+        $table_config = $db_table->get_db_table_config();        
         $table_config_to_use = [];
         foreach ($_POST as $field => $config) {
             $options_values = [];
@@ -114,8 +111,6 @@ if ($db_table->get_state()) {
     $table_config_to_use = [];
     $post_data_to_change = [];
     $table_config_for_fields = $db_table->get_db_table_config(TRUE);
-    d('$table_config_for_fields');
-    d($table_config_for_fields);
     foreach ($table_config_for_fields as $field => $config) {
 
 
