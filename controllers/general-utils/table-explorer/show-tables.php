@@ -6,6 +6,8 @@ use k1lib\html\template as template;
 use \k1lib\urlrewrite\url as url;
 use k1app\k1app_template as DOM;
 
+DOM::start_template();
+
 $body = DOM::html()->body();
 
 template::load_template('header');

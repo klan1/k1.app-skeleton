@@ -8,6 +8,8 @@ use k1lib\html\template as template;
 use \k1lib\urlrewrite\url as url;
 use k1app\k1app_template as DOM;
 
+DOM::start_template();
+
 $body = DOM::html()->body();
 template::load_template('header');
 
@@ -54,7 +56,7 @@ DOM::menu_left_tail()->set_active('nav-' . $table_alias);
  * ONE LINE config: less codign, more party time!
  */
 $controller_object = new \k1lib\crudlexs\controller\base(APP_BASE_URL, $db, $db_table_to_use, "DB Table explorer ($db_table_to_use)", 'k1lib-title-3');
-$controller_object->set_config_from_class("\k1app\crudlexs_config");
+$controller_object->set_config_from_class("k1app\crudlexs_config");
 $controller_object->set_security_no_rules_enable(TRUE);
 
 /**
