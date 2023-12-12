@@ -1,43 +1,35 @@
 <?php
 
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
+
+/**
+ * SUB INDEX CONTROLLER BOOTSTRAP
+ *
+ * PHP version 7.4
+ *
+ * @author          Alejandro Trujillo J. <alejo@klan1.com> <https://github.com/j0hnd03>
+ * @copyright       2013-2023 Alejandro Trujillo J. 
+ * @license         Apache 2.0
+ * @version         1.0
+ * @since           File available since Release 0.1
+ */
+
 namespace k1app;
 
 use \k1lib\urlrewrite\url as url;
-use k1lib\html\template as template;
-use k1lib\session\session_db as session_db;
+use k1lib\session\session_db;
 
-include 'db-connection-1.php';
-include 'app-controllers-def.php';
+$default_url = APP_URL . "general-utils/table-explorer/show-tables/";
 
-/*
- * APP START
- */
-session_db::set_session_name(K1APP_SESSION_NAME);
-$app_session = new session_db($db);
-$app_session->start_session();
-$app_session->load_logged_session_db();
+if (session_db::check_user_level(['god', 'admin'])) {
 
-// Template init
-template::load_template('scripts/init');
-
-k1app_template::start_template();
-
-session_db::is_logged(TRUE, url::do_url(APP_LOGIN_URL, ["back-url" => $_SERVER['REQUEST_URI']]));
-
-if (\k1lib\session\session_db::check_user_level(crudlexs_config::CONTROLLER_ALLOWED_LEVELS)) {
     $controller_to_load = url::set_next_url_level(APP_CONTROLLERS_PATH, FALSE);
 
     if (!$controller_to_load) {
-        $go_url = APP_URL . \k1lib\urlrewrite\url::make_url_from_rewrite() . "show-tables/";
-        \k1lib\html\html_header_go($go_url);
+        \k1lib\html\html_header_go(url::do_url($default_url));
     } else {
         require $controller_to_load;
     }
 } else {
-    d("You can't thouch this... can't touch this... ta la la la...");
-}
-
-// APP Debug output
-template::load_template('verbose-output');
-// Template end
-template::load_template('scripts/end');
+    \k1lib\html\html_header_go(url::do_url($default_url));
+}    
