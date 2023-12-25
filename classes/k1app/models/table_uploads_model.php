@@ -20,10 +20,10 @@ class table_uploads_model extends model {
     /**
      * @var string
      */
-    public $file-name;
+    public $file_name;
     /**
      * @var string
      */
-    public $01_colname;
+    public $colname_01;
 
 }       
