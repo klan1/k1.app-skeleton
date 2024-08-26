@@ -13,7 +13,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.4",
+        "php": "^8.2",
         "klan1/k1.lib": "dev-dev-psr4",
         "phpmailer/phpmailer": "v5.x"
     }
