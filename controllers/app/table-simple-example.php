@@ -21,7 +21,7 @@ template::load_template('app-footer');
 
 DOM::menu_left()->set_active('nav-table-simple-example');
 
-$db_table_to_use = "table_example";
+$db_table_to_use = "k1app_users";
 $controller_name = "Simple Table controller example";
 
 /**
@@ -29,6 +29,9 @@ $controller_name = "Simple Table controller example";
  * $co = controller_object
  */
 $co = new cb(APP_BASE_URL, $db, $db_table_to_use, $controller_name, 'k1lib-title-3');
+if ($co->db_table->get_state() === FALSE) {
+    die('DB table did not found.');
+}
 $co->set_config_from_class('\k1app\table_config_admin_default_class');
 
 /**
