@@ -21,7 +21,7 @@ template::load_template('app-footer');
 
 DOM::menu_left()->set_active('nav-table-simple-example');
 
-$db_table_to_use = "k1app_users";
+$db_table_to_use = "table_example";
 $controller_name = "Simple Table controller example";
 
 /**
