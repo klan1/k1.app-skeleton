@@ -14,7 +14,7 @@ use k1lib\html\template as template;
 use \k1lib\urlrewrite\url as url;
 use k1app\k1app_template as DOM;
 
-$body = DOM::html()->body();
+$body = DOM::html_document()->body();
 
 template::load_template('header');
 template::load_template('app-header');
@@ -24,7 +24,7 @@ $selector_title = "Select the Key";
 
 $body->content()->append_h3($selector_title);
 
-DOM::html()->head()->set_title(K1APP_TITLE . " | {$selector_title} ");
+DOM::html_document()->head()->set_title(K1APP_TITLE . " | {$selector_title} ");
 
 
 $static_vars_from_get = \k1lib\forms\check_all_incomming_vars($_GET);

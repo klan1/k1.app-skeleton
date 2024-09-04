@@ -5,7 +5,7 @@ namespace k1app;
 use k1lib\html\template as template;
 use k1app\k1app_template as DOM;
 
-$body = DOM::html()->body();
+$body = DOM::html_document()->body();
 
 // Form behaivor values
 $form_magic_value = \k1lib\common\set_magic_value("login_form");

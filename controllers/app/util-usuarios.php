@@ -12,7 +12,7 @@ use k1lib\session\session_db as session_db;
 \k1lib\session\session_db::is_logged(TRUE, APP_URL . 'app/log/form/');
 
 k1app_template::start_template();
-$body = DOM::html()->body();
+$body = DOM::html_document()->body();
 
 template::load_template('header');
 template::load_template('app-header');

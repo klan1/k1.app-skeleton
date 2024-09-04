@@ -26,7 +26,7 @@ class k1app_template extends \k1lib\html\DOM {
 
     static public function start_template($bars = TRUE, $left = TRUE, $right = FALSE) {
         if ($left || $right) {
-            self::$off_canvas = new off_canvas(self::html()->body());
+            self::$off_canvas = new off_canvas(self::html_document()->body());
             if ($left) {
                 self::$off_canvas->left();
                 // APP LOGO
@@ -40,9 +40,9 @@ class k1app_template extends \k1lib\html\DOM {
             if ($right) {
                 self::$off_canvas->right();
             }
-            self::html()->body()->init_sections(self::$off_canvas->content());
+            self::html_document()->body()->init_sections(self::$off_canvas->content());
         } else {
-            self::html()->body()->init_sections();
+            self::html_document()->body()->init_sections();
         }
 
         if ($bars) {
@@ -51,7 +51,7 @@ class k1app_template extends \k1lib\html\DOM {
              */
             self::$title_bar = new title_bar();
 
-            self::$title_bar->append_to(self::html()->body()->header());
+            self::$title_bar->append_to(self::html_document()->body()->header());
             self::$title_bar->left_button()
                     ->set_attrib('data-open', 'offCanvasLeft');
             self::$title_bar->title()->append_span("k1lib-title-1");
@@ -126,7 +126,7 @@ class k1app_template extends \k1lib\html\DOM {
     }
 
     static public function set_title($number, $value, $append = FALSE) {
-        $elements = self::html()->body()->header()->get_elements_by_class("k1lib-title-{$number}");
+        $elements = self::html_document()->body()->header()->get_elements_by_class("k1lib-title-{$number}");
         foreach ($elements as $element) {
             $element->set_value($value, $append);
         }
