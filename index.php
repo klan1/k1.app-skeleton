@@ -9,9 +9,6 @@ const K1LIB_LANG = 'en';
 
 namespace k1app;
 
-// Composer lines
-require __DIR__ . '/vendor/autoload.php';
-
 /**
  *  k1.app start
  */

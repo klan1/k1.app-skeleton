@@ -11,7 +11,7 @@ if (!isset($_GET['just-controller'])) {
         $footer_class = 'left-footer';
         $footer_id = 'k1lib-footer-message';
     } else {
-        $container = DOM::html()->body()->footer();
+        $container = DOM::html_document()->body()->footer();
         $footer_class = 'callout secondary medium';
         $footer_id = 'k1lib-footer-message';
     }

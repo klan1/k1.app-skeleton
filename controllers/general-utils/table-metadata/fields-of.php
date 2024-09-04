@@ -8,7 +8,7 @@ use \k1app\k1app_template as DOM;
 
 DOM::start_template();
 
-$body = DOM::html()->body();
+$body = DOM::html_document()->body();
 
 template::load_template('header');
 template::load_template('app-header');
@@ -22,7 +22,7 @@ $db_table_to_use = \k1lib\db\security\db_table_aliases::decode($table_alias);
 $span = (new \k1lib\html\span("subheader"))->set_value("Field of: ");
 DOM::set_title(3, $span . $db_table_to_use . ' [' . \k1lib\sql\get_db_database_name($db) . ']');
 
-DOM::html()->head()->set_title(K1APP_TITLE . " | {$span->get_value()} {$db_table_to_use}");
+DOM::html_document()->head()->set_title(K1APP_TITLE . " | {$span->get_value()} {$db_table_to_use}");
 
 /**
  * TOP BAR - Tables added to menu

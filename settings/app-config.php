@@ -15,8 +15,6 @@ const K1APP_COPYRIGHT = '© 2013-2023 DEV BY <a href="https://github.com/j0hnd03
 const K1APP_VERBOSE = 1;
 const K1APP_SESSION_NAME = 'K1APP-DEMO-SESSION';
 const GOOGLE_TAG = NULL;
-const K1APP_TEMPLATE_PATH = APP_TEMPLATES_PATH . '/k1phphtml/';
-const K1APP_TEMPLATE_URL = APP_TEMPLATES_URL . '/k1phphtml/';
 
 /**
  * SET a CUSTOM K1MAGIC for K1.lib
@@ -56,15 +54,11 @@ if (K1APP_MODE == K1APP_MODE_WEB || K1APP_MODE == K1APP_MODE_API) {
     /**
      * FILE UPLOADS ENABLE
      */
-    \k1lib\forms\file_uploads::enable(APP_UPLOADS_PATH, APP_UPLOADS_URL);
+    \k1lib\forms\file_uploads::enable(K1APP_UPLOADS_PATH, K1APP_UPLOADS_URL);
 //\k1lib\forms\file_uploads::set_overwrite_existent(FALSE);
-    /**
-     * TEMPLATE CONFIG
-     */
-    \k1lib\html\template::enable(K1APP_TEMPLATE_PATH);
 
-    //ROUND numbers on all html foundation tables
-    \k1lib\html\foundation\table_from_data::$float_round_default = 1;
+    // //ROUND numbers on all html foundation tables
+    // \k1lib\html\foundation\table_from_data::$float_round_default = 1;
     /*
      * OTHERS
      */

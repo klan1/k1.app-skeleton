@@ -7,7 +7,7 @@ use k1lib\sql\local_cache;
 use k1lib\session\session_db as k1lib_session;
 use k1app\k1app_template as DOM;
 
-$body = DOM::html()->body();
+$body = DOM::html_document()->body();
 
 if (!empty($body)) {
     if (K1APP_VERBOSE > 1) {

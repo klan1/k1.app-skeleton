@@ -6,7 +6,7 @@ use k1lib\session\session_plain;
 use \k1lib\urlrewrite\url as url;
 use k1app\k1app_template as DOM;
 
-$body = DOM::html()->body();
+$body = DOM::html_document()->body();
 
 if (DOM::off_canvas()) {
 //    DOM::off_canvas()->left()->set_class('reveal-for-large', TRUE);

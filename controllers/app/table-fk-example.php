@@ -14,7 +14,7 @@ use \k1lib\crudlexs\controller\base as cb;
 
 k1app_template::start_template();
 
-$body = DOM::html()->body();
+$body = DOM::html_document()->body();
 
 template::load_template('header');
 template::load_template('app-header');

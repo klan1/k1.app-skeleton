@@ -8,13 +8,13 @@ use k1app\k1app_template as DOM;
 
 DOM::start_template();
 
-$body = DOM::html()->body();
+$body = DOM::html_document()->body();
 
 template::load_template('header');
 template::load_template('app-header');
 template::load_template('app-footer');
 
-DOM::html()->head()->set_title(K1APP_TITLE . " | Auto APP");
+DOM::html_document()->head()->set_title(K1APP_TITLE . " | Auto APP");
 
 DOM::menu_left_tail()->set_active('nav-table-explorer');
 

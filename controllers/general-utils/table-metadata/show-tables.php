@@ -9,7 +9,7 @@ use \k1app\k1app_template as DOM;
 
 DOM::start_template();
 
-$body = DOM::html()->body();
+$body = DOM::html_document()->body();
 
 template::load_template('header');
 template::load_template('app-header');
@@ -18,7 +18,7 @@ template::load_template('app-footer');
 $span = (new \k1lib\html\span("subheader"))->set_value("Tables of DB: ");
 DOM::set_title(3, $span . \k1lib\sql\get_db_database_name($db));
 
-DOM::html()->head()->set_title(K1APP_TITLE . " | {$span->get_value()} " . \k1lib\sql\get_db_database_name($db));
+DOM::html_document()->head()->set_title(K1APP_TITLE . " | {$span->get_value()} " . \k1lib\sql\get_db_database_name($db));
 
 DOM::menu_left_tail()->set_active('nav-manage-tables');
 

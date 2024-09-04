@@ -4,8 +4,8 @@ namespace k1app;
 
 use k1app\k1app_template as DOM;
 
-$head = DOM::html()->head();
-$body = DOM::html()->body();
+$head = DOM::html_document()->head();
+$body = DOM::html_document()->body();
 
 $head->append_meta()->set_attrib("charset", "utf-8");
 $head->append_meta("viewport", "width=device-width, initial-scale=1.0");

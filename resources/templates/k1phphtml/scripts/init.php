@@ -7,8 +7,8 @@ use \k1lib\html\script as script;
 
 DOM::start(K1LIB_LANG);
 
-$head = DOM::html()->head();
-$body = DOM::html()->body();
+$head = DOM::html_document()->head();
+$body = DOM::html_document()->body();
 
 $main_css = COMPOSER_FOUNDATION_CSS_URL;
 \k1lib\crudlexs\object\input_helper::$main_css = $main_css;

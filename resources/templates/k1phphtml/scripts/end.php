@@ -5,7 +5,7 @@ namespace k1app;
 use k1app\k1app_template as DOM;
 
 if (DOM::is_started()) {
-    $run_info = DOM::html()->get_element_by_id("k1lib-run-info");
+    $run_info = DOM::html_document()->get_element_by_id("k1lib-run-info");
 
     if (!empty($run_info)) {
         $k1lib_a = new \k1lib\html\a("https://github.com/klan1/k1.lib", "k1.lib", "_blank");

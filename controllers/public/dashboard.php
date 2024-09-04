@@ -11,7 +11,7 @@ use k1app\k1app_template as DOM;
 
 k1app_template::start_template();
 
-$content = DOM::html()->body()->content();
+$content = DOM::html_document()->body()->content();
 
 template::load_template('header');
 template::load_template('app-header');
