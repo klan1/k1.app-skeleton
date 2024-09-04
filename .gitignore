@@ -1,5 +1,6 @@
 /composer.lock
 /nbproject/
+/.vscode/
 /bower_components/
 /vendor/
 /settings/db-connection-1.php
