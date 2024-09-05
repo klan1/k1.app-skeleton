@@ -15,7 +15,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.2",
-        "klan1/k1.lib": "dev-main",
+        "klan1/k1.lib": "dev-master",
         "phpmailer/phpmailer": "v5.x",
         "klan1/k1app-template-mazer": "dev-main"
     }
