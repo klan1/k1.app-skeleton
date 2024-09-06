@@ -10,7 +10,7 @@ define('k1app\K1APP_ROOT', str_replace('\\', '/', dirname(dirname(__FILE__))));
 define('k1app\K1APP_DIR', basename(K1APP_ROOT) . '/');
 define('k1app\K1APP_DOMAIN', $_SERVER['HTTP_HOST']);
 
-define('k1app\K1APP_CONTROLLERS_PATH', K1APP_ROOT . '/src/app/');
+define('k1app\K1APP_CONTROLLERS_PATH', K1APP_ROOT . '/src/controllers/');
 define('k1app\K1APP_CLASSES_PATH', K1APP_ROOT . '/src/classes/');
 
 define('k1app\K1APP_VIEWS_PATH', K1APP_ROOT . '/views/');

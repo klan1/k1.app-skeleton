@@ -16,10 +16,14 @@
 
 namespace k1app;
 
-use k1app\template\mazer\html_document as tpl;
+use k1app\template\mazer\layouts\standard as tpl;
+use k1lib\html\p;
 
 // $template = new document();
 
-tpl::start();
-tpl::hello_world();
-echo tpl::generate();
+$tpl = new tpl();
+$tpl->page()->set_title("Controller Page Standard");
+$tpl->page()->set_subtitle("For standard pages.");
+$tpl->page()->set_content_title("Section title");
+$tpl->page()->set_content(new p("P from HTML"));
+echo $tpl->generate();

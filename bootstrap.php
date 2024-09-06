@@ -11,6 +11,8 @@
 
 namespace k1app;
 
+use k1lib\urlrewrite\url;
+
 // header('Content-Type: text/html; charset=utf-8');
 
 /*
@@ -40,17 +42,9 @@ spl_autoload_register(function ($className) {
 });
 
 if (K1APP_MODE == K1APP_MODE_WEB || K1APP_MODE == K1APP_MODE_API) {
-    /*
-     * MANAGE THE URL REWRITING 1st (0 index) level
-     */
-    $url_controller = \k1lib\urlrewrite\url::set_url_rewrite_var(0, "url_section", TRUE);
-    if (!$url_controller) {
-        $url_controller = "index";
-    }
 
-    /**
-     * TEMPLATE AND CONTROLLER LOAD
+    /*
+     * MANAGE THE URL REWRITING
      */
-    // controller load
-    require \k1lib\controllers\load_controller($url_controller, K1APP_CONTROLLERS_PATH);
+    require url::get_controller_path_from_url(K1APP_CONTROLLERS_PATH);
 }
