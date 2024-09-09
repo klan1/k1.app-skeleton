@@ -16,9 +16,16 @@
 
 namespace k1app;
 
-use k1app\template\mazer\layouts\standard as tpl;
+use k1app\core\template\my_template;
+use k1lib\html\p;
 
-// $template = new document();
+$tpl = new my_template();
 
-$tpl = new tpl();
+$tpl->content()->set_title("App index page");
+$tpl->content()->set_subtitle("Startup page");
+$tpl->content()->set_content_title("Section title");
+$tpl->content()->set_content(new p("your content here"));
+
+$tpl->menu()->q('#nav-index')->nav_is_active();
+
 echo $tpl->generate();
