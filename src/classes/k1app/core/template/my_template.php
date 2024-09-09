@@ -20,6 +20,10 @@ class my_template extends standard
             $settings->get_option('app_version')
         );
 
+        $this->head()->set_title($settings->get_option('app_name'));
+        $this->head()->append_meta("description", $settings->get_option('app_description'));
+        $this->head()->append_meta("keywords", $settings->get_option('app_keywords'));
+
         $my_menu = new my_menu('Sidebar Menu');
 
         $this->set_menu($my_menu);
