@@ -18,6 +18,7 @@ use k1lib\urlrewrite\url;
 /*
  * INCLUDING ALL THE NECESSARY FILES
  */
+
 require_once 'settings/app-constants.php';
 require_once 'settings/app-paths-auto-def.php';
 
@@ -36,8 +37,9 @@ spl_autoload_register(function ($className) {
     if (file_exists($file_to_load)) {
         include_once $file_to_load;
     } else {
-        //        error_reporting(E_ALL);
-        trigger_error($className . ' do not fount to autoload', E_USER_NOTICE);
+        error_reporting(E_ALL);
+        trigger_error($className . ' do not fount to autoload at path ' . $file_to_load, E_USER_NOTICE);
+        exit;
     }
 });
 
