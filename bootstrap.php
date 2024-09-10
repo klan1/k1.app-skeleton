@@ -8,16 +8,16 @@
  * TODO: Make a session manager to know is some one has return from some time
  *
  */
+
 namespace k1app;
 
 // Composer lines
 require __DIR__ . '/vendor/autoload.php';
-// \k1lib\PROFILER::start();
+\k1lib\PROFILER::start();
 
 /**
  * AUTOLOAD FOR APP CLASES
  */
-
 spl_autoload_register(function ($className) {
     $className = str_replace("\\", DIRECTORY_SEPARATOR, $className);
     $file_to_load = __DIR__ . '/src/classes/' . $className . '.php';
