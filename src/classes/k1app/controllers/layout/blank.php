@@ -14,11 +14,16 @@
  * @since           File available since Release 0.1
  */
 
-namespace k1app;
+namespace k1app\controllers\layout;
 
-use k1app\template\mazer\examples\profile as tpl;
+use k1app\core\template\base;
+use k1lib\app\controller;
 
-// $template = new document();
+class blank extends controller {
 
-$tpl = new tpl();
-echo $tpl->generate();
+    static function run() {
+        $tpl = new base();
+
+        echo $tpl->generate();
+    }
+}
