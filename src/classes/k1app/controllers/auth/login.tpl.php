@@ -1,8 +1,10 @@
 <?php
 
+namespace k1app\controllers\auth;
+
 use const k1app\K1APP_IMAGES_URL;
-?>
-<div id="auth">
+use function k1lib\common\set_magic_value;
+?><div id="auth">
     <div class="row h-100">
         <div class="col-lg-5 col-12">
             <div id="auth-left">
@@ -15,7 +17,7 @@ use const k1app\K1APP_IMAGES_URL;
                 <form action="" method="post" data-parsley-validate>
                     <div class="form-group position-relative has-icon-left mb-4">
                         <input 
-                            name="username"
+                            name="login"
                             type="text" 
                             class="form-control form-control-xl" 
                             placeholder="Username"
@@ -27,7 +29,7 @@ use const k1app\K1APP_IMAGES_URL;
                     </div>
                     <div class="form-group position-relative has-icon-left mb-4">
                         <input 
-                            name="password" 
+                            name="pass" 
                             type="password" 
                             class="form-control form-control-xl" 
                             placeholder="Password"
@@ -49,6 +51,7 @@ use const k1app\K1APP_IMAGES_URL;
                     <p class="text-gray-600">Don't have an account? <a href="auth-register.html" class="font-bold">Sign
                             up</a>.</p>
                     <p><a class="font-bold" href="auth-forgot-password.html">Forgot password?</a>.</p>
+                    <input type="hidden" name="magic_value" vale="<?php echo set_magic_value("login_form"); ?>">
                 </div>
             </div>
         </div>
