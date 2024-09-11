@@ -18,6 +18,7 @@ namespace k1app\controllers\auth;
 
 use k1app\template\mazer\layouts\blank;
 use k1lib\app\controller;
+use k1lib\html\notifications\on_DOM as DOM_notifications;
 use k1lib\html\script;
 use k1lib\session\session_db;
 use k1lib\urlrewrite\url;
@@ -30,7 +31,7 @@ use function k1lib\urlrewrite\get_back_url;
 class login extends controller {
 
     static function run() {
-//        parent::run();
+        parent::run();
         $tpl = new blank();
         $tpl->head()->link_css(TPL_URL . '/assets/compiled/css/auth.css');
         $tpl->body()->load_file(__DIR__ . '/login.tpl.php');
@@ -43,9 +44,7 @@ class login extends controller {
 
     static function on_post() {
         parent::on_post();
-        var_dump(self::POST());
-        var_dump($_POST);
-
+        
         $db = self::app()->db();
 
         $login_user_input = "login";
@@ -100,6 +99,7 @@ class login extends controller {
         } elseif ($post_data === NULL) {
             DOM_notifications::queue_mesasage("No se han recibido datos", "warning");
         }
-        html_header_go(url::do_url(K1APP_LOGIN_URL));
+        html_header_go(url::do_url('/auth/login/'));
+//        var_dump($_SESSION['k1lib_notifications']);
     }
 }

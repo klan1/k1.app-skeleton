@@ -38,7 +38,7 @@ class general extends config {
         /*
          * SESSION CONFIG
          */
-        $this->add_option('app_session_name', true);
+        $this->add_option('app_session_name', 'K!APP_SESSION_DEMO');
         $this->add_option('app_session_use_ip_in_userhash', true);
         $this->add_option('app_session_levels', [
             'god',
