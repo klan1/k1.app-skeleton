@@ -8,7 +8,7 @@
  * PHP version 8.2
  *
  * @author          Alejandro Trujillo J. <alejo@klan1.com> <https://github.com/j0hnd03>
- * @copyright       2013-2024 Alejandro Trujillo J. 
+ * @copyright       2013-2024 Alejandro Trujillo J.
  * @license         Apache 2.0
  * @version         2.0
  * @since           File available since Release 0.1
@@ -19,10 +19,13 @@ namespace k1app\controllers\layout;
 use k1app\core\template\my_sidebar_page;
 use k1lib\app\controller;
 
-class standard extends controller {
+class standard extends controller
+{
 
-    static function run() {
+    public static function run()
+    {
         $tpl = new my_sidebar_page();
+        self::use_tpl($tpl);
 
         $tpl->page_content()->set_title("Standar layout");
         $tpl->page_content()->set_subtitle("For standard pages.");
@@ -31,6 +34,12 @@ class standard extends controller {
 
         $tpl->menu()->q('#nav-sidebar-page')->nav_is_active();
 
-        echo $tpl->generate();
     }
+
+    public static function end()
+    {
+        parent::end();
+        echo self::$tpl->generate();
+    }
+
 }
