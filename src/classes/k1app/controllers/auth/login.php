@@ -8,7 +8,7 @@
  * PHP version 8.2
  *
  * @author          Alejandro Trujillo J. <alejo@klan1.com> <https://github.com/j0hnd03>
- * @copyright       2013-2024 Alejandro Trujillo J. 
+ * @copyright       2013-2024 Alejandro Trujillo J.
  * @license         Apache 2.0
  * @version         2.0
  * @since           File available since Release 0.1
@@ -16,35 +16,49 @@
 
 namespace k1app\controllers\auth;
 
+use const k1app\K1APP_BASE_URL;
+use const k1app\K1APP_HOME_URL;
+use const k1app\template\mazer\TPL_URL;
+use function k1lib\html\html_header_go;
+use function k1lib\urlrewrite\get_back_url;
 use k1app\template\mazer\layouts\blank;
 use k1lib\app\controller;
 use k1lib\html\notifications\on_DOM as DOM_notifications;
 use k1lib\html\script;
 use k1lib\session\session_db;
 use k1lib\urlrewrite\url;
-use const k1app\K1APP_BASE_URL;
-use const k1app\K1APP_HOME_URL;
-use const k1app\template\mazer\TPL_URL;
-use function k1lib\html\html_header_go;
-use function k1lib\urlrewrite\get_back_url;
 
-class login extends controller {
-
-    static function run() {
+class login extends controller
+{
+    public static function start()
+    {
+        parent::start();
+        // DOM_notifications::
+    }
+    public static function run()
+    {
         parent::run();
         $tpl = new blank();
+        self::use_tpl($tpl, 'login-alerts');
+
         $tpl->head()->link_css(TPL_URL . '/assets/compiled/css/auth.css');
-        $tpl->body()->load_file(__DIR__ . '/login.tpl.php');
         $tpl->body()->append_child_head(new script(TPL_URL . "assets/extensions/jquery/jquery.min.js"));
         $tpl->body()->append_child_head(new script(TPL_URL . "assets/extensions/parsleyjs/parsley.min.js"));
         $tpl->body()->append_child_head(new script(TPL_URL . "assets/static/js/pages/parsley.js"));
 
-        echo $tpl->generate();
+        $tpl->body()->load_file(__DIR__ . '/login.tpl.php');
     }
 
-    static function on_post() {
+    public static function end()
+    {
+        parent::end();
+        echo self::$tpl->generate();
+    }
+
+    public static function on_post()
+    {
         parent::on_post();
-        
+
         $db = self::app()->db();
 
         $login_user_input = "login";
@@ -78,28 +92,27 @@ class login extends controller {
                 $app_session->save_data_to_coockie(K1APP_BASE_URL);
                 if ($app_session->load_data_from_coockie($db)) {
                     DOM_notifications::queue_mesasage("welcome!", "success");
-                    if (get_back_url(TRUE)) {
-                        html_header_go(url::do_url(get_back_url(TRUE)));
+                    if (get_back_url(true)) {
+                        html_header_go(url::do_url(get_back_url(true)));
                     } else {
                         /**
                          * SUCCESS LOGIN URL DESTINATION HERE
                          */
-                        html_header_go(url::do_url(K1APP_HOME_URL . 'app/'));
+                        html_header_go(url::do_url(K1APP_HOME_URL));
                     }
                 } else {
                     trigger_error("Login with coockie not possible", E_USER_ERROR);
                 }
-            } elseif ($app_session_check === NULL) {
-                DOM_notifications::queue_mesasage("No se han recibido datos", "warning");
+            } elseif ($app_session_check === null) {
+                DOM_notifications::queue_mesasage("No se han recibido datos", "warning", 'login-alerts');
             } elseif ($app_session_check === array()) {
-                DOM_notifications::queue_mesasage("Bad password or login", "alert");
+                DOM_notifications::queue_mesasage("Bad password or login", "danger", 'login-alerts');
             }
-        } elseif ($post_data === FALSE) {
-            DOM_notifications::queue_mesasage("BAD, BAD Magic!!", "warning");
-        } elseif ($post_data === NULL) {
-            DOM_notifications::queue_mesasage("No se han recibido datos", "warning");
+        } elseif ($post_data === false) {
+            DOM_notifications::queue_mesasage("BAD, BAD Magic!!", "warning", 'login-alerts');
+        } elseif ($post_data === null) {
+            DOM_notifications::queue_mesasage("No se han recibido datos", "warning", 'login-alerts');
         }
         html_header_go(url::do_url('/auth/login/'));
-//        var_dump($_SESSION['k1lib_notifications']);
     }
 }

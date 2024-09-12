@@ -23,30 +23,31 @@ use k1lib\app\controller;
 use k1lib\html\pre;
 use k1lib\html\tag_log;
 
-class index extends controller {
+class index extends controller
+{
 
-    /**
-     * @var my_sidebar_page
-     */
-    static protected blank $tpl;
-
-    static function run() {
+    public static function run()
+    {
 
         $tpl = new my_sidebar_page();
-        self::$tpl = $tpl;
+        self::use_tpl($tpl);
 
         $tpl->page_content()->set_title("K1.APP Skeleton");
         $tpl->page_content()->set_subtitle("Fast and easy web development.");
         $tpl->page_content()->set_content_title("APP Defined constants");
         $tpl->page_content()->set_content(
-                new pre(
-                        print_r(get_defined_constants(true)['user'], true) .
-                        print_r(new general(), true) .
-                        print_r(tag_log::get_log(), true)
-        ));
+            new pre(
+                print_r(get_defined_constants(true)['user'], true) .
+                print_r(new general(), true) .
+                print_r(tag_log::get_log(), true)
+            ));
 
         $tpl->menu()->q('#nav-index')->nav_is_active();
 
-        echo $tpl->generate();
+    }
+    public static function end()
+    {
+        parent::end();
+        echo self::$tpl->generate();
     }
 }
