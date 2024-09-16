@@ -25,7 +25,7 @@ spl_autoload_register(function ($className) {
         include_once $file_to_load;
     } else {
         error_reporting(E_ALL);
-        trigger_error($className . ' do not fount to autoload at path ' . $file_to_load, E_USER_NOTICE);
+        trigger_error($className . ' do not fount to autoload at path ' . $file_to_load, E_USER_ERROR);
         exit;
     }
 });
