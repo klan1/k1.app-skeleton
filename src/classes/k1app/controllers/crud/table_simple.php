@@ -19,15 +19,24 @@ namespace k1app\controllers\crud;
 use k1app\core\template\my_sidebar_page;
 use k1lib\app\controller;
 use k1lib\crudlexs\controller\base as cb;
+use k1lib\crudlexs\object\base;
+use k1lib\html\DOM;
 use k1lib\session\session_db;
+use k1lib\urlrewrite\url;
+use const k1app\K1APP_BASE_URL;
 
-class table_simple extends controller
-{
+class table_simple extends controller {
+    
+    public static function start() {
+        parent::start();
+        self::app()->start_session_db(1);
+    }
 
-    public static function run()
-    {
+    public static function run() {
         $tpl = new my_sidebar_page();
         self::use_tpl($tpl);
+
+        DOM::start($tpl);
 
         $tpl->page_content()->set_title("Standar layout");
         $tpl->page_content()->set_subtitle("For standard pages.");
@@ -39,29 +48,28 @@ class table_simple extends controller
         /**
          * CRUD START
          */
-
         $db_table_to_use = "table_example";
         $controller_name = "Simple Table controller example";
 
-/**
- * ONE LINE config: less codign, more party time!
- * $co = controller_object
- */
+        /**
+         * ONE LINE config: less codign, more party time!
+         * $co = controller_object
+         */
         $db = self::app()->db();
-        $co = new cb($tpl, \k1app\K1APP_BASE_URL, $db, $db_table_to_use, $controller_name, 'k1lib-title-3');
+        $co = new cb($tpl, K1APP_BASE_URL, $db, $db_table_to_use, $controller_name, 'k1lib-title-3');
         if ($co->db_table->get_state() === false) {
             die('DB table did not found.');
         }
-        $co->set_config_from_class('\k1app\table_config\default_class');
+        $co->set_config_from_class('\k1app\table_config\table_example');
 
-/**
- * USE THIS IF THE TABLE NEED THE LOGIN_ID ON EVERY ROW FOR TRACKING
- */
+        /**
+         * USE THIS IF THE TABLE NEED THE LOGIN_ID ON EVERY ROW FOR TRACKING
+         */
         $co->db_table->set_field_constants(['user_login' => session_db::get_user_login()]);
 
-/**
- * ALL READY, let's do it :)
- */
+        /**
+         * ALL READY, let's do it :)
+         */
         $board_div = $co->init_board();
 
         if ($co->on_board_list()) {
@@ -70,10 +78,10 @@ class table_simple extends controller
 
         $co->start_board();
 
-// LIST
+        // LIST
         if ($co->on_object_list()) {
             $read_url = url::do_url($co->get_controller_root_dir() . "{$co->get_board_read_url_name()}/--rowkeys--/", ["auth-code" => "--authcode--"]);
-            $co->board_list()->list_object->apply_link_on_field_filter($read_url, \k1lib\crudlexs\object\base::USE_LABEL_FIELDS);
+            $co->board_list()->list_object->apply_link_on_field_filter($read_url, base::USE_LABEL_FIELDS);
         }
 
         $co->exec_board();
@@ -84,14 +92,11 @@ class table_simple extends controller
 
         $co->finish_board();
 
-        $body->content()->append_child($board_div);
-
+        $tpl->body()->app()->main()->page_heading()->append_child($board_div);
     }
 
-    public static function end()
-    {
+    public static function end() {
         parent::end();
         echo self::$tpl->generate();
     }
-
 }
