@@ -12,6 +12,7 @@ class my_menu extends menu {
 
         $this->add_item('App home', K1APP_BASE_URL, 'bi bi-house', 'nav-index');
         $this->add_item('Login', K1APP_BASE_URL . 'auth/login/', 'bi bi-person-badge-fill', 'nav-login');
+        $this->add_item('Logout', K1APP_BASE_URL . 'auth/logout/', 'bi bi-door-open', 'nav-login');
 
         $item = $this->add_item('CRUD', '#', 'bi bi bi-table')->nav_is_sub();
         $sub_menu = new menu(null, true);
