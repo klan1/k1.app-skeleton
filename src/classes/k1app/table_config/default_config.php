@@ -5,7 +5,7 @@ namespace k1app\table_config;
 /**
  * TABLE CONFIG DEFAULT
  */
-class default_class {
+class default_config {
 
     const CONTROLLER_ALLOWED_LEVELS = ['god', 'admin', 'user'];
 
