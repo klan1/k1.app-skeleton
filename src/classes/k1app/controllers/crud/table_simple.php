@@ -38,8 +38,8 @@ class table_simple extends controller {
 
         DOM::start($tpl);
 
-        $tpl->page_content()->set_title("Standar layout");
-        $tpl->page_content()->set_subtitle("For standard pages.");
+        $tpl->page_content()->set_title("CRUDLExS");
+        $tpl->page_content()->set_subtitle("DB Table example");
         $tpl->page_content()->set_content_title("Section title");
         $tpl->page_content()->set_content('Section content');
 
@@ -92,7 +92,7 @@ class table_simple extends controller {
 
         $co->finish_board();
 
-        $tpl->body()->app()->main()->page_heading()->append_child($board_div);
+        $tpl->page_content()->set_content($board_div);
     }
 
     public static function end() {

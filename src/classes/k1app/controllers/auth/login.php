@@ -28,15 +28,15 @@ use k1lib\html\script;
 use k1lib\session\session_db;
 use k1lib\urlrewrite\url;
 
-class login extends controller
-{
-    public static function start()
-    {
+class login extends controller {
+
+    public static function start() {
         parent::start();
+        self::app()->start_session_db(1);
         // DOM_notifications::
     }
-    public static function run()
-    {
+
+    public static function run() {
         parent::run();
         $tpl = new blank();
         self::use_tpl($tpl, 'login-alerts');
@@ -49,14 +49,13 @@ class login extends controller
         $tpl->body()->load_file(__DIR__ . '/login.tpl.php');
     }
 
-    public static function end()
-    {
+    public static function end() {
         parent::end();
         echo self::$tpl->generate();
     }
 
-    public static function on_post()
-    {
+    public static function on_post() {
+        self::app()->start_session_db(1);
         parent::on_post();
 
         $db = self::app()->db();
