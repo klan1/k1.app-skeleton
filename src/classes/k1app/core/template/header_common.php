@@ -4,6 +4,7 @@ namespace k1app\core\template;
 
 use k1app\core\config\general;
 use k1app\template\mazer\redefinitions\head;
+use const k1app\K1APP_ASSETS_CSS_URL;
 use const k1lib\VERSION;
 
 trait header_common {
@@ -27,5 +28,9 @@ trait header_common {
         $header_tag->append_meta("generator", "K1.lib v" . VERSION);
         $header_tag->append_meta("developer", "Alejandro Trujillo J. - alejo@klan1.com");
         $header_tag->append_meta("dev_contact", "httsp://github.com/j0hnd03, +57 318 398-8800");
+        
+        
+//        $header_tag->link_css(K1APP_ASSETS_CSS_URL . "/k1-app.css")
+//                ->set_attrib('crossorigin', true);
     }
 }

@@ -18,7 +18,6 @@ namespace k1app\controllers;
 
 use k1app\core\config\general;
 use k1app\core\template\my_sidebar_page;
-use k1app\template\mazer\layouts\blank;
 use k1lib\app\controller;
 use k1lib\html\pre;
 use k1lib\html\tag_log;
