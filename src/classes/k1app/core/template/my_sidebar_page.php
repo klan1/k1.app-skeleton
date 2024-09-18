@@ -2,7 +2,7 @@
 
 namespace k1app\core\template;
 
-use const k1app\K1APP_IMAGES_URL;
+use const k1app\K1APP_ASSETS_IMAGES_URL;
 use k1app\template\mazer\layouts\sidebar_page;
 
 class my_sidebar_page extends sidebar_page {
@@ -24,7 +24,7 @@ class my_sidebar_page extends sidebar_page {
         $my_menu = new my_menu('Sidebar Menu');
         $this->set_menu($my_menu);
 
-        $this->sidebar_logo_img()->set_src(K1APP_IMAGES_URL . 'klan1.png')->set_style('height:3.2rem');
+        $this->sidebar_logo_img()->set_src(K1APP_ASSETS_IMAGES_URL . 'klan1.png')->set_style('height:3.2rem');
         /**
          * FOOTER TEXTS
          */
