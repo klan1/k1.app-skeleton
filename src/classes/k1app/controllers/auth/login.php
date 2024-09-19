@@ -112,6 +112,6 @@ class login extends controller {
         } elseif ($post_data === null) {
             DOM_notifications::queue_mesasage("No se han recibido datos", "warning", 'login-alerts');
         }
-        html_header_go(url::do_url('/auth/login/'));
+        html_header_go(url::do_url(K1APP_HOME_URL . '/auth/login/'));
     }
 }
