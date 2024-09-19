@@ -2,7 +2,7 @@
 
 namespace k1app\controllers\auth;
 
-use const k1app\K1APP_IMAGES_URL;
+use const k1app\K1APP_ASSETS_IMAGES_URL;
 use function k1lib\common\set_magic_value;
 use k1lib\html\div;
 
@@ -12,7 +12,7 @@ $alert_div = new div(null, 'login-alerts');
         <div class="col-lg-5 col-12">
             <div id="auth-left">
                 <div class="auth-logo">
-                    <a href="/"><img src="<?php echo K1APP_IMAGES_URL . 'klan1.png' ?>" alt="Logo" style="height: 3rem"></a>
+                    <a href="/"><img src="<?php echo K1APP_ASSETS_IMAGES_URL . 'klan1.png' ?>" alt="Logo" style="height: 3rem"></a>
                 </div>
                 <h1 class="auth-title">Log in.</h1>
                 <!--<p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>-->
