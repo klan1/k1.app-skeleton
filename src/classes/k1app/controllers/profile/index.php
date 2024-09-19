@@ -21,7 +21,7 @@ use k1app\core\template\my_sidebar_page;
 use k1app\template\mazer\examples\profile;
 use k1app\template\mazer\layouts\blank;
 use k1lib\app\controller;
-use const k1app\K1APP_IMAGES_URL;
+use const k1app\K1APP_ASSETS_IMAGES_URL;
 
 class index extends controller {
 
@@ -37,7 +37,7 @@ class index extends controller {
         $my_menu = new my_menu('Sidebar Menu');
         $tpl->set_menu($my_menu);
 
-        $tpl->sidebar_logo_img()->set_src(K1APP_IMAGES_URL . 'klan1.png')->set_style('height:3.2rem');
+        $tpl->sidebar_logo_img()->set_src(K1APP_ASSETS_IMAGES_URL . 'klan1.png')->set_style('height:3.2rem');
 
         $tpl->menu()->q('#nav-profile-page')->nav_is_active();
 
