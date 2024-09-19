@@ -40,8 +40,8 @@ class table_simple extends controller {
 
         $tpl->page_content()->set_title("CRUDLExS");
         $tpl->page_content()->set_subtitle("DB Table example");
-        $tpl->page_content()->set_content_title("Section title");
-        $tpl->page_content()->set_content('Section content');
+        $tpl->page_content()->set_content_title(null);
+        $tpl->page_content()->set_content(null);
 
         $tpl->menu()->q('#nav-sidebar-page')->nav_is_active();
 
