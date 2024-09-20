@@ -26,7 +26,7 @@ use k1lib\urlrewrite\url;
 use const k1app\K1APP_BASE_URL;
 
 class table_simple extends controller {
-    
+
     public static function start() {
         parent::start();
         self::app()->start_session_db(1);
@@ -38,8 +38,8 @@ class table_simple extends controller {
 
         DOM::start($tpl);
 
-        $tpl->page_content()->set_title("CRUDLExS");
-        $tpl->page_content()->set_subtitle("DB Table example");
+        $tpl->page_content()->set_title(" ");
+        $tpl->page_content()->set_subtitle(" ");
         $tpl->page_content()->set_content_title(null);
         $tpl->page_content()->set_content(null);
 
@@ -56,7 +56,10 @@ class table_simple extends controller {
          * $co = controller_object
          */
         $db = self::app()->db();
-        $co = new cb($tpl, K1APP_BASE_URL, $db, $db_table_to_use, $controller_name, 'k1lib-title-3');
+        $co = new cb(K1APP_BASE_URL, $db, $db_table_to_use, $controller_name);
+        $co->set_title_tag_id('#k1app-page-title');
+        $co->set_subtitle_tag_id('#k1app-page-subtitle');
+
         if ($co->db_table->get_state() === false) {
             die('DB table did not found.');
         }
@@ -93,6 +96,10 @@ class table_simple extends controller {
         $co->finish_board();
 
         $tpl->page_content()->set_content($board_div);
+    }
+
+    public static function on_post() {
+        self::launch();
     }
 
     public static function end() {
