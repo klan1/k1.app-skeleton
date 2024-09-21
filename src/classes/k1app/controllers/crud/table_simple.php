@@ -46,8 +46,9 @@ class table_simple extends controller {
         $tpl->menu()->q('#nav-sidebar-page')->nav_is_active();
 
         /**
-         * CRUD START
+         * CRUD REQUISITIES
          */
+        $db = self::app()->db();
         $db_table_to_use = "table_example";
         $controller_name = "Simple Table controller example";
 
@@ -55,7 +56,6 @@ class table_simple extends controller {
          * ONE LINE config: less codign, more party time!
          * $co = controller_object
          */
-        $db = self::app()->db();
         $co = new cb(K1APP_BASE_URL, $db, $db_table_to_use, $controller_name);
         $co->set_title_tag_id('#k1app-page-title');
         $co->set_subtitle_tag_id('#k1app-page-subtitle');
@@ -99,10 +99,17 @@ class table_simple extends controller {
     }
 
     public static function on_post() {
+        /**
+         * DISABLE THE ON_POST METHOD OF THE CONTROLLER CLASS
+         * AND BACK TO THE STANDAR BEHAIVOR OF THE CONTROLLER
+         */
         self::launch();
     }
 
     public static function end() {
+        /**
+         * AS WE ARE USING TEMPLATE WE MUST GENERATE THE HTML AND OUTPUT IT
+         */
         parent::end();
         echo self::$tpl->generate();
     }

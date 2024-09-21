@@ -97,7 +97,7 @@ class login extends controller {
                         /**
                          * SUCCESS LOGIN URL DESTINATION HERE
                          */
-                        html_header_go(url::do_url(K1APP_HOME_URL));
+                        html_header_go(url::do_url(K1APP_HOME_URL . 'crud/table_simple/'));
                     }
                 } else {
                     trigger_error("Login with coockie not possible", E_USER_ERROR);
