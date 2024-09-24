@@ -48,7 +48,6 @@ class table_simple extends controller {
         /**
          * CRUD REQUISITIES
          */
-        $db = self::app()->db();
         $db_table_to_use = "table_example";
         $controller_name = "Simple Table controller example";
 
@@ -56,12 +55,13 @@ class table_simple extends controller {
          * ONE LINE config: less codign, more party time!
          * $co = controller_object
          */
-        $co = new cb(K1APP_BASE_URL, $db, $db_table_to_use, $controller_name);
+
+        $co = new cb(K1APP_BASE_URL, __CLASS__, $db_table_to_use, $controller_name);
         $co->set_title_tag_id('#k1app-page-title');
         $co->set_subtitle_tag_id('#k1app-page-subtitle');
 
         if ($co->db_table->get_state() === false) {
-            die('DB table did not found.');
+            die('DB table did not found: ' . __CLASS__);
         }
         $co->set_config_from_class('\k1app\table_config\table_example');
 
@@ -95,7 +95,11 @@ class table_simple extends controller {
 
         $co->finish_board();
 
-        $tpl->page_content()->set_content($board_div);
+        if (method_exists(self::$tpl, 'page_content')) {
+            self::$tpl->page_content()->set_content($board_div);
+        } else {
+            self::$tpl->body()->set_value($board_div);
+        }
     }
 
     public static function on_post() {
