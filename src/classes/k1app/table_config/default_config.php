@@ -12,7 +12,6 @@ class default_config {
     /**
      * URLS
      */
-    const ROOT_URL = "app/controlername";
     const BOARD_CREATE_URL = "crear";
     const BOARD_READ_URL = "leer";
     const BOARD_UPDATE_URL = "actualizar";
