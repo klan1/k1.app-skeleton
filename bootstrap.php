@@ -11,9 +11,11 @@
 
 namespace k1app;
 
+use k1lib\PROFILER;
+
 // Composer lines
 require __DIR__ . '/vendor/autoload.php';
-\k1lib\PROFILER::start();
+PROFILER::start();
 
 /**
  * AUTOLOAD FOR APP CLASES
