@@ -21,11 +21,10 @@ use k1lib\app\controller;
 use k1lib\crudlexs\controller\base as cb;
 use k1lib\crudlexs\object\base;
 use k1lib\html\DOM;
-use k1lib\session\session_db;
 use k1lib\urlrewrite\url;
 use const k1app\K1APP_BASE_URL;
 
-class table_simple extends controller {
+class table_uploads extends controller {
 
     public static function start() {
         parent::start();
@@ -43,32 +42,32 @@ class table_simple extends controller {
         $tpl->page_content()->set_content_title(null);
         $tpl->page_content()->set_content(null);
 
-        $tpl->menu()->q('#nav-sidebar-page')->nav_is_active();
+        $tpl->menu()->q('#nav-uploads-page')->nav_is_active();
 
         /**
          * CRUD REQUISITIES
          */
-        $db = self::app()->db();
-        $db_table_to_use = "table_example";
-        $controller_name = "Simple Table controller example";
+        $db_table_to_use = "table_uploads";
+        $controller_name = "Simple Table controller example with FK";
 
         /**
          * ONE LINE config: less codign, more party time!
          * $co = controller_object
          */
-        $co = new cb(K1APP_BASE_URL, $db, $db_table_to_use, $controller_name);
+
+        $co = new cb(K1APP_BASE_URL, __CLASS__, $db_table_to_use, $controller_name);
         $co->set_title_tag_id('#k1app-page-title');
         $co->set_subtitle_tag_id('#k1app-page-subtitle');
 
         if ($co->db_table->get_state() === false) {
-            die('DB table did not found.');
+            die('DB table did not found: ' . __CLASS__);
         }
         $co->set_config_from_class('\k1app\table_config\table_example');
 
         /**
          * USE THIS IF THE TABLE NEED THE LOGIN_ID ON EVERY ROW FOR TRACKING
          */
-        $co->db_table->set_field_constants(['user_login' => session_db::get_user_login()]);
+//        $co->db_table->set_field_constants(['user_login' => session_db::get_user_login()]);
 
         /**
          * ALL READY, let's do it :)
@@ -95,7 +94,11 @@ class table_simple extends controller {
 
         $co->finish_board();
 
-        $tpl->page_content()->set_content($board_div);
+        if (method_exists(self::$tpl, 'page_content')) {
+            self::$tpl->page_content()->set_content($board_div);
+        } else {
+            self::$tpl->body()->set_value($board_div);
+        }
     }
 
     public static function on_post() {
