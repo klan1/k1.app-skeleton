@@ -17,103 +17,24 @@
 namespace k1app\controllers\crud;
 
 use k1app\core\template\my_sidebar_page;
-use k1lib\app\controller;
-use k1lib\crudlexs\controller\base as cb;
-use k1lib\crudlexs\object\base;
-use k1lib\html\DOM;
-use k1lib\urlrewrite\url;
-use const k1app\K1APP_BASE_URL;
+use k1lib\app\controller_crud;
 
-class table_uploads extends controller {
+class table_uploads extends controller_crud {
 
     public static function start() {
         parent::start();
-        self::app()->start_session_db(1);
+        parent::start_crud('Simple Table controller example with FK', 'table_uploads');
     }
 
     public static function run() {
+        parent::run();
         $tpl = new my_sidebar_page();
-        self::use_tpl($tpl);
-
-        DOM::start($tpl);
-
-        $tpl->page_content()->set_title(" ");
-        $tpl->page_content()->set_subtitle(" ");
-        $tpl->page_content()->set_content_title(null);
-        $tpl->page_content()->set_content(null);
-
-        $tpl->menu()->q('#nav-uploads-page')->nav_is_active();
-
-        /**
-         * CRUD REQUISITIES
-         */
-        $db_table_to_use = "table_uploads";
-        $controller_name = "Simple Table controller example with FK";
-
-        /**
-         * ONE LINE config: less codign, more party time!
-         * $co = controller_object
-         */
-
-        $co = new cb(K1APP_BASE_URL, __CLASS__, $db_table_to_use, $controller_name);
-        $co->set_title_tag_id('#k1app-page-title');
-        $co->set_subtitle_tag_id('#k1app-page-subtitle');
-
-        if ($co->db_table->get_state() === false) {
-            die('DB table did not found: ' . __CLASS__);
-        }
-        $co->set_config_from_class('\k1app\table_config\table_example');
-
-        /**
-         * USE THIS IF THE TABLE NEED THE LOGIN_ID ON EVERY ROW FOR TRACKING
-         */
-//        $co->db_table->set_field_constants(['user_login' => session_db::get_user_login()]);
-
-        /**
-         * ALL READY, let's do it :)
-         */
-        $board_div = $co->init_board();
-
-        if ($co->on_board_list()) {
-            $co->board_list_object->set_create_enable(true);
-        }
-
-        $co->start_board();
-
-        // LIST
-        if ($co->on_object_list()) {
-            $read_url = url::do_url($co->get_controller_root_dir() . "{$co->get_board_read_url_name()}/--rowkeys--/", ["auth-code" => "--authcode--"]);
-            $co->board_list()->list_object->apply_link_on_field_filter($read_url, base::USE_LABEL_FIELDS);
-        }
-
-        $co->exec_board();
-
-        if ($co->on_object_list()) {
-            $co->board_list()->list_object->html_table->set_max_text_length_on_cell(100);
-        }
-
-        $co->finish_board();
-
-        if (method_exists(self::$tpl, 'page_content')) {
-            self::$tpl->page_content()->set_content($board_div);
-        } else {
-            self::$tpl->body()->set_value($board_div);
-        }
+        parent::run_crud(__CLASS__, $tpl, '#nav-uploads-crud');
     }
 
-    public static function on_post() {
-        /**
-         * DISABLE THE ON_POST METHOD OF THE CONTROLLER CLASS
-         * AND BACK TO THE STANDAR BEHAIVOR OF THE CONTROLLER
-         */
-        self::launch();
-    }
-
-    public static function end() {
-        /**
-         * AS WE ARE USING TEMPLATE WE MUST GENERATE THE HTML AND OUTPUT IT
-         */
-        parent::end();
-        echo self::$tpl->generate();
+    public static function init_board() {
+        parent::init_board();
+        self::$co->read_url_keys_text_for_list('table_example', FALSE);
+        self::$co->read_url_keys_text_for_create('table_example');
     }
 }

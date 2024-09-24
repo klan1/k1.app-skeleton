@@ -16,8 +16,9 @@ class my_menu extends menu {
         $item = $this->add_item('CRUD', '#', 'bi bi bi-table')->nav_is_sub();
         $sub_menu = new menu(null, true);
         $sub_menu->append_to($item);
-        $sub_menu->add_subitem('Simple Table', K1APP_BASE_URL . 'crud/table_simple/', 'nav-sidebar-page');
-        $sub_menu->add_subitem('Uploads Table', K1APP_BASE_URL . 'crud/table_uploads/', 'nav-uploads-page');
+        $sub_menu->add_subitem('Simple Table', K1APP_BASE_URL . 'crud/table_simple/', 'nav-simple-crud');
+        $sub_menu->add_subitem('Related Table', K1APP_BASE_URL . 'crud/table_related/', 'nav-related-crud');
+        $sub_menu->add_subitem('Uploads Table', K1APP_BASE_URL . 'crud/table_uploads/', 'nav-uploads-crud');
         // $sub_menu->add_subitem('Blank page', K1APP_BASE_URL . 'layout/blank/', 'nav-blank-page');
 
         $item = $this->add_item('Layouts', '#', 'bi bi-grid-1x2-fill')->nav_is_sub();
