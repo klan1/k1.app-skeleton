@@ -22,6 +22,8 @@ use k1lib\app\controller_crud;
 class table_uploads extends controller_crud {
 
     public static function start() {
+//        \k1lib\session\session_db::is_logged(TRUE, '/auth/login/');
+        
         parent::start();
         parent::start_crud('Simple Table controller example with FK', 'table_uploads');
     }
