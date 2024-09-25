@@ -35,6 +35,6 @@ class table_related extends controller_crud {
 
     public static function finish_board() {
         parent::finish_board();
-        self::add_related_table('table_uploads', '/crud/table_uploads/', 'Uploads of table');
+        self::add_related_table('table_uploads', '/crud/table_uploads/', 'Uploads');
     }
 }
