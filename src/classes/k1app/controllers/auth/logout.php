@@ -16,7 +16,6 @@
 
 namespace k1app\controllers\auth;
 
-use k1app\template\mazer\layouts\blank;
 use k1lib\app\controller;
 use k1lib\urlrewrite\url;
 use const k1app\K1APP_URL;
@@ -32,6 +31,6 @@ class logout extends controller {
     public static function run() {
         parent::run();
         self::app()->end_app_session();
-//        html_header_go(url::do_url(K1APP_URL));
+        html_header_go(url::do_url(K1APP_URL));
     }
 }
