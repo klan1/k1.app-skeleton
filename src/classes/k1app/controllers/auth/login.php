@@ -67,9 +67,7 @@ class login extends controller {
         $login_user_field = "user_login";
         $login_password_field = "user_password";
         $login_level_field = "user_level";
-        if (!isset($app_session)) {
-            session_db::init($db);
-        }
+
         session_db::set_config($login_table, $login_user_field, $login_password_field, $login_level_field);
         session_db::set_inputs($login_user_input, $login_password_input, $login_remember_me);
 
@@ -87,7 +85,7 @@ class login extends controller {
                 // BEGIN ALL AGAIN
 //                app_session::start_session();
                 // SET THE LOGGED SESSION
-                session_db::save_data_to_coockie(K1APP_BASE_URL);
+                session_db::save_data_to_coockie(K1APP_BASE_URL, $user_data);
                 if (session_db::load_data_from_coockie()) {
                     DOM_notifications::queue_mesasage("welcome!", "success");
                     if (get_back_url(true)) {
