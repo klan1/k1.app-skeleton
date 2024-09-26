@@ -31,10 +31,7 @@ class logout extends controller {
 
     public static function run() {
         parent::run();
-        $tpl = new blank();
-        self::use_tpl($tpl, 'login-alerts');
-        self::app()->start_session_db(1);
-        self::app()->end_session();
-        html_header_go(url::do_url(K1APP_URL));
+        self::app()->end_app_session();
+//        html_header_go(url::do_url(K1APP_URL));
     }
 }

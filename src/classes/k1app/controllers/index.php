@@ -26,25 +26,29 @@ class index extends controller {
 
     public static function run() {
 
-        app_session::start_session();
+//        app_session::start_session();
 
         $tpl = new my_sidebar_page();
         self::use_tpl($tpl);
 
         $tpl->page_content()->set_title("K1.APP Skeleton");
         $tpl->page_content()->set_subtitle("Fast and easy web development.");
-        $tpl->page_content()->set_content_title("APP Defined constants");
+        $tpl->page_content()->set_content_title("APP Internal Debug");
         $tpl->page_content()->set_content(
                 new pre(
                         'session_status() : ' . (string) session_status() . PHP_EOL .
                         'session_id() : ' . (string) session_id() . PHP_EOL .
                         'session_name() : ' . (string) session_name() . PHP_EOL .
-                        'get_terminal_info_array() : ' . print_r(app_session::get_terminal_info_array(), true) . PHP_EOL .
-                        'get_browser_fp() : ' . (string) app_session::get_browser_fp(self::app()->config()->get_option('magic_value')) . PHP_EOL .
-                        'get_browser_fp() : ' . (string) print_r(app_session::get_browser_fp(self::app()->config()->get_option('magic_value'),true),true) . PHP_EOL .
+                        'on_session() : ' . (string) app_session::on_session() . PHP_EOL .
+                        'is_logged() : ' . (string) app_session::is_logged() . PHP_EOL .
+                        'get_user_hash() : ' . (string) app_session::get_user_hash() . PHP_EOL .
+                        'get_user_login() : ' . (string) app_session::get_user_login() . PHP_EOL .
                         print_r($_SESSION, true) .
                         print_r(app_session::get_user_data(), TRUE) .
                         print_r($_COOKIE, true) .
+                        'get_terminal_info_array() : ' . print_r(app_session::get_terminal_info_array(), true) . PHP_EOL .
+                        'get_browser_fp() : ' . (string) app_session::get_browser_fp(self::app()->config()->get_option('magic_value')) . PHP_EOL .
+                        'get_browser_fp() : ' . (string) print_r(app_session::get_browser_fp(self::app()->config()->get_option('magic_value'),true),true) . PHP_EOL .
                         print_r(get_defined_constants(true)['user'], true) .
                         print_r(tag_log::get_log(), true)
         ));
