@@ -68,6 +68,7 @@ class login extends controller {
         $login_password_field = "user_password";
         $login_level_field = "user_level";
 
+        session_db::init($db);
         session_db::set_config($login_table, $login_user_field, $login_password_field, $login_level_field);
         session_db::set_inputs($login_user_input, $login_password_input, $login_remember_me);
 
