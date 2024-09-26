@@ -25,6 +25,7 @@ use k1app\template\mazer\layouts\blank;
 use k1lib\app\controller;
 use k1lib\html\notifications\on_DOM as DOM_notifications;
 use k1lib\html\script;
+use k1lib\session\app_session;
 use k1lib\session\session_db;
 use k1lib\urlrewrite\url;
 
@@ -32,8 +33,6 @@ class login extends controller {
 
     public static function start() {
         parent::start();
-        self::app()->start_session_db(1);
-        // DOM_notifications::
     }
 
     public static function run() {
@@ -55,7 +54,6 @@ class login extends controller {
     }
 
     public static function on_post() {
-        self::app()->start_session_db(1);
         parent::on_post();
 
         $db = self::app()->db();
@@ -84,9 +82,10 @@ class login extends controller {
                 // unset($user_data[$login_password_field]);
                 // CLEAR ALL
                 // session_db::unset_coockie(K1APP_BASE_URL);
-                session_db::end_session();
+//                app_session::end_session();
+                app_session::regenerate_id();
                 // BEGIN ALL AGAIN
-                session_db::start_session();
+//                app_session::start_session();
                 // SET THE LOGGED SESSION
                 session_db::save_data_to_coockie(K1APP_BASE_URL);
                 if (session_db::load_data_from_coockie()) {
@@ -112,6 +111,6 @@ class login extends controller {
         } elseif ($post_data === null) {
             DOM_notifications::queue_mesasage("No se han recibido datos", "warning", 'login-alerts');
         }
-        html_header_go(url::do_url(K1APP_HOME_URL . '/auth/login/'));
+        html_header_go(url::do_url(K1APP_HOME_URL . 'auth/login/'));
     }
 }
