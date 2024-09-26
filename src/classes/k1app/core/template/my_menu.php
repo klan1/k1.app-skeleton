@@ -3,7 +3,7 @@
 namespace k1app\core\template;
 
 use k1app\template\mazer\components\app\sidebar\wrapper\sidebar_menu\menu;
-use k1lib\session\session_db;
+use k1lib\session\app_session;
 use const k1app\K1APP_BASE_URL;
 
 class my_menu extends menu {
@@ -11,15 +11,8 @@ class my_menu extends menu {
     function __construct($menu_title = NULL) {
         parent::__construct($menu_title);
 
+        $this->add_menu_title('PHP MAZER EXAMPLES');
         $this->add_item('App home', K1APP_BASE_URL, 'bi bi-house', 'nav-index');
-
-        $item = $this->add_item('CRUD', '#', 'bi bi bi-table')->nav_is_sub();
-        $sub_menu = new menu(null, true);
-        $sub_menu->append_to($item);
-        $sub_menu->add_subitem('Simple Table', K1APP_BASE_URL . 'crud/table_simple/', 'nav-simple-crud');
-        $sub_menu->add_subitem('Related Table', K1APP_BASE_URL . 'crud/table_related/', 'nav-related-crud');
-        $sub_menu->add_subitem('Uploads Table', K1APP_BASE_URL . 'crud/table_uploads/', 'nav-uploads-crud');
-        // $sub_menu->add_subitem('Blank page', K1APP_BASE_URL . 'layout/blank/', 'nav-blank-page');
 
         $item = $this->add_item('Layouts', '#', 'bi bi-grid-1x2-fill')->nav_is_sub();
         $sub_menu = new menu(null, true);
@@ -32,10 +25,19 @@ class my_menu extends menu {
         $sub_menu->append_to($item);
         $sub_menu->add_subitem('Profile', K1APP_BASE_URL . 'profile/', 'nav-profile-page');
 
-        if (session_db::is_logged()) {
+        $this->add_menu_title('K1 APP DEMO');
+
+        if (app_session::is_logged()) {
             $this->add_item('Logout', K1APP_BASE_URL . 'auth/logout/', 'bi bi-door-open', 'nav-login');
         } else {
             $this->add_item('Login', K1APP_BASE_URL . 'auth/login/', 'bi bi-person-badge-fill', 'nav-login');
         }
+        $item = $this->add_item('CRUD', '#', 'bi bi bi-table')->nav_is_sub();
+        $sub_menu = new menu(null, true);
+        $sub_menu->append_to($item);
+        $sub_menu->add_subitem('Simple Table', K1APP_BASE_URL . 'crud/table_simple/', 'nav-simple-crud');
+        $sub_menu->add_subitem('Related Table', K1APP_BASE_URL . 'crud/table_related/', 'nav-related-crud');
+        $sub_menu->add_subitem('Uploads Table', K1APP_BASE_URL . 'crud/table_uploads/', 'nav-uploads-crud');
+        // $sub_menu->add_subitem('Blank page', K1APP_BASE_URL . 'layout/blank/', 'nav-blank-page');
     }
 }
