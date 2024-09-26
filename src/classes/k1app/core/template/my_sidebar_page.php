@@ -21,7 +21,7 @@ class my_sidebar_page extends sidebar_page {
         /**
          * SIDE MENU ASSIGNATION
          */
-        $my_menu = new my_menu('Sidebar Menu');
+        $my_menu = new my_menu();
         $this->set_menu($my_menu);
 
         $this->sidebar_logo_img()->set_src(K1APP_ASSETS_IMAGES_URL . 'klan1.png')->set_style('height:3.2rem');

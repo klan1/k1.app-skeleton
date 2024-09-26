@@ -70,26 +70,26 @@ class login extends controller {
         $login_password_field = "user_password";
         $login_level_field = "user_level";
         if (!isset($app_session)) {
-            $app_session = new session_db($db);
+            session_db::init($db);
         }
-        $app_session->set_config($login_table, $login_user_field, $login_password_field, $login_level_field);
-        $app_session->set_inputs($login_user_input, $login_password_input, $login_remember_me);
+        session_db::set_config($login_table, $login_user_field, $login_password_field, $login_level_field);
+        session_db::set_inputs($login_user_input, $login_password_input, $login_remember_me);
 
 // chekc the magic value
-        $post_data = $app_session->catch_post();
+        $post_data = session_db::catch_post();
         if ($post_data) {
-            $app_session_check = $app_session->check_login();
+            $app_session_check = session_db::check_login('text_plain');
             if ($app_session_check) {
                 $user_data = array_merge($user_data, $app_session_check);
                 // unset($user_data[$login_password_field]);
                 // CLEAR ALL
-                // $app_session->unset_coockie(K1APP_BASE_URL);
-                $app_session->end_session();
+                // session_db::unset_coockie(K1APP_BASE_URL);
+                session_db::end_session();
                 // BEGIN ALL AGAIN
-                $app_session->start_session();
+                session_db::start_session();
                 // SET THE LOGGED SESSION
-                $app_session->save_data_to_coockie(K1APP_BASE_URL);
-                if ($app_session->load_data_from_coockie($db)) {
+                session_db::save_data_to_coockie(K1APP_BASE_URL);
+                if (session_db::load_data_from_coockie()) {
                     DOM_notifications::queue_mesasage("welcome!", "success");
                     if (get_back_url(true)) {
                         html_header_go(url::do_url(get_back_url(true)));

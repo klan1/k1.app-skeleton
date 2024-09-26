@@ -18,6 +18,7 @@ class general extends config {
         $this->add_option('app_keywords', 'framework, php, web, develpment');
         $this->add_option('app_copyright', '© 2013-2024 Dev by <a href="https://github.com/j0hnd03" class="klan1-site-link" target="_blank">J0hnD03</a>');
         $this->add_option('app_verbose', true);
+        $this->add_option('app_verbose_level', 5);
 
         $this->add_option('timezone', 'America/Bogota');
 
@@ -38,7 +39,7 @@ class general extends config {
         /*
          * SESSION CONFIG
          */
-        $this->add_option('app_session_name', 'K!APP_SESSION_DEMO');
+        $this->add_option('app_session_name', 'K1APP_SESSION_DEMO');
         $this->add_option('app_session_use_ip_in_userhash', true);
         $this->add_option('app_session_levels', [
             'god',

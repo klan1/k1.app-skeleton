@@ -9,5 +9,5 @@ use k1lib\app;
 
 $config = new general();
 $app = new app($config, __FILE__);
-$app->start_session();
+$app->start_app_session();
 $app->run_controllers();

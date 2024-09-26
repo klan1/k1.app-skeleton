@@ -21,20 +21,20 @@ use k1lib\app\controller_crud;
 
 class table_uploads extends controller_crud {
 
-    public static function start() {
-//        \k1lib\session\session_db::is_logged(TRUE, '/auth/login/');
+    public static function start(): void {
+//        \k1lib\session\app_session::is_logged(TRUE, '/auth/login/');
         
         parent::start();
         parent::start_crud('Simple Table controller example with FK', 'table_uploads');
     }
 
-    public static function run() {
+    public static function run(): void {
         parent::run();
         $tpl = new my_sidebar_page();
         parent::run_crud(__CLASS__, $tpl, '#nav-uploads-crud');
     }
 
-    public static function init_board() {
+    public static function init_board(): void {
         parent::init_board();
         self::$co->read_url_keys_text_for_list('table_example', FALSE);
         self::$co->read_url_keys_text_for_create('table_example');

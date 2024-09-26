@@ -21,19 +21,19 @@ use k1lib\app\controller_crud;
 
 class table_related extends controller_crud {
 
-    public static function start() {
+    public static function start(): void {
 
         parent::start();
         parent::start_crud('Related Table controller example', 'table_example');
     }
 
-    public static function run() {
+    public static function run(): void {
         parent::run();
         $tpl = new my_sidebar_page();
         parent::run_crud(__CLASS__, $tpl, '#nav-related-crud');
     }
 
-    public static function finish_board() {
+    public static function finish_board(): void {
         parent::finish_board();
         self::add_related_table('table_uploads', '/crud/table_uploads/', 'Uploads');
     }
