@@ -17,8 +17,9 @@ class my_menu extends menu {
         $item = $this->add_item('Layouts', '#', 'bi bi-grid-1x2-fill')->nav_is_sub();
         $sub_menu = new menu(null, true);
         $sub_menu->append_to($item);
-        $sub_menu->add_subitem('Sidebar and page', K1APP_BASE_URL . 'layout/standard/', 'nav-sidebar-page');
         $sub_menu->add_subitem('Blank page', K1APP_BASE_URL . 'layout/blank/', 'nav-blank-page');
+        $sub_menu->add_subitem('Single page', K1APP_BASE_URL . 'layout/single_page/', 'nav-sidebar-page');
+        $sub_menu->add_subitem('Sidebar and page', K1APP_BASE_URL . 'layout/sidebar_page/', 'nav-sidebar-page');
 
         $item = $this->add_item('Examples', '#', 'bi bi-file-earmark-medical-fill')->nav_is_sub();
         $sub_menu = new menu(null, true);
