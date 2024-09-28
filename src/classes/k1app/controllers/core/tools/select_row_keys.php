@@ -16,7 +16,7 @@ class select_row_keys extends controller {
         $tpl = new sp();
         self::use_tpl($tpl);
 
-        $tpl->page()->set_title("Select the key for insert");
+        $tpl->page()->set_title("Select the Key");
     }
 
     static function end(): void {
