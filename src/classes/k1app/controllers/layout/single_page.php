@@ -16,23 +16,17 @@
 
 namespace k1app\controllers\layout;
 
-use k1app\core\template\my_sidebar_page;
+use k1app\template\mazer\layouts\single_page as sp;
 use k1lib\app\controller;
 
-class standard extends controller
+class single_page extends controller
 {
 
     public static function run()
     {
-        $tpl = new my_sidebar_page();
+        parent::run();
+        $tpl = new sp();
         self::use_tpl($tpl);
-
-        $tpl->page_content()->set_title("Standar layout");
-        $tpl->page_content()->set_subtitle("For standard pages.");
-        $tpl->page_content()->set_content_title("Section title");
-        $tpl->page_content()->set_content('Section content');
-
-        $tpl->menu()->q('#nav-sidebar-page')->nav_is_active();
 
     }
 
@@ -41,5 +35,4 @@ class standard extends controller
         parent::end();
         echo self::$tpl->generate();
     }
-
 }
