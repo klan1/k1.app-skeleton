@@ -46,6 +46,7 @@ class index extends controller {
                         print_r($_SESSION, true) .
                         print_r(app_session::get_user_data(), TRUE) .
                         print_r($_COOKIE, true) .
+                        print_r($_SERVER, true) .
                         'get_terminal_info_array() : ' . print_r(app_session::get_terminal_info_array(), true) . PHP_EOL .
                         'get_browser_fp() : ' . (string) app_session::get_browser_fp(self::app()->config()->get_option('magic_value')) . PHP_EOL .
                         'get_browser_fp() : ' . (string) print_r(app_session::get_browser_fp(self::app()->config()->get_option('magic_value'),true),true) . PHP_EOL .

@@ -27,8 +27,8 @@ $body->content()->append_h3($selector_title);
 DOM::html_document()->head()->set_title(K1APP_TITLE . " | {$selector_title} ");
 
 
-$static_vars_from_get = \k1lib\forms\check_all_incomming_vars($_GET);
-unset($static_vars_from_get[\k1lib\URL_REWRITE_VAR_NAME]);
+// $static_vars_from_get = \k1lib\forms\check_all_incomming_vars($_GET);
+// unset($static_vars_from_get[\k1lib\URL_REWRITE_VAR_NAME]);
 
 /**
  * ONE LINE config: less codign, more party time!
