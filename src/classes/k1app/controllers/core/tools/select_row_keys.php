@@ -60,6 +60,11 @@ class select_row_keys extends controller
         $table_to_use_real = \k1lib\db\security\db_table_aliases::decode($table_to_use);
 
         self::$co = new cb(K1APP_BASE_URL, __CLASS__, $table_to_use_real, board_list_strings::$select_fk_tool_title);
+
+        /**
+         * CONTROLLER SUB TITLE AND REMOVE
+         * MAIN CARD TITLE
+         */
         self::$co->set_title_tag_id('#k1app-page-title');
         $tpl->q('#k1app-page-subtitle')->set_value(board_list_strings::$select_fk_tool_subtitle);
         $tpl->q('.card-header')[0]->decatalog();
