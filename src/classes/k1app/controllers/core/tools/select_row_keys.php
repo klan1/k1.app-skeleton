@@ -11,21 +11,23 @@
 
 namespace k1app\controllers\core\tools;
 
-use k1lib\crudlexs\board\board_list_strings;
-use const k1app\K1APP_BASE_URL;
 use k1app\template\mazer\layouts\single_page as sp;
 use k1lib\app\controller;
 use k1lib\common_strings;
 use k1lib\crudlexs\board\board_list;
+use k1lib\crudlexs\board\board_list_strings;
 use k1lib\crudlexs\controller\base as cb;
 use k1lib\crudlexs\db_table;
 use k1lib\crudlexs\object\base as ob;
 use k1lib\crudlexs\object\creating;
 use k1lib\db\security\db_table_aliases;
-use k1lib\html\a;
 use k1lib\html\div;
 use k1lib\html\DOM;
-use \k1lib\urlrewrite\url as url;
+use k1lib\urlrewrite\url as url;
+use const k1app\K1APP_BASE_URL;
+use const k1lib\URL_REWRITE_VAR_NAME;
+use function k1lib\common\serialize_var;
+use function k1lib\forms\check_all_incomming_vars;
 use function k1lib\html\get_link_button;
 
 class select_row_keys extends controller
@@ -50,14 +52,14 @@ class select_row_keys extends controller
 
         $tpl->page()->set_title("Select the Key");
 
-        $static_vars_from_get = \k1lib\forms\check_all_incomming_vars($_GET);
-        unset($static_vars_from_get[\k1lib\URL_REWRITE_VAR_NAME]);
+        $static_vars_from_get = check_all_incomming_vars($_GET);
+        unset($static_vars_from_get[URL_REWRITE_VAR_NAME]);
 
         /**
          * ONE LINE config: less codign, more party time!
          */
         $table_to_use = url::set_url_rewrite_var(url::get_url_level_count(), "table_to_use", false);
-        $table_to_use_real = \k1lib\db\security\db_table_aliases::decode($table_to_use);
+        $table_to_use_real = db_table_aliases::decode($table_to_use);
 
         self::$co = new cb(K1APP_BASE_URL, __CLASS__, $table_to_use_real, board_list_strings::$select_fk_tool_title);
 
@@ -67,7 +69,7 @@ class select_row_keys extends controller
          */
         self::$co->set_title_tag_id('#k1app-page-title');
         $tpl->q('#k1app-page-subtitle')->set_value(board_list_strings::$select_fk_tool_subtitle);
-        $tpl->q('.card-header')[0]->decatalog();
+        $tpl->q('.card-header')->decatalog();
 
         if (self::$co->db_table->get_state() === false) {
             die('DB table did not found: ' . __CLASS__);
@@ -78,9 +80,9 @@ class select_row_keys extends controller
              * POST data catch
              */
             if (isset($_POST) && !empty($_POST) && !isset($_POST['k1send'])) {
-                $post_data = \k1lib\forms\check_all_incomming_vars($_POST, "post-data");
+                $post_data = check_all_incomming_vars($_POST, "post-data");
                 $back_url = $_GET['back-url'];
-                \k1lib\common\serialize_var($back_url, "back-url");
+                serialize_var($back_url, "back-url");
             }
             /**
              * URL and ENABLE config from the simple config class on ../index.php
