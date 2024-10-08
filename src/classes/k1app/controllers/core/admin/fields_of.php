@@ -85,7 +85,7 @@ class fields_of
             $div_row_buttons = new div('mb-3');
             $div_row_buttons->append_child(
                     get_link_button(
-                            "/core/admin/select_table/", "Back", 'btn-sm'
+                            K1APP_URL . "core/admin/select_table/", "Back", 'btn-sm'
                     )
             );
             $div_row_buttons->append_child(

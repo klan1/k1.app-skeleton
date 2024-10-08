@@ -58,7 +58,7 @@ class select_table
             $get_params = ['back-url' => $_SERVER['REQUEST_URI']];
 
             $a_manage = new a(
-                    url::do_url(K1APP_URL . "/core/admin/fields_of/{$table_alias}/", $get_params), $table_to_link
+                    url::do_url(K1APP_URL . "core/admin/fields_of/{$table_alias}/", $get_params), $table_to_link
             );
             $p->set_value($a_manage);
             $tpl->page_content()->content()->append_child($p);
