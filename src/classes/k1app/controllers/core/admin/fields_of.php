@@ -28,11 +28,13 @@ use k1lib\html\form;
 use k1lib\html\input;
 use k1lib\html\label;
 use k1lib\html\textarea;
+use k1lib\session\app_session;
 use k1lib\urlrewrite\url;
 use const k1app\K1APP_URL;
 use function k1lib\common\clean_array_with_guide;
 use function k1lib\html\generate_row_2columns_layout;
 use function k1lib\html\get_link_button;
+use function k1lib\html\html_header_go;
 
 class fields_of
         extends controller
@@ -45,6 +47,13 @@ class fields_of
     public static function start()
     {
         parent::start();
+
+        app_session::is_logged(true, K1APP_URL);
+
+        if (!app_session::check_user_level(['god']))
+        {
+            html_header_go(K1APP_URL);
+        }
 
         self::$db = self::app()->db();
 

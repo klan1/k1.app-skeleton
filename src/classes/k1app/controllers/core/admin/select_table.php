@@ -21,12 +21,25 @@ use k1lib\app\controller;
 use k1lib\db\security\db_table_aliases;
 use k1lib\html\a;
 use k1lib\html\p;
+use k1lib\session\app_session;
 use k1lib\urlrewrite\url;
 use const k1app\K1APP_URL;
+use function k1lib\html\html_header_go;
 
 class select_table
         extends controller
 {
+
+    public static function start()
+    {
+        parent::start();
+        app_session::is_logged(true, K1APP_URL);
+
+        if (!app_session::check_user_level(['god']))
+        {
+            html_header_go(K1APP_URL);
+        }
+    }
 
     public static function run()
     {
@@ -44,7 +57,7 @@ class select_table
 
         $db_tables = $db->sql_query("show tables", true);
 
-        foreach ($db_tables as $row_field => $row_value)
+        foreach ($db_tables as $row_value)
         {
             $table_to_link = $row_value["Tables_in_" . $db->get_db_name()];
             $table_alias = db_table_aliases::encode($table_to_link);
