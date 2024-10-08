@@ -22,6 +22,7 @@ use k1lib\db\security\db_table_aliases;
 use k1lib\html\a;
 use k1lib\html\p;
 use k1lib\urlrewrite\url;
+use const k1app\K1APP_URL;
 
 class select_table
         extends controller
@@ -57,7 +58,7 @@ class select_table
             $get_params = ['back-url' => $_SERVER['REQUEST_URI']];
 
             $a_manage = new a(
-                    url::do_url("/core/admin/fields_of/{$table_alias}/", $get_params), $table_to_link
+                    url::do_url(K1APP_URL . "/core/admin/fields_of/{$table_alias}/", $get_params), $table_to_link
             );
             $p->set_value($a_manage);
             $tpl->page_content()->content()->append_child($p);
