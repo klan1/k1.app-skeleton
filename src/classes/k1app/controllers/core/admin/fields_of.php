@@ -29,6 +29,7 @@ use k1lib\html\input;
 use k1lib\html\label;
 use k1lib\html\textarea;
 use k1lib\urlrewrite\url;
+use const k1app\K1APP_URL;
 use function k1lib\common\clean_array_with_guide;
 use function k1lib\html\generate_row_2columns_layout;
 use function k1lib\html\get_link_button;
