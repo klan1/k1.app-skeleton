@@ -20,9 +20,11 @@ use k1app\core\template\my_sidebar_page;
 use k1lib\app\controller;
 use k1lib\db\security\db_table_aliases;
 use k1lib\html\a;
+use k1lib\html\p;
 use k1lib\urlrewrite\url;
 
-class select_table extends controller
+class select_table
+        extends controller
 {
 
     public static function run()
@@ -41,22 +43,25 @@ class select_table extends controller
 
         $db_tables = $db->sql_query("show tables", true);
 
-        foreach ($db_tables as $row_field => $row_value) {
+        foreach ($db_tables as $row_field => $row_value)
+        {
             $table_to_link = $row_value["Tables_in_" . $db->get_db_name()];
             $table_alias = db_table_aliases::encode($table_to_link);
 
-            if (strstr($table_to_link, "view_")) {
+            if (strstr($table_to_link, "view_"))
+            {
                 continue;
             }
-            $p = new \k1lib\html\p();
+            $p = new p();
 
             $get_params = ['back-url' => $_SERVER['REQUEST_URI']];
 
-            $a_manage = new a(url::do_url("../fields_of/{$table_alias}/", $get_params), "Configure");
-            $p->set_value($table_to_link . " : " . $a_manage->generate());
+            $a_manage = new a(
+                    url::do_url("/core/admin/fields_of/{$table_alias}/", $get_params), $table_to_link
+            );
+            $p->set_value($a_manage);
             $tpl->page_content()->content()->append_child($p);
         }
-
     }
 
     public static function end()
@@ -64,5 +69,4 @@ class select_table extends controller
         parent::end();
         echo self::$tpl->generate();
     }
-
 }
