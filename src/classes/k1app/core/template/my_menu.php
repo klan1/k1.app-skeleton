@@ -2,13 +2,15 @@
 
 namespace k1app\core\template;
 
+use const k1app\K1APP_BASE_URL;
 use k1app\template\mazer\components\app\sidebar\wrapper\sidebar_menu\menu;
 use k1lib\session\app_session;
-use const k1app\K1APP_BASE_URL;
 
-class my_menu extends menu {
+class my_menu extends menu
+{
 
-    function __construct($menu_title = NULL) {
+    public function __construct($menu_title = null)
+    {
         parent::__construct($menu_title);
 
         $this->add_menu_title('PHP MAZER EXAMPLES');
@@ -40,5 +42,11 @@ class my_menu extends menu {
         $sub_menu->add_subitem('Related Table', K1APP_BASE_URL . 'crud/table_related/', 'nav-related-crud');
         $sub_menu->add_subitem('Uploads Table', K1APP_BASE_URL . 'crud/table_uploads/', 'nav-uploads-crud');
         // $sub_menu->add_subitem('Blank page', K1APP_BASE_URL . 'layout/blank/', 'nav-blank-page');
+
+        if (app_session::check_user_level(['god'])) {
+            $this->add_menu_title('CONTROL PANEL');
+
+            $this->add_item('Config table', K1APP_BASE_URL . 'core/admin/select_table', 'bi bi-door-open', 'nav-config-table');
+        }
     }
 }
