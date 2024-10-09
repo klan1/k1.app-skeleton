@@ -6,7 +6,8 @@ use const k1app\K1APP_BASE_URL;
 use k1app\template\mazer\components\app\sidebar\wrapper\sidebar_menu\menu;
 use k1lib\session\app_session;
 
-class my_menu extends menu
+class my_menu
+        extends menu
 {
 
     public function __construct($menu_title = null)
@@ -30,9 +31,11 @@ class my_menu extends menu
 
         $this->add_menu_title('K1 APP DEMO');
 
-        if (app_session::is_logged()) {
+        if (app_session::is_logged())
+        {
             $this->add_item('Logout', K1APP_BASE_URL . 'auth/logout/', 'bi bi-door-open', 'nav-login');
-        } else {
+        } else
+        {
             $this->add_item('Login', K1APP_BASE_URL . 'auth/login/', 'bi bi-person-badge-fill', 'nav-login');
         }
         $item = $this->add_item('CRUD', '#', 'bi bi bi-table')->nav_is_sub();
@@ -43,10 +46,23 @@ class my_menu extends menu
         $sub_menu->add_subitem('Uploads Table', K1APP_BASE_URL . 'crud/table_uploads/', 'nav-uploads-crud');
         // $sub_menu->add_subitem('Blank page', K1APP_BASE_URL . 'layout/blank/', 'nav-blank-page');
 
-        if (app_session::check_user_level(['god'])) {
+        if (app_session::check_user_level(['god']))
+        {
             $this->add_menu_title('CONTROL PANEL');
 
-            $this->add_item('Config table', K1APP_BASE_URL . 'core/admin/select_table', 'bi bi-door-open', 'nav-config-table');
+            $item = $this->add_item('DB Configurator', '#', 'bi bi-database', 'nav-db-configurator')->nav_is_sub();
+            $sub_menu = new menu(null, true);
+            $sub_menu->append_to($item);
+            $sub_menu->add_subitem('Config a table', K1APP_BASE_URL . 'core/admin/select_table/', 'nav-config-table');
+            $sub_menu->add_subitem(
+                    'Export configuration', K1APP_BASE_URL . 'core/admin/export_db_configuration/',
+                    'nav-export-configuration'
+            );
+            $sub_menu->q('#a-nav-export-configuration')->set_attrib('target', '_export');
+            $sub_menu->add_subitem(
+                    'Import configuration', K1APP_BASE_URL . 'core/admin/import_db_configuration/',
+                    'nav-export-configuration'
+            );
         }
     }
 }
