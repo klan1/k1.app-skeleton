@@ -11,45 +11,31 @@
 
 namespace k1app;
 
-use k1lib\PROFILER as PROFILER;
+use k1lib\PROFILER;
 
+// Composer lines
+require __DIR__ . '/vendor/autoload.php';
 PROFILER::start();
-
-header('Content-Type: text/html; charset=utf-8');
-
-/*
- * INCLUDING ALL THE NECESSARY FILES
- */
-require_once 'settings/app-constants.php';
-require_once 'settings/app-paths-auto-def.php';
-require_once 'settings/app-config.php';
 
 /**
  * AUTOLOAD FOR APP CLASES
  */
-spl_autoload_register(function ($className) {
-    $className = str_replace("\\", DIRECTORY_SEPARATOR, $className);
-    $file_to_load = APP_CLASSES_PATH . $className . '.php';
-    if (file_exists($file_to_load)) {
+spl_autoload_register(function ($className)
+{
+    $className    = str_replace("\\", DIRECTORY_SEPARATOR, $className);
+    $file_to_load = __DIR__ . '/src/classes/' . $className . '.php';
+    if (file_exists($file_to_load))
+    {
         include_once $file_to_load;
-    } else {
-//        error_reporting(E_ALL);
-        trigger_error($className . ' do not fount to autoload', E_USER_NOTICE);
+    } else
+    {
+        error_reporting(E_ALL);
+        echo "<pre>";
+        debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+        echo "</pre>";
+
+        trigger_error($className . ' do not fount to autoload at path ' . $file_to_load,
+                E_USER_ERROR);
+        exit;
     }
 });
-
-if (K1APP_MODE == K1APP_MODE_WEB || K1APP_MODE == K1APP_MODE_API) {
-    /*
-     * MANAGE THE URL REWRITING 1st (0 index) level
-     */
-    $url_controller = \k1lib\urlrewrite\url::set_url_rewrite_var(0, "url_section", TRUE);
-    if (!$url_controller) {
-        $url_controller = "index";
-    }
-
-    /**
-     * TEMPLATE AND CONTROLLER LOAD
-     */
-    // controller load
-    require \k1lib\controllers\load_controller($url_controller, APP_CONTROLLERS_PATH);
-}
