@@ -8,7 +8,7 @@
  * PHP version 8.2
  *
  * @author          Alejandro Trujillo J. <alejo@klan1.com> <https://github.com/j0hnd03>
- * @copyright       2013-2024 Alejandro Trujillo J.
+ * @copyright       2013-2025 Alejandro Trujillo J.
  * @license         Apache 2.0
  * @version         2.0
  * @since           File available since Release 0.1
@@ -28,11 +28,16 @@ use k1lib\html\script;
 use k1lib\session\app_session;
 use k1lib\session\session_db;
 use k1lib\urlrewrite\url;
+use const k1app\K1APP_ASSETS_CSS_URL;
 
 class login extends controller {
 
     public static function start() {
-        parent::start();
+        /**
+         * DISABLE THE SESSION CHECK ON THE PARENT 
+         * IF WAS SET ON THE GENERAL CONFIG
+         */
+//        parent::start();
     }
 
     public static function run() {
@@ -41,6 +46,8 @@ class login extends controller {
         self::use_tpl($tpl, 'login-alerts');
 
         $tpl->head()->link_css(TPL_URL . '/assets/compiled/css/auth.css');
+        $tpl->head()->link_css(K1APP_ASSETS_CSS_URL . "/mazer-hacks.css")
+                ->set_attrib('crossorigin', true);
         $tpl->body()->append_child_head(new script(TPL_URL . "assets/extensions/jquery/jquery.min.js"));
         $tpl->body()->append_child_head(new script(TPL_URL . "assets/extensions/parsleyjs/parsley.min.js"));
         $tpl->body()->append_child_head(new script(TPL_URL . "assets/static/js/pages/parsley.js"));
@@ -88,14 +95,14 @@ class login extends controller {
                 // SET THE LOGGED SESSION
                 session_db::save_data_to_coockie(K1APP_BASE_URL, $user_data);
                 if (session_db::load_data_from_coockie()) {
-                    DOM_notifications::queue_mesasage("welcome!", "success");
+                    DOM_notifications::queue_mesasage("Bienvenido!", "success");
                     if (get_back_url(true)) {
                         html_header_go(url::do_url(get_back_url(true)));
                     } else {
                         /**
                          * SUCCESS LOGIN URL DESTINATION HERE
                          */
-                        html_header_go(url::do_url(K1APP_HOME_URL . 'crud/table_simple/'));
+                        html_header_go(url::do_url(K1APP_HOME_URL));
                     }
                 } else {
                     trigger_error("Login with coockie not possible", E_USER_ERROR);
@@ -103,7 +110,7 @@ class login extends controller {
             } elseif ($app_session_check === null) {
                 DOM_notifications::queue_mesasage("No se han recibido datos", "warning", 'login-alerts');
             } elseif ($app_session_check === array()) {
-                DOM_notifications::queue_mesasage("Bad password or login", "danger", 'login-alerts');
+                DOM_notifications::queue_mesasage("Usuario o contraseña incorrectos", "danger", 'login-alerts');
             }
         } elseif ($post_data === false) {
             DOM_notifications::queue_mesasage("BAD, BAD Magic!!", "warning", 'login-alerts');

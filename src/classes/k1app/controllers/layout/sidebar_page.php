@@ -8,7 +8,7 @@
  * PHP version 8.2
  *
  * @author          Alejandro Trujillo J. <alejo@klan1.com> <https://github.com/j0hnd03>
- * @copyright       2013-2024 Alejandro Trujillo J.
+ * @copyright       2013-2025 Alejandro Trujillo J.
  * @license         Apache 2.0
  * @version         2.0
  * @since           File available since Release 0.1
@@ -19,11 +19,9 @@ namespace k1app\controllers\layout;
 use k1app\core\template\my_sidebar_page;
 use k1lib\app\controller;
 
-class sidebar_page extends controller
-{
+class sidebar_page extends controller {
 
-    public static function run()
-    {
+    public static function run() {
         $tpl = new my_sidebar_page();
         self::use_tpl($tpl);
 
@@ -33,13 +31,10 @@ class sidebar_page extends controller
         $tpl->page_content()->set_content('Section content');
 
         $tpl->menu()->q('#nav-sidebar-page')->nav_is_active();
-
     }
 
-    public static function end()
-    {
+    public static function end() {
         parent::end();
         echo self::$tpl->generate();
     }
-
 }
