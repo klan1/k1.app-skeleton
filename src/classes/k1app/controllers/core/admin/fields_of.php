@@ -8,7 +8,7 @@
  * PHP version 8.2
  *
  * @author          Alejandro Trujillo J. <alejo@klan1.com> <https://github.com/j0hnd03>
- * @copyright       2013-2024 Alejandro Trujillo J.
+ * @copyright       2013-2025 Alejandro Trujillo J.
  * @license         Apache 2.0
  * @version         2.0
  * @since           File available since Release 0.1
@@ -19,6 +19,7 @@ namespace k1app\controllers\core\admin;
 use k1app\core\template\my_sidebar_page;
 use k1lib\app\controller;
 use k1lib\crudlexs\db_table;
+use k1lib\crudlexs\field_config_json;
 use k1lib\db\PDO_k1;
 use k1lib\db\security\db_table_aliases;
 use k1lib\db\sql_defaults;
@@ -31,27 +32,24 @@ use k1lib\html\textarea;
 use k1lib\session\app_session;
 use k1lib\urlrewrite\url;
 use const k1app\K1APP_URL;
+use function d;
 use function k1lib\common\clean_array_with_guide;
 use function k1lib\html\generate_row_2columns_layout;
 use function k1lib\html\get_link_button;
 use function k1lib\html\html_header_go;
 
-class fields_of
-        extends controller
-{
+class fields_of extends controller {
 
     static protected db_table $db_table;
     static protected PDO_k1 $db;
     static protected string $db_table_to_use;
 
-    public static function start()
-    {
+    public static function start() {
         parent::start();
 
         app_session::is_logged(true, K1APP_URL);
 
-        if (!app_session::check_user_level(['god']))
-        {
+        if (!app_session::check_user_level(['god'])) {
             html_header_go(K1APP_URL);
         }
 
@@ -77,16 +75,14 @@ class fields_of
         self::$tpl->page_content()->set_title($title);
     }
 
-    public static function run()
-    {
+    public static function run() {
 
 
 
         /**
          * MAIN CONTROLLER CODE
          */
-        if (self::$db_table->get_state())
-        {
+        if (self::$db_table->get_state()) {
 
             $div_container = new div("container");
             $form = (new form());
@@ -119,30 +115,25 @@ class fields_of
             $post_data_to_change = [];
             $table_config_for_fields = self::$db_table->get_db_table_config(TRUE);
             $accordion_row = 0;
-            foreach ($table_config_for_fields as $field => $config)
-            {
-
+            foreach ($table_config_for_fields as $field => $config) {
 
                 $table_config_to_use[$field] = clean_array_with_guide(
                         $config, sql_defaults::get_k1lib_field_config_options_defaults()
                 );
-
-                foreach ($table_config_to_use[$field] as $option_name => $option_value)
-                {
+//                d('$table_config_to_use');
+//                d($table_config_to_use[$field]);
+                foreach ($table_config_to_use[$field] as $option_name => $option_value) {
 
 //            \k1lib\common\bolean_to_string($bolean)
                     $make_radio = FALSE;
-                    if ($option_value === TRUE)
-                    {
+                    if ($option_value === TRUE) {
                         $option_value = "yes";
                         $make_radio = TRUE;
-                    } elseif ($option_value === FALSE)
-                    {
+                    } elseif ($option_value === FALSE) {
                         $option_value = "no";
                         $make_radio = TRUE;
                     }
-                    if ($make_radio)
-                    {
+                    if ($make_radio) {
                         $input_yes = new input("radio", "{$field}[{$option_name}]", "yes", 'form-check-input');
                         $label_yes = new label("yes", "{$field}[{$option_name}]", 'form-check-label');
                         $input_yes->post_code($label_yes->generate());
@@ -151,22 +142,17 @@ class fields_of
                         $label_no = new label("no", "{$field}[{$option_name}]", 'form-check-label');
                         $input_no->post_code($label_no->generate());
 
-                        if ($option_value == "yes")
-                        {
+                        if ($option_value == "yes") {
                             $input_yes->set_attrib("checked", TRUE);
                         }
-                        if ($option_value == "no")
-                        {
+                        if ($option_value == "no") {
                             $input_no->set_attrib("checked", TRUE);
                         }
                         $table_config_to_use[$field][$option_name] = "{$input_yes} {$input_no}";
-                    } else
-                    {
-                        if ($option_name != 'sql')
-                        {
+                    } else {
+                        if ($option_name != 'sql') {
                             $input = new input("text", "{$field}[{$option_name}]", $option_value, 'form-control');
-                        } else
-                        {
+                        } else {
                             $input = new textarea("{$field}[{$option_name}]", 'form-control');
                             $input->set_value($option_value);
                         }
@@ -174,8 +160,7 @@ class fields_of
                         $table_config_to_use[$field][$option_name] = $input;
                     }
                 }
-                if (isset($_POST[$field]))
-                {
+                if (isset($_POST[$field])) {
                     $post_data_to_change[$field] = implode(",", $_POST[$field]);
                 }
 
@@ -200,8 +185,7 @@ class fields_of
                 /**
                  * CAPITALIZE LABELS
                  */
-                foreach ($labels as $value)
-                {
+                foreach ($labels as $value) {
                     $value->set_class('text-uppercase', TRUE);
                 }
                 $accordion_row++;
@@ -229,14 +213,12 @@ class fields_of
         // }
     }
 
-    public static function pre_post()
-    {
+    public static function pre_post() {
         parent::pre_post();
         self::start();
     }
 
-    public static function on_post()
-    {
+    public static function on_post() {
         parent::on_post();
 
         $div_result = new div();
@@ -252,57 +234,52 @@ class fields_of
         $p_fail = $div_result->append_p();
         $p_unchanged = $div_result->append_p();
 
-        if (isset($_POST["submit-it"]))
-        {
+        if (isset($_POST["submit-it"])) {
             unset($_POST["submit-it"]);
             $table_config = self::$db_table->get_db_table_config();
             $table_config_to_use = [];
-            foreach ($_POST as $field => $config)
-            {
+            foreach ($_POST as $field => $config) {
                 $options_values = [];
-                $comment_values = [];
+//                $comment_values = [];
                 $table_config_to_use[$field] = clean_array_with_guide(
                         $config, $table_config[$field]
                 );
-                foreach ($table_config_to_use[$field] as $option_name => $option_value)
-                {
-                    if ($option_value === TRUE)
-                    {
+                $json_values = [];
+                $json = [];
+                foreach ($table_config_to_use[$field] as $option_name => $option_value) {
+                    if ($option_value === TRUE) {
                         $option_value = "yes";
-                    } elseif ($option_value === FALSE)
-                    {
+                    } elseif ($option_value === FALSE) {
                         $option_value = "no";
                     }
                     $options_values[] = "$option_name:$option_value";
+                    $json_values[$option_name] = $option_value;
                 }
-                $comment_values[$field] = implode(",", $options_values);
-                if ($comment_values)
-                {
+                $field_config = new field_config_json();
+//                $field_config = new field_config_json(self::$db_table->get_db_table_name(), $field);
+                $field_config->set_data($json_values);
+                $json[$field] = $field_config->get_json();
+//                $comment_values[$field] = implode(",", $options_values);
+                if ($json) {
                     $table_definitions = self::$db->get_table_definition_as_array(self::$db_table->get_db_table_name());
-                    foreach ($comment_values as $field => $comment_to_update)
-                    {
-                        if (isset($table_definitions[$field]))
-                        {
-                            $sql_update_comment = "ALTER TABLE `" . self::$db_table->get_db_table_name() . "` CHANGE `$field` `$field` {$table_definitions[$field]} COMMENT '{$comment_values[$field]}'";
-                            if (!empty($comment_values[$field]))
-                            {
-                                if (self::$db->sql_query($sql_update_comment) !== FALSE)
-                                {
+                    foreach ($json as $field => $values) {
+                        if (isset($table_definitions[$field])) {
+                            $sql_update_comment = "ALTER TABLE `" . self::$db_table->get_db_table_name() . "` CHANGE `$field` `$field` {$table_definitions[$field]} COMMENT '{$values}'";
+//                            d($sql_update_comment); exit;
+                            if (!empty($json[$field])) {
+                                if (self::$db->sql_query($sql_update_comment) !== FALSE) {
                                     $div_ok->append_p(
                                             "$sql_update_comment (ok) ", TRUE
                                     );
-                                } else
-                                {
+                                } else {
                                     $p_fail->set_value("$field (fail)", TRUE);
                                 }
-                            } else
-                            {
+                            } else {
                                 $p_unchanged->set_value(
                                         "$field (unchached)", TRUE
                                 );
                             }
-                        } else
-                        {
+                        } else {
                             trigger_error(
                                     "FIELD definition of $field did not found to update", E_USER_WARNING
                             );
@@ -316,8 +293,7 @@ class fields_of
         }
     }
 
-    public static function end()
-    {
+    public static function end() {
         parent::end();
         echo self::$tpl->generate();
     }

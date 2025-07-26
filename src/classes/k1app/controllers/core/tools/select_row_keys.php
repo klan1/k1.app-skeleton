@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CONTROLLER WITH DETAIL LIST
  * FOR FK SELECTION
@@ -27,21 +28,20 @@ use k1lib\urlrewrite\url as url;
 use const k1app\K1APP_BASE_URL;
 use const k1lib\URL_REWRITE_VAR_NAME;
 use function k1lib\common\serialize_var;
+use function k1lib\common\unserialize_var;
 use function k1lib\forms\check_all_incomming_vars;
 use function k1lib\html\get_link_button;
 
-class select_row_keys extends controller
-{
+class select_row_keys extends controller {
+
     protected static div $crud_container;
     protected static cb $co;
 
-    public static function on_post(): void
-    {
+    public static function on_post(): void {
         self::launch();
     }
 
-    public static function run()
-    {
+    public static function run() {
         parent::run();
         $tpl = new sp();
         self::use_tpl($tpl);
@@ -73,6 +73,8 @@ class select_row_keys extends controller
 
         if (self::$co->db_table->get_state() === false) {
             die('DB table did not found: ' . __CLASS__);
+        } else {
+            
         }
 
         if (self::$co->get_state()) {
@@ -107,13 +109,33 @@ class select_row_keys extends controller
                 $creating_obj = new creating($reference_db_table, false);
 
                 $static_vars_from_get_decoded = $creating_obj->decrypt_field_names($static_vars_from_get);
+//                d($static_vars_from_get_decoded);
+                /**
+                 * SET THE FK TOOL FILTER FOR FILTER DATA TO SHOW
+                 */
+                $fk_tool_constants = unserialize_var('fk-filter-for-' . $table_to_use_real . '-from-' . $reference_table_to_use_real);
+                if (!empty($fk_tool_constants)) {
+                    self::$co->db_table->set_query_filter($fk_tool_constants, TRUE);
+                }
+                /**
+                 * CUSTOM FIELD TO LINK ON FK
+                 */
+                if (isset($static_vars_from_get_decoded['caller-field'])) {
+                    $custom_field_for_fk = $creating_obj->decrypt_field_name($static_vars_from_get_decoded['caller-field']);
+                } else {
+                    $custom_field_for_fk = null;
+                }
+
+                /**
+                 * end
+                 */
                 self::$co->db_table->set_query_filter($static_vars_from_get_decoded, true, true);
 
                 self::$co->board_list_object->set_search_enable(true);
 
                 self::$co->board_list_object->set_where_to_show_stats(board_list::SHOW_BEFORE_TABLE);
 
-                if (strstr($_SERVER['HTTP_REFERER'], self::$co->get_controller_root_dir()) === false) {
+                if (isset($_SERVER['HTTP_REFERER']) && strstr($_SERVER['HTTP_REFERER'], self::$co->get_controller_root_dir()) === false) {
                     self::$co->board_list_object->set_search_catch_post_enable(false);
                 }
             }
@@ -123,15 +145,19 @@ class select_row_keys extends controller
             if (self::$co->on_board_list()) {
                 if (self::$co->on_object_list()) {
                     self::$co->board_list_object->list_object->apply_link_on_field_filter(
-                        K1APP_BASE_URL . "core/tools/send_row_keys/{$table_to_use}/--rowkeys--/{$reference_table_to_use}/"
-                        , ob::USE_LABEL_FIELDS
-                        , null
-                        , '_parent'
+                            K1APP_BASE_URL . "core/tools/send_row_keys/{$table_to_use}/"
+                            . (empty($custom_field_for_fk) ? '--rowkeys--' : '--customfieldvalue--')
+                            . "/{$reference_table_to_use}/"
+                            , ob::USE_LABEL_FIELDS
+                            , [$custom_field_for_fk]
+                            , '_self'
                     );
                 }
                 if (isset($_GET['back-url'])) {
-                    $close_search_buttom = get_link_button('#',common_strings::$button_cancel, 'btn-sm');
-                    $close_search_buttom->set_attrib("onClick", "parent.close_fk_iframe();");
+                    $close_search_buttom = get_link_button(
+                            K1APP_BASE_URL . "core/tools/send_row_keys/{$table_to_use}/null/{$reference_table_to_use}/"
+                            , common_strings::$button_cancel, 'btn-sm');
+//                    $close_search_buttom->set_attrib("onClick", "parent.close_fk_iframe();");
                     self::$co->board_list_object->button_div_tag()->append_child_head($close_search_buttom);
                 }
             }
@@ -139,7 +165,9 @@ class select_row_keys extends controller
             self::$co->exec_board();
 
             if (self::$co->on_object_list()) {
-                self::$co->board_list()->list_object->html_table->set_max_text_length_on_cell(100);
+                if (self::$co->board_list()->list_object->html_table) {
+                    self::$co->board_list()->list_object->html_table->set_max_text_length_on_cell(100);
+                }
             }
 
             self::$co->finish_board();
@@ -147,8 +175,7 @@ class select_row_keys extends controller
         $tpl->page()->set_content(self::$crud_container);
     }
 
-    public static function end(): void
-    {
+    public static function end(): void {
         parent::end();
 
         if (method_exists(self::$tpl, 'page')) {
