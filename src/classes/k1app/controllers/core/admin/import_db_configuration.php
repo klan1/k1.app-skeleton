@@ -16,7 +16,7 @@
 
 namespace k1app\controllers\core\admin;
 
-use k1app\core\template\my_sidebar_page;
+use k1app\core\template\app_sidebar_page;
 use k1lib\app\controller;
 use k1lib\crudlexs\db_table;
 use k1lib\db\PDO_k1;
@@ -48,7 +48,7 @@ class import_db_configuration extends controller {
 
         self::$db = self::app()->db();
 
-        $tpl = new my_sidebar_page();
+        $tpl = new app_sidebar_page();
         self::use_tpl($tpl);
 
         self::$tpl->page_content()->set_subtitle(null);

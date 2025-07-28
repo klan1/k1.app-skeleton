@@ -16,7 +16,7 @@
 
 namespace k1app\controllers;
 
-use k1app\core\template\my_sidebar_page;
+use k1app\core\template\app_sidebar_page;
 use k1lib\app\controller;
 use k1lib\html\pre;
 use k1lib\html\tag_log;
@@ -28,7 +28,7 @@ class index extends controller {
 
 //        app_session::start_session();
 
-        $tpl = new my_sidebar_page();
+        $tpl = new app_sidebar_page();
         self::use_tpl($tpl);
 
         $tpl->page_content()->set_title("K1.APP Skeleton");

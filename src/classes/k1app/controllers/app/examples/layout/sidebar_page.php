@@ -14,15 +14,15 @@
  * @since           File available since Release 0.1
  */
 
-namespace k1app\controllers\layout;
+namespace k1app\controllers\app\examples\layout;
 
-use k1app\core\template\my_sidebar_page;
+use k1app\core\template\app_sidebar_page;
 use k1lib\app\controller;
 
 class sidebar_page extends controller {
 
     public static function run() {
-        $tpl = new my_sidebar_page();
+        $tpl = new app_sidebar_page();
         self::use_tpl($tpl);
 
         $tpl->page_content()->set_title("Standar layout");
