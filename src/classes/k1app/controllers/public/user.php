@@ -14,10 +14,10 @@
  * @since           File available since Release 2.0
  */
 
-namespace k1app\controllers\app\public;
+namespace k1app\controllers\public;
 
 use k1app\core\config\general;
-use k1app\core\template\my_sidebar_page;
+use k1app\core\template\app_sidebar_page;
 use k1lib\app\controller_crud;
 
 class user extends controller_crud {
@@ -30,9 +30,9 @@ class user extends controller_crud {
 
     public static function run() {
         parent::run();
-        $tpl = new my_sidebar_page();
+        $tpl = new app_sidebar_page();
         parent::run_crud(__CLASS__, $tpl, '#nav-registro', TRUE);
-        $tpl->page_content()->set_subtitle('Si estas viendo esta página, es por que tu usuario aun no ha sido enlazado a un rol en la plataforma.');
+        $tpl->page_content()->set_subtitle('Aquí crearás un usuario de tipo invitado sin privilegios del sistema. Un administrador debe promover tu cuenta.');
         self::set_nav_active('#nav-my-profile');
     }
 

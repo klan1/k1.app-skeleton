@@ -16,7 +16,7 @@
 
 namespace k1app\controllers\core\admin;
 
-use k1app\core\template\my_sidebar_page;
+use k1app\core\template\app_sidebar_page;
 use k1lib\app\controller;
 use k1lib\crudlexs\db_table;
 use k1lib\crudlexs\field_config_json;
@@ -61,7 +61,7 @@ class fields_of extends controller {
         self::$db_table_to_use = db_table_aliases::decode($table_alias);
         self::$db_table = new db_table(self::$db, self::$db_table_to_use);
 
-        $tpl = new my_sidebar_page();
+        $tpl = new app_sidebar_page();
         self::use_tpl($tpl);
 
         self::$tpl->page_content()->set_subtitle(null);

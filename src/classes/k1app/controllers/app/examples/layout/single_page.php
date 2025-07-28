@@ -14,15 +14,16 @@
  * @since           File available since Release 0.1
  */
 
-namespace k1app\controllers\layout;
+namespace k1app\controllers\app\examples\layout;
 
-use k1app\core\template\base;
+use k1app\template\mazer\layouts\single_page as sp;
 use k1lib\app\controller;
 
-class blank extends controller {
+class single_page extends controller {
 
     public static function run() {
-        $tpl = new base();
+        parent::run();
+        $tpl = new sp();
         self::use_tpl($tpl);
     }
 
