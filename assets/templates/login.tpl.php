@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * NON SMARTY TEMPLATE - JUST PHP
+ */
 namespace k1app\controllers\auth;
 
 use const k1app\K1APP_ASSETS_IMAGES_URL;
@@ -52,7 +54,7 @@ $alert_div = new div(null, 'login-alerts');
                     <input type="hidden" name="magic_value" value="<?php echo set_magic_value("login_form"); ?>">
                 </form>
                 <div class="text-center mt-5 text-lg fs-4">
-                    <p class="text-gray-600">Si no tienes un usuario <a href="../../app/public/user/registro/" class="font-bold">crea tu usuario aquí</a>.</p>
+                    <p class="text-gray-600">Si no tienes un usuario <a href="../../public/user/new/" class="font-bold">crea tu usuario aquí</a>.</p>
                     <!--<p><a class="font-bold" href="auth-forgot-password.html">Forgot password?</a>.</p>-->
                 </div>
             </div>

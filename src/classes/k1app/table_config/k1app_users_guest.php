@@ -12,12 +12,12 @@ class k1app_users_guest extends defaults\admin_rol {
     /**
      * URLS
      */
-    const BOARD_CREATE_URL = "registro";
-    const BOARD_READ_URL = "perfil";
-    const BOARD_UPDATE_URL = "actualizar";
-    const BOARD_DELETE_URL = "borrar";
-    const BOARD_EXPORT_URL = "exportar";
-    const BOARD_LIST_URL = "listar";
+    const BOARD_CREATE_URL = "new";
+    const BOARD_READ_URL = "profile";
+    const BOARD_UPDATE_URL = "update";
+    const BOARD_DELETE_URL = "delete";
+    const BOARD_EXPORT_URL = "export";
+    const BOARD_LIST_URL = "list";
 
     /**
      * AVAILABILITY

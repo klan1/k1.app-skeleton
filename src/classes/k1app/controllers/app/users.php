@@ -16,7 +16,7 @@
 
 namespace k1app\controllers\app;
 
-use k1app\core\template\my_sidebar_page;
+use k1app\core\template\app_sidebar_page;
 use k1lib\app\controller_crud;
 use k1lib\session\app_session;
 use const k1lib\K1LIB_LANG;
@@ -30,7 +30,7 @@ class users extends controller_crud {
 
     public static function run() {
         parent::run();
-        $tpl = new my_sidebar_page(K1LIB_LANG);
+        $tpl = new app_sidebar_page(K1LIB_LANG);
         self::run_crud(__CLASS__, $tpl);
 
         /**

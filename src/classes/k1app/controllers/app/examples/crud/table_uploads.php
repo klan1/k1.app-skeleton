@@ -14,9 +14,9 @@
  * @since           File available since Release 0.1
  */
 
-namespace k1app\controllers\crud;
+namespace k1app\controllers\app\examples\crud;
 
-use k1app\core\template\my_sidebar_page;
+use k1app\core\template\app_sidebar_page;
 use k1lib\app\controller_crud;
 
 class table_uploads extends controller_crud {
@@ -30,7 +30,7 @@ class table_uploads extends controller_crud {
 
     public static function run(): void {
         parent::run();
-        $tpl = new my_sidebar_page();
+        $tpl = new app_sidebar_page();
         parent::run_crud(__CLASS__, $tpl, '#nav-uploads-crud');
     }
 

@@ -8,30 +8,30 @@
     --bs-table-bg: #3d9e3b;
 }
 body.light {
-    background: rgb(61,158,59);
-    background: linear-gradient(180deg, rgba(61,158,59,0.13) 10%, rgba(61,158,59,0.25) 60%, rgba(61,158,59,0.5) 100%);
+    /* background: rgb(61,158,59); */
+    /* background: linear-gradient(180deg, rgba(61,158,59,0.13) 10%, rgba(61,158,59,0.25) 60%, rgba(61,158,59,0.5) 100%); */
 }
 
 #k1app-page-title {
     font-size: 1.85rem;
 }
 body.light .card-title{
-    color:#3d9e3b !important;
+    /* color:#3d9e3b !important; */
 
 }
 
 .table.k1lib-crudlexs-list thead th, .table.k1lib-crudlexs-list thead th a   {
-    background-color: #00ad49;
+    /* background-color: #00ad49; */
     color: white;
 
 }
 .k1lib-data-item-label {
-    color: #00ad49;
+    /* color: #00ad49; */
 
 }
 #auth #auth-right {
     height: 100%;
-    background: linear-gradient(90deg, #00943e, #17cb62);
+    /* background: linear-gradient(90deg, #00943e, #17cb62); */
     background-repeat: no-repeat;
     background-attachment:fixed;
     background-position:right center;

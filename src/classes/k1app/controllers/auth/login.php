@@ -29,6 +29,7 @@ use k1lib\session\app_session;
 use k1lib\session\session_db;
 use k1lib\urlrewrite\url;
 use const k1app\K1APP_ASSETS_CSS_URL;
+use const k1app\K1APP_ASSETS_TEMPLATES_PATH;
 
 class login extends controller {
 
@@ -52,7 +53,7 @@ class login extends controller {
         $tpl->body()->append_child_head(new script(TPL_URL . "assets/extensions/parsleyjs/parsley.min.js"));
         $tpl->body()->append_child_head(new script(TPL_URL . "assets/static/js/pages/parsley.js"));
 
-        $tpl->body()->load_file(__DIR__ . '/login.tpl.php');
+        $tpl->body()->load_file(K1APP_ASSETS_TEMPLATES_PATH . '/login.tpl.php');
     }
 
     public static function end() {

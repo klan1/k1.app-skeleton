@@ -16,7 +16,7 @@
 
 namespace k1app\controllers\core\admin;
 
-use k1app\core\template\my_sidebar_page;
+use k1app\core\template\app_sidebar_page;
 use k1lib\app\controller;
 use k1lib\db\security\db_table_aliases;
 use k1lib\html\a;
@@ -38,7 +38,7 @@ class select_table extends controller {
     }
 
     public static function run() {
-        $tpl = new my_sidebar_page();
+        $tpl = new app_sidebar_page();
         self::use_tpl($tpl);
 
         $tpl->page_content()->set_title("DB Tables Control Panel");
