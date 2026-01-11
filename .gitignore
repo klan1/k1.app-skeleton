@@ -1,9 +1,8 @@
+src/classes/k1app/core/config/general.php
 /composer.lock
 /nbproject/
 /.vscode/
-/bower_components/
 /vendor/
-/settings/db-connection-1.php
 
 
 # General
@@ -35,4 +34,3 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-src/classes/k1app/core/config/general.php
