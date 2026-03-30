@@ -20,15 +20,19 @@ use k1app\core\config\general;
 use k1app\core\template\app_sidebar_page;
 use k1lib\app\controller_crud;
 
-class user extends controller_crud {
+class user
+        extends controller_crud
+{
 
-    public static function start() {
+    public static function start()
+    {
 //        parent::start();
         $app_options = new general();
         parent::start_crud($app_options->get_option('app_name'), 'k1app_users');
     }
 
-    public static function run() {
+    public static function run()
+    {
         parent::run();
         $tpl = new app_sidebar_page();
         parent::run_crud(__CLASS__, $tpl, '#nav-registro', TRUE);
@@ -36,7 +40,8 @@ class user extends controller_crud {
         self::set_nav_active('#nav-my-profile');
     }
 
-    public static function init_board(): void {
+    public static function init_board(): void
+    {
         parent::init_board();
 
         $table = self::$co->db_table;
@@ -45,5 +50,10 @@ class user extends controller_crud {
             'user_level' => 'guest',
         ];
         $table->set_field_constants($user_constants);
+    }
+
+    public static function end(): void
+    {
+        parent::end();
     }
 }

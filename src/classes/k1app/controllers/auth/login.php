@@ -16,20 +16,20 @@
 
 namespace k1app\controllers\auth;
 
+use const k1app\K1APP_ASSETS_CSS_URL;
+use const k1app\K1APP_ASSETS_TEMPLATES_PATH;
 use const k1app\K1APP_BASE_URL;
 use const k1app\K1APP_HOME_URL;
 use const k1app\template\mazer\TPL_URL;
 use function k1lib\html\html_header_go;
 use function k1lib\urlrewrite\get_back_url;
-use k1app\template\mazer\layouts\blank;
+use k1app\template\mazer\layouts\blank as blank_layout;
 use k1lib\app\controller;
 use k1lib\html\notifications\on_DOM as DOM_notifications;
 use k1lib\html\script;
 use k1lib\session\app_session;
 use k1lib\session\session_db;
 use k1lib\urlrewrite\url;
-use const k1app\K1APP_ASSETS_CSS_URL;
-use const k1app\K1APP_ASSETS_TEMPLATES_PATH;
 
 class login extends controller {
 
@@ -43,7 +43,7 @@ class login extends controller {
 
     public static function run() {
         parent::run();
-        $tpl = new blank();
+        $tpl = new blank_layout();
         self::use_tpl($tpl, 'login-alerts');
 
         $tpl->head()->link_css(TPL_URL . '/assets/compiled/css/auth.css');

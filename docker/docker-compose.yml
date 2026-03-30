@@ -1,0 +1,57 @@
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8008:80"
+      - "9003:9003"  # Xdebug port
+    volumes:
+      - ../:/var/www/html
+      - ./apache/tuning.conf:/etc/apache2/conf-available/tuning.conf
+      - ./xdebug-logs:/tmp  # Mount Xdebug logs for persistence
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=k1app_demo
+      - MYSQL_USER=k1app_user
+      - MYSQL_PASSWORD=k1app_user
+      # Xdebug environment variables
+      - XDEBUG_MODE=debug,develop,trace
+      - XDEBUG_CONFIG=client_host=host.docker.internal client_port=9003
+      - XDEBUG_SESSION=PHPSTORM
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  db:
+    image: mysql:9.6
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=k1app_demo
+      - MYSQL_USER=k1app_user
+      - MYSQL_PASSWORD=k1app_user
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      timeout: 5s
+      retries: 10
+      interval: 5s
+      start_period: 30s
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge

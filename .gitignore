@@ -1,9 +1,20 @@
-src/classes/k1app/core/config/general.php
 /composer.lock
 /nbproject/
 /.vscode/
 /vendor/
 
+# Docker related
+docker/db_data/
+docker/.env
+
+# OS files
+.DS_Store
+Thumbs.db
+._*
+
+# Application specific
+*.log
+.env
 
 # General
 .DS_Store
@@ -15,9 +26,6 @@ nbproject
 
 # Icon must end with two \r
 Icon
-
-# Thumbnails
-._*
 
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
@@ -34,3 +42,4 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+/docker/xdebug-logs/
