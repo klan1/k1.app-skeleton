@@ -13,12 +13,17 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      memcached:
+        condition: service_started
     environment:
       - MYSQL_HOST=db
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=k1app_demo
       - MYSQL_USER=k1app_user
       - MYSQL_PASSWORD=k1app_user
+      # Memcached environment variables
+      - MEMCACHED_HOST=memcached
+      - MEMCACHED_PORT=11211
       # Xdebug environment variables
       - XDEBUG_MODE=debug,develop,trace
       - XDEBUG_CONFIG=client_host=host.docker.internal client_port=9003
@@ -48,6 +53,37 @@ services:
       retries: 10
       interval: 5s
       start_period: 30s
+
+  memcached:
+    image: memcached:latest
+    ports:
+      - "11211:11211"  # Expose Memcached port to host if needed
+    command: memcached -m 64 -I 10m  # Memory limit: 64MB, max item size: 10MB
+    environment:
+      - MEMCACHED_CACHE_SIZE=64
+      - MEMCACHED_MAX_ITEM_SIZE=10m
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "11211"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  memcached-admin:
+    image: hatamiarash7/memcached-admin:master
+    ports:
+      - "8080:80"  # Access admin interface at http://localhost:8080
+    environment:
+      - MEMCACHED_HOST=memcached
+      - MEMCACHED_PORT=11211
+    networks:
+      - app-network
+    depends_on:
+      - memcached
+    restart: unless-stopped
 
 volumes:
   db_data:

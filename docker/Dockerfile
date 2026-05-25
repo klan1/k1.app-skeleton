@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     default-mysql-client \
+    gettext \
+    libmemcached-dev \
+    zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
@@ -17,7 +20,12 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     pdo_mysql \
     mysqli \
     gd \
-    zip
+    zip \
+    gettext
+
+# Install memcached extension
+RUN pecl install memcached \
+    && docker-php-ext-enable memcached
 
 # Install Xdebug
 RUN pecl install xdebug \

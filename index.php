@@ -1,5 +1,10 @@
 <?php
 
+namespace k1lib;
+
+const K1LIB_LOCALE = "es_CO";
+const K1LIB_LANG = 'es';
+
 namespace k1app;
 
 include 'bootstrap.php';

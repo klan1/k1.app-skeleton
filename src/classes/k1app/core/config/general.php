@@ -20,7 +20,7 @@ class general
         /*
          *  NAME AND DESCRIPTION
          */
-        $this->add_option('app_version', 'v2.0 RC1');
+        $this->add_option('app_version', 'v2.0 RC3');
         $this->add_option('app_name', 'K1 APP SKELETON');
         $this->add_option('app_description', 'Demo app to start new projects');
         $this->add_option('app_keywords', 'framework, php, web, develpment');
@@ -33,7 +33,8 @@ class general
         //        error_reporting(E_ALL);
         //        ini_set('display_errors', 1);
 
-        $this->add_option('timezone', 'America/Bogota');
+        $this->add_option('app_timezone', 'America/Bogota');
+        $this->add_option('app_locale', 'es_CO');
 
         $this->add_option('google_tag', null);
 
