@@ -64,15 +64,15 @@ class fields_of extends controller {
         $tpl = new app_sidebar_page();
         self::use_tpl($tpl);
 
-        self::$tpl->page_content()->set_subtitle(null);
-        self::$tpl->page_content()->set_content_title("Config table");
-        self::$tpl->page_content()->set_content('');
+        self::$tpl->page()->set_subtitle(null);
+        self::$tpl->page()->set_content_title("Config table");
+        self::$tpl->page()->set_content('');
 
         self::$tpl->menu()->q('#nav-config-table')->nav_is_active();
 
         $title = "Fields of: " . self::$db_table_to_use . ' [' . self::$db->get_db_name() . ']';
         self::$tpl->head()->set_title(self::$tpl->head()->get_title() . ' | ' . $title);
-        self::$tpl->page_content()->set_title($title);
+        self::$tpl->page()->set_title($title);
     }
 
     public static function run() {
@@ -193,7 +193,7 @@ class fields_of extends controller {
 
             $form->append_child($accordion_div);
 
-            self::$tpl->page_content()->set_content($div_container);
+            self::$tpl->page()->set_content($div_container);
         }
         /**
          *
@@ -209,7 +209,7 @@ class fields_of extends controller {
         //     $get_params = ['back-url' => $_SERVER['REQUEST_URI']];
         //     $a_manage = new a(url::do_url("../fields-of/{$table_alias}/", $get_params), "Configure");
         //     $p->set_value($table_to_link . " : " . $a_manage->generate());
-        //     self::$tpl->page_content()->content()->append_child($p);
+        //     self::$tpl->page()->content()->append_child($p);
         // }
     }
 
@@ -288,7 +288,7 @@ class fields_of extends controller {
                 }
             }
 //            self::run();
-            self::$tpl->page_content()->set_content($div_result);
+            self::$tpl->page()->set_content($div_result);
             self::end();
         }
     }

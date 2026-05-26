@@ -37,15 +37,15 @@ class index
 
         $t = translator::getInstance();
 //        $t->setLocale( K1LIB_LOCALE, '', K1APP_LOCALES_PATH);
-        $t->setLocale(K1LIB_LOCALE, 'k1app', K1APP_LOCALES_PATH1);
+        $t->setLocale(K1LIB_LOCALE, 'k1app', K1APP_LOCALES_PATH);
 
         $tpl = new app_sidebar_page();
         self::use_tpl($tpl);
 
-        $tpl->page_content()->set_title("K1.APP Skeleton");
-        $tpl->page_content()->set_subtitle("Fast and easy web development.");
-        $tpl->page_content()->set_content_title("APP Internal Debug");
-        $tpl->page_content()->set_content(
+        $tpl->page()->set_title("K1.APP Skeleton");
+        $tpl->page()->set_subtitle("Fast and easy web development.");
+        $tpl->page()->set_content_title("APP Internal Debug");
+        $tpl->page()->set_content(
                 new pre(
                         'Welcome : ' . __('Welcome') . PHP_EOL .
                         'Welcome App: ' . __('Welcome App') . PHP_EOL .

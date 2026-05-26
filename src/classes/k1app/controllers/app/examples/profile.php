@@ -32,9 +32,9 @@ class profile
 
         $tpl = new app_sidebar_page('EN', FALSE);
 
-        $tpl->page_content()->set_title(null);
-        $tpl->page_content()->set_subtitle(null);
-        $tpl->page_content()->content()->load_file(
+        $tpl->page()->set_title(null);
+        $tpl->page()->set_subtitle(null);
+        $tpl->page()->content()->load_file(
                 K1APP_ASSETS_TEMPLATES_PATH . '/mazer-example-profile.tpl.php', 1, FALSE, TRUE
         );
 

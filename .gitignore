@@ -43,7 +43,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 /docker/xdebug-logs/
-/assets/templates/smarty_tmp/*
+/public/assets/templates/smarty_tmp/*
 
 # Development
 .config/

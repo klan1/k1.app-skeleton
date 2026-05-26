@@ -14,7 +14,7 @@ $alert_div = new div(null, 'login-alerts');
         <div class="col-lg-5 col-12">
             <div id="auth-left">
                 <div class="auth-logo">
-                    <a href="/"><img src="<?php echo K1APP_ASSETS_IMAGES_URL . 'klan1.png' ?>" alt="Logo" style="height: 3rem"></a>
+                    <a href="/"><img src="<?php echo K1APP_ASSETS_IMAGES_URL . 'klan1-labs.png' ?>" alt="Logo" style="height: 8rem"></a>
                 </div>
                 <h1 class="auth-title">Inicio de sesión.</h1>
                 <!--<p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>-->

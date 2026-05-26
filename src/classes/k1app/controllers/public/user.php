@@ -36,7 +36,7 @@ class user
         parent::run();
         $tpl = new app_sidebar_page();
         parent::run_crud(__CLASS__, $tpl, '#nav-registro', TRUE);
-        $tpl->page_content()->set_subtitle('Aquí crearás un usuario de tipo invitado sin privilegios del sistema. Un administrador debe promover tu cuenta.');
+        $tpl->page()->set_subtitle('Aquí crearás un usuario de tipo invitado sin privilegios del sistema. Un administrador debe promover tu cuenta.');
         self::set_nav_active('#nav-my-profile');
     }
 

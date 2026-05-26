@@ -41,10 +41,10 @@ class select_table extends controller {
         $tpl = new app_sidebar_page();
         self::use_tpl($tpl);
 
-        $tpl->page_content()->set_title("DB Tables Control Panel");
-        $tpl->page_content()->set_subtitle(null);
-        $tpl->page_content()->set_content_title("Select a table");
-        $tpl->page_content()->set_content('');
+        $tpl->page()->set_title("DB Tables Control Panel");
+        $tpl->page()->set_subtitle(null);
+        $tpl->page()->set_content_title("Select a table");
+        $tpl->page()->set_content('');
 
         $tpl->menu()->q('#nav-config-table')->nav_is_active();
 
@@ -67,7 +67,7 @@ class select_table extends controller {
                     url::do_url(K1APP_URL . "core/admin/fields_of/{$table_alias}/", $get_params), $table_to_link
             );
             $p->set_value($a_manage);
-            $tpl->page_content()->content()->append_child($p);
+            $tpl->page()->content()->append_child($p);
         }
     }
 

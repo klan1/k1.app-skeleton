@@ -27,7 +27,7 @@ class app_sidebar_page
         $app_menu = new app_menu();
         $this->set_menu($app_menu);
 
-        $this->sidebar_logo_img()->set_src(K1APP_ASSETS_IMAGES_URL . 'klan1.png')->set_style('height:3.2rem');
+        $this->sidebar_logo_img()->set_src(K1APP_ASSETS_IMAGES_URL . 'klan1-labs.png')->set_style('height:3.2rem');
         /**
          * FOOTER TEXTS
          */

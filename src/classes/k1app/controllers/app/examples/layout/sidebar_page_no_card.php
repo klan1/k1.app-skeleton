@@ -28,10 +28,10 @@ class sidebar_page_no_card
         $tpl = new app_sidebar_page('en', FALSE);
         self::use_tpl($tpl);
 
-        $tpl->page_content()->set_title("Standar layout");
-        $tpl->page_content()->set_subtitle("For standard pages.");
-//        $tpl->page_content()->set_content_title("Section title");
-//        $tpl->page_content()->set_content('Section content');
+        $tpl->page()->set_title("Standar layout");
+        $tpl->page()->set_subtitle("For standard pages.");
+//        $tpl->page()->set_content_title("Section title");
+//        $tpl->page()->set_content('Section content');
 
         $tpl->menu()->q('#nav-sidebar-page-no-card')->nav_is_active();
     }

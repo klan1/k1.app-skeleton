@@ -51,15 +51,15 @@ class import_db_configuration extends controller {
         $tpl = new app_sidebar_page();
         self::use_tpl($tpl);
 
-        self::$tpl->page_content()->set_subtitle(null);
-        self::$tpl->page_content()->set_content_title("Load configuration text");
-        self::$tpl->page_content()->set_content('');
+        self::$tpl->page()->set_subtitle(null);
+        self::$tpl->page()->set_content_title("Load configuration text");
+        self::$tpl->page()->set_content('');
 
         self::$tpl->menu()->q('#nav-config-table')->nav_is_active();
 
         $title = "Load DB configuration: " . self::$db->get_db_name();
         self::$tpl->head()->set_title(self::$tpl->head()->get_title() . ' | ' . $title);
-        self::$tpl->page_content()->set_title($title);
+        self::$tpl->page()->set_title($title);
     }
 
     public static function run() {
@@ -81,7 +81,7 @@ class import_db_configuration extends controller {
         self::$textarea = $textarea = new textarea("load-info", 'form-control');
         $textarea->set_attrib("rows", 10)->append_to($form_create);
 
-        self::$tpl->page_content()->set_content($div_container);
+        self::$tpl->page()->set_content($div_container);
     }
 
     public static function pre_post() {

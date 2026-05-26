@@ -64,7 +64,7 @@ class general
                 'guest',
             ]
         );
-        $this->add_option('app_session_needed', true);
+        $this->add_option('app_session_needed', false);
         $this->add_option('app_session_login_url', 'auth/login/');
 
         /**
