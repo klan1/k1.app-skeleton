@@ -15,9 +15,9 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.2",
-        "klan1/k1.lib": "*",
+        "klan1/k1.lib": "v2.x",
         "phpmailer/phpmailer": "v6.x",
-        "klan1/k1app-template-mazer": "*"
+        "klan1/k1app-template-mazer": "v2.x"
     },
     "scripts": {
         "docker:up": "cd docker && docker compose up -d"
