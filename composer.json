@@ -13,13 +13,20 @@
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
-      "require": {
-          "php": "^8.2",
-          "klan1/k1.lib": "*",
-          "phpmailer/phpmailer": "v6.x",
-          "klan1/k1app-template-mazer": "*"
-      },
-      "scripts": {
-          "docker:up": "cd docker && docker compose up -d"
-      }
- }
+    "require": {
+        "php": "^8.2",
+        "klan1/k1.lib": "*",
+        "phpmailer/phpmailer": "v6.x",
+        "klan1/k1app-template-mazer": "*"
+    },
+    "scripts": {
+        "docker:up": "cd docker && docker compose up -d"
+    },
+    "autoload": {
+        "psr-4": {
+            "k1app\\core\\": "src/classes/k1app/core/",
+            "k1app\\table_config\\": "src/classes/k1app/table_config/",
+            "k1app\\": "src/classes/k1app/controllers/"
+        }
+    }
+}
