@@ -4,7 +4,7 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
     ports:
-      - "8008:80"
+      - "8400:80"
       - "9003:9003"  # Xdebug port
     volumes:
       - ../:/var/www/html
