@@ -1,6 +1,12 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
+
+    RewriteCond %{REQUEST_URI} ^/mazer/
+    RewriteCond %{DOCUMENT_ROOT}/vendor/klan1/k1app-template-mazer/dist/$1 -f
+    RewriteRule ^mazer/(.*)$ /vendor/klan1/k1app-template-mazer/dist/$1 [L]
+
     RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_URI} !^/vendor/
     RewriteRule ^(.*)$ /public/$1 [L]
 </IfModule>
