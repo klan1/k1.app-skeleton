@@ -3,7 +3,7 @@
     "description": "App skeleton using k1.lib.",
     "license": "Apache-2.0",
     "type": "application",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "homepage": "https://github.com/klan1/k1.app-skeleton",
     "authors": [
         {
@@ -15,9 +15,9 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.2",
-        "klan1/k1.lib": "v2.x",
+        "klan1/k1.lib": "dev-master",
         "phpmailer/phpmailer": "v6.x",
-        "klan1/k1app-template-mazer": "v2.x"
+        "klan1/k1app-template-mazer": "dev-master"
     },
     "scripts": {
         "docker:up": "cd docker && docker compose up -d"
