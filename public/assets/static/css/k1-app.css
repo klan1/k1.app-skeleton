@@ -1,0 +1,102 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 4, 2015, 1:51:08 PM
+    Author     : J0hnD03
+*/
+
+/*
+BOARD STYLES
+*/
+/*.board-content{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}*/
+/** 
+GENERAL
+/*
+
+
+/* READ */
+.k1lib-board-read .k1lib-board-title h4.card-title{
+    font-size: 1.7rem;
+}
+
+.k1lib-data-item-label {
+    /*color: #BBB;*/
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.k1lib-data-item-value {
+    font-size: 1.3rem;
+    color: #444;
+}
+/*
+.k1lib-data-img {
+    max-width: 200px;
+}
+*
+LIST SEARCH
+
+table tr th a.non-ordering {
+    color: #444;
+}
+table tr th a.ordering {
+    color: #111;
+}*/
+
+
+/**
+LIST PAGINATION
+*/
+/*
+select.k1lib-crudlexs-page-goto {
+    width: 55px;
+    font-size: 1em;
+    border: none;
+    margin: 0;
+}
+ul.k1lib-ul-object.pagination.k1lib-crudlexs {
+    margin: 0 !important;
+}
+
+div.k1lib-crudlexs-list-pagination li.k1lib-li-object {
+    display: inline-block !important;
+}*/
+/**
+LIST TABLE STYLES
+*/
+/*div.k1lib-crudlexs-list table tbody tr td {
+    vertical-align: top;
+}*/
+
+/**
+TABLE MANAGER
+*/
+
+/*.k1lib-field-of-title {
+    font-size: 1em !important;
+}*/
+
+
+/* FIXES */
+
+/*.off-canvas-wrapper {
+    overflow:visible !important;
+}
+
+.title-bar-left, .title-bar-right {
+    -webkit-box-flex: 0 1 auto !important;
+    -webkit-flex: 0 1 auto  !important;
+    -ms-flex: 0 1 auto  !important;
+    flex: 0 1 auto  !important;
+}
+
+.title-bar-title {
+    display: inline !important;
+}*/

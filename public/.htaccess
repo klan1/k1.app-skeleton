@@ -12,6 +12,8 @@ AddOutputFilterByType DEFLATE application/x-javascript
 #Options FollowSymLinks
 
 RewriteEngine On
+RewriteBase /public/
+
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !\.js|\.xml|\.htm|\.html|\.css|\.jpg|\.png|\.svg|\.gif|\.htc|\.ico|\.zip|\.rar|\.pdf|\.mp3|\.swf|\.map
