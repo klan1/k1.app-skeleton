@@ -31,37 +31,13 @@ RUN pecl install memcached \
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
-# Configure Xdebug for detailed error tracing and debugging
+# Configure Xdebug - trigger mode for performance
 RUN echo "\n\
-; Xdebug configuration for error tracing and debugging\n\
-xdebug.mode=debug,develop,trace\n\
-xdebug.client_host=host.docker.internal\n\
-xdebug.client_port=9003\n\
-xdebug.start_with_request=yes\n\
+; Xdebug configuration - trigger mode for performance\n\
+xdebug.mode=trigger\n\
+xdebug.start_with_request=trigger\n\
 xdebug.idekey=PHPSTORM\n\
-\n\
-; Error tracing settings\n\
-xdebug.var_display_max_depth=10\n\
-xdebug.var_display_max_children=512\n\
-xdebug.var_display_max_data=2048\n\
-\n\
-; Stack trace settings\n\
-xdebug.show_error_trace=1\n\
-xdebug.show_exception_trace=1\n\
-xdebug.show_local_vars=1\n\
-xdebug.collect_params=4\n\
-xdebug.collect_return=1\n\
-xdebug.collect_assignments=1\n\
-\n\
-; Logging\n\
-xdebug.log=/tmp/xdebug.log\n\
-xdebug.log_level=7\n\
-\n\
-; Performance\n\
-xdebug.profiler_enable=0\n\
-xdebug.profiler_output_name=cachegrind.out.%p\n\
-xdebug.profiler_output_dir=/tmp\n\
-" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # Enable Apache modules
 RUN a2enmod rewrite headers deflate

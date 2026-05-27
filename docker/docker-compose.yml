@@ -25,9 +25,8 @@ services:
       - MEMCACHED_HOST=memcached
       - MEMCACHED_PORT=11211
       # Xdebug environment variables
-      - XDEBUG_MODE=debug,develop,trace
+      - XDEBUG_MODE=trigger
       - XDEBUG_CONFIG=client_host=host.docker.internal client_port=9003
-      - XDEBUG_SESSION=PHPSTORM
     networks:
       - app-network
     restart: unless-stopped
