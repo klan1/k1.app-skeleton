@@ -2,7 +2,7 @@
     "name": "klan1/k1lib-app-skeleton",
     "description": "App skeleton using k1.lib.",
     "license": "Apache-2.0",
-    "type": "application",
+    "type": "project",
     "version": "3.0.0",
     "homepage": "https://github.com/klan1/k1.app-skeleton",
     "authors": [
@@ -20,13 +20,15 @@
         "klan1/k1app-template-mazer": "dev-master"
     },
     "scripts": {
-        "docker:up": "cd docker && docker compose up -d && open http://localhost"
+        "docker:up": "cd docker && docker compose up -d && open http://localhost:8400",
+        "docker:stop": "cd docker && docker compose stop",
+        "docker:destroy": "cd docker && docker compose down -v --rmi=local"
     },
     "autoload": {
         "psr-4": {
             "k1app\\core\\": "src/classes/k1app/core/",
             "k1app\\table_config\\": "src/classes/k1app/table_config/",
-            "k1app\\": "src/classes/k1app/controllers/"
+            "k1app\\controllers\\": "src/classes/k1app/controllers/"
         }
     }
 }
