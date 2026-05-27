@@ -20,7 +20,7 @@
         "klan1/k1app-template-mazer": "dev-master"
     },
     "scripts": {
-        "docker:up": "cd docker && docker compose up -d"
+        "docker:up": "cd docker && docker compose up -d && open http://localhost"
     },
     "autoload": {
         "psr-4": {

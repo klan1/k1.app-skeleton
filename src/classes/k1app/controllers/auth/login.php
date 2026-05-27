@@ -25,7 +25,7 @@ use function k1lib\html\html_header_go;
 use function k1lib\urlrewrite\get_back_url;
 use k1app\template\mazer\layouts\blank as blank_layout;
 use k1lib\app\controller;
-use k1lib\html\notifications\on_DOM as DOM_notifications;
+use k1lib\notifications\on_DOM as DOM_notifications;
 use k1lib\html\script;
 use k1lib\session\app_session;
 use k1lib\session\session_db;
