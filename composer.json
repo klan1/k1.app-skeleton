@@ -14,7 +14,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^8.2",
+        "php": "^8.0",
         "klan1/k1.lib": "dev-master",
         "phpmailer/phpmailer": "v6.x",
         "klan1/k1app-template-mazer": "dev-master"
