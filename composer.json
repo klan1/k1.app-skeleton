@@ -20,9 +20,12 @@
         "klan1/k1app-template-mazer": "dev-master"
     },
     "scripts": {
-        "docker:up": "cd docker && docker compose up -d && open http://localhost:8400",
-        "docker:stop": "cd docker && docker compose stop",
-        "docker:destroy": "cd docker && docker compose down -v --rmi=local"
+        "reset": [
+            "rm -rf vendor/",
+            "rm -f composer.lock",
+            "composer clear-cache",
+            "composer install"
+        ]
     },
     "autoload": {
         "psr-4": {
