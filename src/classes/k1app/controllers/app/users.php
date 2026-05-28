@@ -37,8 +37,6 @@ class users
         $tpl = new app_sidebar_page(K1LIB_LANG);
         self::run_crud(__CLASS__, $tpl);
 
-        d($_SESSION['CRUDLEXS-RND']);
-
         /**
          * HACK to change the menu item if the page loaded is the 
          * actual logged user

@@ -2,6 +2,9 @@
 
 namespace k1app\table_config;
 
-class table_uploads extends defaults\admin_rol {
+class table_uploads
+        extends defaults\admin_rol
+{
 
+    const ROOT_URL = "app/examples/crud/table_uploads/";
 }

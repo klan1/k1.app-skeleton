@@ -17,6 +17,7 @@
 namespace k1app\controllers\app\examples\crud;
 
 use k1app\core\template\app_sidebar_page;
+use k1app\table_config\table_uploads;
 use k1lib\app\controller_crud;
 
 class table_related extends controller_crud {
@@ -35,6 +36,7 @@ class table_related extends controller_crud {
 
     public static function finish_board(): void {
         parent::finish_board();
-        self::add_related_table('table_uploads', 'crud/table_uploads/', 'Uploads');
+        self::add_related_table('table_uploads', table_uploads::ROOT_URL, 'Uploads');
     }
 }
+
