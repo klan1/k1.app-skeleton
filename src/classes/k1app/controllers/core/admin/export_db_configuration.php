@@ -26,7 +26,7 @@ use function k1lib\html\html_header_go;
 
 class export_db_configuration extends controller {
 
-    public static function start() {
+    public static function start(): void {
         parent::start();
         app_session::is_logged(true, K1APP_URL);
 
@@ -38,7 +38,7 @@ class export_db_configuration extends controller {
         \header('Content-Disposition: attachment; filename="' . $db->get_db_name() . '-field-metas-' . time() . '.txt"');
     }
 
-    public static function run() {
+    public static function run(): void {
         $db = self::app()->db();
 
         $db_tables = $db->sql_query("show tables", true);

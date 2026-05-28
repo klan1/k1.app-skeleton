@@ -37,7 +37,7 @@ class import_db_configuration extends controller {
     static protected input $submit_button;
     static protected textarea $textarea;
 
-    public static function start() {
+    public static function start(): void {
         parent::start();
 
         app_session::is_logged(true, K1APP_URL);
@@ -62,7 +62,7 @@ class import_db_configuration extends controller {
         self::$tpl->page()->set_title($title);
     }
 
-    public static function run() {
+    public static function run(): void {
 
         $div_container = new div("row");
 
@@ -84,12 +84,12 @@ class import_db_configuration extends controller {
         self::$tpl->page()->set_content($div_container);
     }
 
-    public static function pre_post() {
+    public static function pre_post(): void {
         parent::pre_post();
         self::start();
     }
 
-    public static function on_post() {
+    public static function on_post(): void {
         parent::on_post();
         self::run();
 
@@ -159,7 +159,7 @@ class import_db_configuration extends controller {
         self::end();
     }
 
-    public static function end() {
+    public static function end(): void {
         parent::end();
         echo self::$tpl->generate();
     }

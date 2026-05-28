@@ -23,12 +23,11 @@ use function k1lib\html\html_header_go;
 
 class logout extends controller {
 
-    public static function start() {
+public static function start(): void {
         parent::start();
-        // DOM_notifications::
     }
 
-    public static function run() {
+    public static function run(): void {
         parent::run();
         self::app()->end_app_session();
         html_header_go(url::do_url(K1APP_URL));

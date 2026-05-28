@@ -33,15 +33,15 @@ use k1lib\urlrewrite\url;
 
 class login extends controller {
 
-    public static function start() {
+    public static function start(): void {
         /**
-         * DISABLE THE SESSION CHECK ON THE PARENT 
+         * DISABLE THE SESSION CHECK ON THE PARENT
          * IF WAS SET ON THE GENERAL CONFIG
          */
 //        parent::start();
     }
 
-    public static function run() {
+    public static function run(): void {
         parent::run();
         $tpl = new blank_layout();
         self::use_tpl($tpl, 'login-alerts');
@@ -56,12 +56,12 @@ class login extends controller {
         $tpl->body()->load_file(K1APP_ASSETS_TEMPLATES_PATH . '/login.tpl.php');
     }
 
-    public static function end() {
+    public static function end(): void {
         parent::end();
         echo self::$tpl->generate();
     }
 
-    public static function on_post() {
+    public static function on_post(): void {
         parent::on_post();
 
         $db = self::app()->db();

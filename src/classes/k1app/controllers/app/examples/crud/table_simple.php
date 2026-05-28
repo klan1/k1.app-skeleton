@@ -21,12 +21,12 @@ use k1lib\app\controller_crud;
 
 class table_simple extends controller_crud {
 
-    public static function start() {
+    public static function start(): void {
         parent::start();
         parent::start_crud('Simple Table controller example', 'table_example');
     }
 
-    public static function run() {
+    public static function run(): void {
         parent::run();
         $tpl = new app_sidebar_page();
         parent::run_crud(__CLASS__, $tpl, '#nav-simple-crud');

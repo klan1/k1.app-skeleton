@@ -28,7 +28,7 @@ use function k1lib\html\html_header_go;
 
 class select_table extends controller {
 
-    public static function start() {
+    public static function start(): void {
         parent::start();
         app_session::is_logged(true, K1APP_URL);
 
@@ -37,7 +37,7 @@ class select_table extends controller {
         }
     }
 
-    public static function run() {
+    public static function run(): void {
         $tpl = new app_sidebar_page();
         self::use_tpl($tpl);
 
@@ -71,7 +71,7 @@ class select_table extends controller {
         }
     }
 
-    public static function end() {
+    public static function end(): void {
         parent::end();
         echo self::$tpl->generate();
     }

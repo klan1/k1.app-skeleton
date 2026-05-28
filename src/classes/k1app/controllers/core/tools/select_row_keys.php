@@ -41,7 +41,7 @@ class select_row_keys extends controller {
         self::launch();
     }
 
-    public static function run() {
+    public static function run(): void {
         parent::run();
         $tpl = new sp();
         self::use_tpl($tpl);

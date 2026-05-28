@@ -33,7 +33,7 @@ class send_row_keys extends controller {
         self::launch();
     }
 
-    public static function run() {
+    public static function run(): void {
         $db = self::app()->db();
 
         /**

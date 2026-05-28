@@ -21,7 +21,7 @@ use k1lib\app\controller;
 
 class sidebar_page extends controller {
 
-    public static function run() {
+    public static function run(): void {
         $tpl = new app_sidebar_page();
         self::use_tpl($tpl);
 
@@ -33,7 +33,7 @@ class sidebar_page extends controller {
         $tpl->menu()->q('#nav-sidebar-page')->nav_is_active();
     }
 
-    public static function end() {
+    public static function end(): void {
         parent::end();
         echo self::$tpl->generate();
     }

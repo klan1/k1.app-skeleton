@@ -21,12 +21,12 @@ use k1lib\app\controller;
 
 class blank extends controller {
 
-    public static function run() {
+    public static function run(): void {
         $tpl = new base();
         self::use_tpl($tpl);
     }
 
-    public static function end() {
+    public static function end(): void {
         parent::end();
         echo self::$tpl->generate();
     }

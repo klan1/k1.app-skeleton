@@ -44,7 +44,7 @@ class fields_of extends controller {
     static protected PDO_k1 $db;
     static protected string $db_table_to_use;
 
-    public static function start() {
+    public static function start(): void {
         parent::start();
 
         app_session::is_logged(true, K1APP_URL);
@@ -75,7 +75,7 @@ class fields_of extends controller {
         self::$tpl->page()->set_title($title);
     }
 
-    public static function run() {
+    public static function run(): void {
 
 
 
@@ -213,12 +213,12 @@ class fields_of extends controller {
         // }
     }
 
-    public static function pre_post() {
+    public static function pre_post(): void {
         parent::pre_post();
         self::start();
     }
 
-    public static function on_post() {
+    public static function on_post(): void {
         parent::on_post();
 
         $div_result = new div();
@@ -293,7 +293,7 @@ class fields_of extends controller {
         }
     }
 
-    public static function end() {
+    public static function end(): void {
         parent::end();
         echo self::$tpl->generate();
     }

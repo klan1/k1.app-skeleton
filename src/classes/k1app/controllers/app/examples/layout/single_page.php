@@ -21,13 +21,13 @@ use k1lib\app\controller;
 
 class single_page extends controller {
 
-    public static function run() {
+    public static function run(): void {
         parent::run();
         $tpl = new sp();
         self::use_tpl($tpl);
     }
 
-    public static function end() {
+    public static function end(): void {
         parent::end();
         echo self::$tpl->generate();
     }
