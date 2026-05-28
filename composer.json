@@ -16,8 +16,8 @@
     "require": {
         "php": "^8.0",
         "klan1/k1.lib": "dev-master",
-        "phpmailer/phpmailer": "v6.x",
-        "klan1/k1app-template-mazer": "dev-master"
+        "klan1/k1app-template-mazer": "dev-master",
+        "phpmailer/phpmailer": "v6.x"
     },
     "scripts": {
         "reset": [
@@ -25,6 +25,11 @@
             "rm -f composer.lock",
             "composer clear-cache",
             "composer install"
+        ],
+        "docker:up": [
+            "Composer\\Config::disableProcessTimeout",
+            "cd docker && docker-compose up -d",
+            "echo 'k1.app-skeleton running at http://localhost:8400'"
         ]
     },
     "autoload": {
