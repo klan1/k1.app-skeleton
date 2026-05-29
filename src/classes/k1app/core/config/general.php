@@ -20,7 +20,7 @@ class general
         /*
          *  NAME AND DESCRIPTION
          */
-        $this->add_option('app_version', 'v2.0 RC3');
+        $this->add_option('app_version', 'v3.0');
         $this->add_option('app_name', 'K1 APP SKELETON');
         $this->add_option('app_description', 'Demo app to start new projects');
         $this->add_option('app_keywords', 'framework, php, web, develpment');
