@@ -12,6 +12,8 @@ include 'bootstrap.php';
 use k1app\core\config\general;
 use k1lib\app;
 
+\k1lib\html\tag::debug(TRUE);
+
 // Include the configuration settings for the application.
 $config = new general();
 
