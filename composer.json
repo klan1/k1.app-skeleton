@@ -37,6 +37,9 @@
             "k1app\\core\\": "src/classes/k1app/core/",
             "k1app\\table_config\\": "src/classes/k1app/table_config/",
             "k1app\\controllers\\": "src/classes/k1app/controllers/"
-        }
+        },
+        "files": [
+            "src/asset_boot.php"
+        ]
     }
 }

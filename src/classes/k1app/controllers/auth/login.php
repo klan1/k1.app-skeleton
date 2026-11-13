@@ -46,12 +46,12 @@ class login extends controller {
         $tpl = new blank_layout();
         self::use_tpl($tpl, 'login-alerts');
 
-        $tpl->head()->link_css(TPL_URL . '/assets/compiled/css/auth.css');
-        $tpl->head()->link_css(K1APP_ASSETS_CSS_URL . "/mazer-hacks.css")
-                ->set_attrib('crossorigin', true);
-        $tpl->body()->append_child_head(new script(TPL_URL . "assets/extensions/jquery/jquery.min.js"));
-        $tpl->body()->append_child_head(new script(TPL_URL . "assets/extensions/parsleyjs/parsley.min.js"));
-        $tpl->body()->append_child_head(new script(TPL_URL . "assets/static/js/pages/parsley.js"));
+        // [Klan1-Developer IA] Replaced manual asset calls with asset_manager
+        \k1lib\html\asset_manager::enqueue('mazer', 'compiled/css/auth.css', 'head');
+        \k1lib\html\asset_manager::enqueue('app', 'css/mazer-hacks.css', 'head');
+        \k1lib\html\asset_manager::enqueue('mazer', 'extensions/jquery/jquery.min.js', 'body');
+        \k1lib\html\asset_manager::enqueue('mazer', 'extensions/parsleyjs/parsley.min.js', 'body');
+        \k1lib\html\asset_manager::enqueue('mazer', 'static/js/pages/parsley.js', 'body');
 
         $tpl->body()->load_file(K1APP_ASSETS_TEMPLATES_PATH . '/login.tpl.php');
     }

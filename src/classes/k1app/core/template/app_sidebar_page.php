@@ -27,7 +27,8 @@ class app_sidebar_page
         $app_menu = new app_menu();
         $this->set_menu($app_menu);
 
-        $this->sidebar_logo_img()->set_src(K1APP_ASSETS_IMAGES_URL . 'klan1-labs.png')->set_style('height:3.2rem');
+        // [Klan1-Developer IA] Replaced manual asset URL with asset_manager
+        $this->sidebar_logo_img()->set_src(\k1lib\html\asset_manager::url('app', 'img/klan1-labs.png'))->set_style('height:3.2rem');
         /**
          * FOOTER TEXTS
          */
