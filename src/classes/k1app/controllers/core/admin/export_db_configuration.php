@@ -35,7 +35,7 @@ class export_db_configuration extends controller {
         }
         $db = self::app()->db();
         \header("Content-Type: text/plain");
-        \header('Content-Disposition: attachment; filename="' . $db->get_db_name() . '-field-metas-' . time() . '.txt"');
+        \header('Content-Dispositino: attachment; filename="' . $db->get_db_name() . '-field-metas-' . time() . '.txt"');
     }
 
     public static function run(): void {
